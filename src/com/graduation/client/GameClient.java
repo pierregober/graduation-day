@@ -6,6 +6,7 @@ import com.graduation.utils.Prompter;
 
 public class GameClient {
     private final Prompter prompter;
+    private Player player;
 
     public GameClient(Prompter prompter) {
         this.prompter = prompter;
@@ -13,6 +14,7 @@ public class GameClient {
 
     public void initialize() {
         //Where Hongyi puts his code
+        player = getPlayer();
     }
 
 
