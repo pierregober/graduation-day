@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0ee222be-8daa-4b0d-9cee-815776ccddc2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/graduation/utils/Grade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/graduation/pointsystem/Breakdown.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/graduation/pointsystem/PointSystem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/graduation/pointsystem/Questions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/graduation/pointsystem/Trivial.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/graduation-day.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/graduation-day.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +24,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1xH0dMNyW7izUf0VxOdjYgwQOpK" />
@@ -31,9 +41,13 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../1_Java/StudentWork/MiniProject/trivia-beer-console-game" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/com/graduation" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\AmazonSDE\Practical Applications\graduation-day\src\com\graduation" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.graduation.utils" />
     </key>
@@ -48,6 +62,9 @@
       <updated>1629923549985</updated>
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
