@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0ee222be-8daa-4b0d-9cee-815776ccddc2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/graduation/elements/Player.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/graduation/utils/Prompter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/graduation/utils/Grade.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -15,6 +14,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>

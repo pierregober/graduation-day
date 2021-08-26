@@ -1,5 +1,6 @@
 package com.graduation.elements;
 
+import com.graduation.utils.Grade;
 import com.graduation.utils.Prompter;
 
 public class Player {
@@ -7,11 +8,13 @@ public class Player {
     private int credit;
     private String location;
     private int health;
+    private Grade grade;
 
-    public Player(String name, int credit, int health){
+    public Player(String name, int credit, int health, Grade grade){
         this.name = name;
         this.credit = credit;
         this.health = health;
+        this.grade = grade;
     }
 
     public String answerQuestion(Prompter prompter){
@@ -27,6 +30,10 @@ public class Player {
         this.credit = credit;
     }
 
+    public void setGrade(Grade grade) {
+        this.grade = grade;
+    }
+
     public void setLocation(String location) {
         this.location = location;
     }
@@ -39,7 +46,9 @@ public class Player {
         return health;
     }
 
-
+    public Grade getGrade() {
+        return grade;
+    }
 
     public String getLocation() {
         return location;

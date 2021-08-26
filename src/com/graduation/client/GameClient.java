@@ -1,6 +1,7 @@
 package com.graduation.client;
 
 import com.graduation.elements.Player;
+import com.graduation.utils.Grade;
 import com.graduation.utils.Prompter;
 
 public class GameClient {
@@ -18,7 +19,7 @@ public class GameClient {
 
     public Player getPlayer() {
         String userName = prompter.prompt("Please enter your name below \n");
-        Player player = new Player(userName, 0, 10);
+        Player player = new Player(userName, 0, 10, Grade.FRESHMAN);
         return player;
     }
 }
