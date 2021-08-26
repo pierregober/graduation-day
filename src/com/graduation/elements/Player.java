@@ -10,11 +10,12 @@ public class Player {
     private int health;
     private Grade grade;
 
-    public Player(String name, int credit, int health, Grade grade){
+    public Player(String name, int credit, int health, Grade grade, String location){
         this.name = name;
         this.credit = credit;
         this.health = health;
         this.grade = grade;
+        this.location = location;
     }
 
     public String answerQuestion(Prompter prompter){
@@ -61,6 +62,4 @@ public class Player {
     public String getName() {
         return name;
     }
-
-
 }

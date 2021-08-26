@@ -6,20 +6,21 @@ import com.graduation.utils.Prompter;
 
 public class GameClient {
     private final Prompter prompter;
+    private Player player;
 
     public GameClient(Prompter prompter) {
         this.prompter = prompter;
     }
 
     public void initialize() {
-        //Where Hongyi puts his code
+        player = getPlayer();
+        System.out.println(player.toString());
+
     }
-
-
 
     public Player getPlayer() {
         String userName = prompter.prompt("Please enter your name below \n");
-        Player player = new Player(userName, 0, 10, Grade.FRESHMAN);
+        Player player = new Player(userName, 0, 10, Grade.FRESHMAN, "Literature");        //starting point for the player
         return player;
     }
 }
