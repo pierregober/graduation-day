@@ -22,7 +22,6 @@ public class Player {
                 "Answer with A,B,C, or D \n",
                 "[A-D]|[a-d]",
                 "A,B,C or D ONLY");
-
         return answer;
     }
 
