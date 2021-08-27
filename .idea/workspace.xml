@@ -2,14 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="34bb8994-1a51-4613-b27d-ad4ef5afde22" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/graduation/actions/GameAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/graduation/actions/SourceData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/graduation/elements/Player.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/com/graduation/pointsystem/Breakdown.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/com/graduation/pointsystem/PointSystem.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/com/graduation/pointsystem/Questions.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/com/graduation/pointsystem/Trivial.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/graduation/utils/Grade.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/graduation/utils/Location.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/graduation/utils/Prompter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/rooms.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/graduation-day.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/graduation-day.iml" beforeDir="false" afterPath="$PROJECT_DIR$/graduation-day.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/graduation/client/GameClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/client/GameClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/graduation/client/GraduationDayApplicationClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/client/GraduationDayApplicationClient.java" afterDir="false" />
@@ -81,5 +89,8 @@
       <updated>1630012665362</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
