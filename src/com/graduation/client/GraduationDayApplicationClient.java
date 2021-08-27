@@ -10,5 +10,6 @@ class GraduationDayApplicationClient {
                 " Stephen Yeboah\n\n");
 //        MyClassName client = new MyClassName();
 //        client.initialize();                      //Hongyi this will redirect to a method called initialize and then you instantiate a Player and add inputs in the Class
+
     }
 }
