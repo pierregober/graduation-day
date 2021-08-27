@@ -14,7 +14,8 @@ import java.util.concurrent.ExecutionException;
 
 public class Questions {
     public static final Map<String,Integer> categories=
-            Map.of("maths",19,"history",23,"geography",22,"sports",21,"general knowledge",9);
+            Map.of("maths",19,"history",23,"geography",22,"sports",21,"general knowledge",9
+            ,"computers",18);
 
     private List<Breakdown> getQuestions(String type) throws JsonProcessingException, ExecutionException, InterruptedException {
         //make a client object
@@ -57,12 +58,17 @@ public class Questions {
             for(Map.Entry<Character,String> options: possible_answers.entrySet()){
                 System.out.println(options.getKey()+") "+options.getValue());
             }
-            char chosen =answer.nextLine().trim().toUpperCase().charAt(0);
-            if(possible_answers.get(chosen).compareTo(Jsoup.parse(sample.getCorrect_answer()).text())==0){
-                System.out.println("correct");
-                counter+=1;
+            String userChoice = answer.nextLine().trim().toUpperCase();
+            char chosen = ' ';
+            while (userChoice.compareTo("") == 0 || !possible_answers.keySet().contains(userChoice.toUpperCase().charAt(0))) {
+                System.out.println("You can choose from these options: " + Arrays.toString(possible_answers.keySet().toArray(new Character[0])));
+                userChoice = answer.nextLine().trim().toUpperCase();
             }
-            else{
+            chosen = userChoice.charAt(0);
+            if (possible_answers.get(chosen).compareTo(Jsoup.parse(sample.getCorrect_answer()).text()) == 0) {
+                System.out.println("correct");
+                counter += 1;
+            } else {
                 System.out.println("Incorrect");
             }
             System.out.println();
