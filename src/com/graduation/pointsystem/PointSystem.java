@@ -22,8 +22,8 @@ public class PointSystem {
 
     public double getCumulativeScore(int eachScore, int numberOfSubjects){
         System.out.println("Counter = "+numberOfSubjects);
-        player_total_grade+=(player_total_grade+getScore(eachScore)/numberOfSubjects);
-        return Double.parseDouble(new DecimalFormat("#.##").format(player_total_grade));
+        player_total_grade+=(getScore(eachScore));
+        return Double.parseDouble(new DecimalFormat("#.##").format(player_total_grade/(double)numberOfSubjects));
     }
 
     public static void teacherQuestions(String subject) {
@@ -45,7 +45,8 @@ public class PointSystem {
             System.out.println(pointSystem.getCumulativeScore(score,counter));
 //        }
 
-           GameClient.continueJourney();
+
         }
+        GameClient.continueJourney();
     }
 }
