@@ -12,7 +12,7 @@ public class SourceData {
     public static String asString(){
         try {
             Stream<String> lines = Files.lines(
-                    Paths.get(ClassLoader.getSystemResource("Banner/rooms.json").toURI()));
+                    Paths.get(ClassLoader.getSystemResource("rooms.json").toURI()));
 
             return lines.collect(Collectors.joining());
 

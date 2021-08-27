@@ -2,18 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="531bf425-6720-437d-97da-633fac0f6456" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/build.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/jackson-annotations-2.13.0-rc1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/jackson-core-2.13.0-rc1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/jackson-databind-2.13.0-rc1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/jsoup-1.11.2.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graduation-day.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/graduation-day/rooms.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/graduation/actions/SourceData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/actions/SourceData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rooms.json" beforeDir="false" afterPath="$PROJECT_DIR$/Banner/rooms.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Banner/rooms.json" beforeDir="false" afterPath="$PROJECT_DIR$/rooms.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Graduation_Day-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Graduation_Day-1.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/graduation/pointsystem/PointSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/pointsystem/PointSystem.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
