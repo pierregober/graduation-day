@@ -1,0 +1,38 @@
+{
+  "FRESHMAN":{
+    "Computers" : {
+      "north" : "Maths",
+      "desc" : "You are in a computer room, something tells you that you rather not be here. Also you get the feeling you are being watched. To the north is a Math class "
+    },
+    "Maths": {
+      "east" : "Cafeteria",
+      "desc" : "Mrs.Peterson's Maths class... omg I'm in trouble"
+    },
+    "Cafeteria": {
+      "west" : "Maths",
+      "east" : "History",
+      "item" : "Big Mac",
+      "desc" : "Looks like there has been a food fight in the cafeteria.... You see something tasty on the ground"
+    },
+    "History": {
+      "west": "Cafeteria",
+      "north": "Hallway",
+      "desc": "A pile of books sits in a corner... You see see the substitute teacher Mr.Korenick. He's heading toward you wanting to ask some questions"
+    },
+    "Hallway": {
+      "south": "History",
+      "north": "Geography",
+      "item" : "Sharpened Pencil",
+      "desc": "Empty hallway with flicking lights... you saw someone move fast in the background."
+    },
+    "Geography":{
+      "south": "Hallway",
+      "west": "Gym",
+      "desc": "Just a regular Geo class.... or is it... You get a tap on the shoulder... it's Mrs.Beaverwich"
+    },
+    "Gym": {
+      "east" : "Geography",
+      "desc": "Dodgeballs are on the floor..."
+    }
+  }
+}
