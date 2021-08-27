@@ -12,8 +12,10 @@ class GraduationDayApplicationClient {
                 " Jauric Flowers\n" +
                 " Pierre Gober\n" +
                 " Stephen Yeboah\n\n");
-        Prompter prompter = new Prompter (new Scanner(System.in));
+        Prompter prompter = new Prompter(new Scanner(System.in));
         GameClient game = new GameClient(prompter);
         game.initialize();
     }
 }
+
+

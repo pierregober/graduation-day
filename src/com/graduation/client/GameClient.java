@@ -17,12 +17,9 @@ public class GameClient {
     private static ObjectMapper mapper = new ObjectMapper();
     private static JsonNode data;
     private static JsonNode prevRoom;
-
-
     public GameClient(Prompter prompter) {
         this.prompter = prompter;
     }
-
     public void initialize(){
         player = getPlayer();
         //if it's a subject room then go to questions
