@@ -25,18 +25,14 @@ public class PointSystem {
         int score = 0;
 //        while(true) {
            counter++;
-           /*
-            Scanner userInput = new Scanner(System.in); //First class is Lit
-            System.out.println("Choose a category from the list:" + Arrays.toString(questions.categories.keySet().toArray(new String[0])));
-            String option = userInput.nextLine().trim().toLowerCase();*/
+
         if (!notSubject.contains(subject.toLowerCase())) {
             score = questions.generateQuestions(subject);
 
             System.out.println(new DecimalFormat("#.##").format(new PointSystem().getScore(score) / counter));
 //        }
 
-            //May need a conditional here to see if the user advances or not -- for now will will continue
-            GameClient.continueJourney();
+           GameClient.continueJourney();
         }
     }
 }
