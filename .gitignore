@@ -1,6 +1,7 @@
 # IntelliJ metadata files
 .idea/
 *.iml
+*.xml
 
 # Compiled class file
 *.class
@@ -15,6 +16,7 @@
 .mtj.tmp/
 
 # Package Files #
+*.iml
 *.war
 *.nar
 *.ear

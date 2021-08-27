@@ -13,8 +13,13 @@ class GraduationDayApplicationClient {
                 " Pierre Gober\n" +
                 " Stephen Yeboah\n\n");
 
+
+        TitleScreen.displayInstructions();
         Prompter prompter = new Prompter(new Scanner(System.in));
         GameClient game = new GameClient(prompter);
+
+
+
         game.initialize();
 
     }
