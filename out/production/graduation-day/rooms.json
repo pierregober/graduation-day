@@ -1,26 +1,26 @@
 {
   "FRESHMAN":{
-    "Literature" : {
-      "north" : "Algebra II",
-      "desc" : "You are in a odd room, something tells you that you rather not be here. Also you get the feeling you are being watched. To the north is a Math class Algebra II"
+    "Computers" : {
+      "north" : "Maths",
+      "desc" : "You are in a computer room, something tells you that you rather not be here. Also you get the feeling you are being watched. To the north is a Math class "
     },
-    "Algebra II": {
+    "Maths": {
       "east" : "Cafeteria",
-      "desc" : "Mrs.Peterson's Algebra II class... omg I'm in trouble"
+      "desc" : "Mrs.Peterson's Maths class... omg I'm in trouble"
     },
     "Cafeteria": {
-      "west" : "Algebra II",
-      "east" : "US History",
+      "west" : "Maths",
+      "east" : "History",
       "item" : "Big Mac",
       "desc" : "Looks like there has been a food fight in the cafeteria.... You see something tasty on the ground"
     },
-    "US History": {
+    "History": {
       "west": "Cafeteria",
       "north": "Hallway",
       "desc": "A pile of books sits in a corner... You see see the substitute teacher Mr.Korenick. He's heading toward you wanting to ask some questions"
     },
     "Hallway": {
-      "south": "US History",
+      "south": "History",
       "north": "Geography",
       "item" : "Sharpened Pencil",
       "desc": "Empty hallway with flicking lights... you saw someone move fast in the background."
