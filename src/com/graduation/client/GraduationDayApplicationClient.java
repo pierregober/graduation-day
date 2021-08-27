@@ -12,8 +12,6 @@ class GraduationDayApplicationClient {
                 " Jauric Flowers\n" +
                 " Pierre Gober\n" +
                 " Stephen Yeboah\n\n");
-//        MyClassName client = new MyClassName();
-//        client.initialize();                      //Hongyi this will redirect to a method called initialize and then you instantiate a Player and add inputs in the Class
         Prompter prompter = new Prompter(new Scanner(System.in));
         GameClient game = new GameClient(prompter);
         game.initialize();
