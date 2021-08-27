@@ -3,14 +3,15 @@ package com.graduation.client;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.security.KeyPairGenerator;
 import java.util.Scanner;
 
 
 class TitleScreen {
     //Fields
+    private static String banner;
     Scanner titleObj = new Scanner(System.in);
-
-    private String banner;
+    String keystroke = titleObj.nextLine().toLowerCase();
     String credits = "This game was produced by Hongyi Qu, Pierre Gober, Stephen Yeboah\n" +
             " Jauric Flowers.\n";
 
@@ -27,46 +28,40 @@ class TitleScreen {
             "\n" +
             "LOOK\n" +
             "\n" +
-            "INV/INVENTORY"
-            ;
+            "INV/INVENTORY";
 
     public void title() {
-
-
-
-
-//      System.out.println("\nGraduation-Day!");
-        System.out.println("Type 'S' to start.");
-        System.out.println(readTXT());
-        String startRequest = titleObj.nextLine().toLowerCase();
-        if (startRequest == "s") {
-            //code to go to GameClient and initialize
+        //We will use this later during the game as an option to bring
+        System.out.println("Type 'Q' to quit the game." +
+                "Type 'C' to look at the credits. Type 'H' to look at the help tutorial");
+        switch (keystroke) {
+            case "q":
+                System.exit(0);
+                break;
+            case "c":
+                System.out.println(credits);
+                break;
+            case "h":
+                System.out.println(help);
+                break;
+            default:
+                keystroke = "Invalid input";
+                break;
         }
-
-        System.out.println("Type 'Q' to quit the game.");
-        //bring down
-        String quitRequest = titleObj.nextLine().toLowerCase();
-        if (quitRequest == "q") {
-            //Exit JVM
-            System.exit(0);
-
-        }
-        System.out.println("Type 'C' to look at the credits.");
-        String creditsRequest = titleObj.nextLine().toLowerCase();
-        if (creditsRequest == "c") {
-            System.out.println(credits);
-        }
-        System.out.println("Type 'H' to look at the help tutorial.");
-        String helpRequest = titleObj.nextLine().toLowerCase();
-        if (helpRequest == "h") {
-            System.out.println(help);
-
-        }
+        System.out.println(keystroke);
     }
 
-    public String readTXT() {
+
+    //Displays title and instructions
+    public static void displayInstructions() {
+        System.out.println(TitleScreen.readTXT("Welcome_Grad_Day"));
+        System.out.println(TitleScreen.readTXT("Instructions"));
+
+    }
+
+    public static String readTXT(String name) {
         try {
-            banner = Files.readString(Path.of("Banner/Welcome_Grad_Day .txt"));
+            banner = Files.readString(Path.of("Banner/" + name + ".txt"));
         } catch (IOException e) {
 
         }
