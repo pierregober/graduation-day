@@ -13,9 +13,11 @@ import java.io.IOException;
 
 public class GameClient {
     private final Prompter prompter;
-    private Player player;
-    // ObjectMapper is stateless and thread-safe so it's OK to create one like this
-    private static final ObjectMapper mapper = new ObjectMapper();
+    private static Player player;
+    private static ObjectMapper mapper = new ObjectMapper();
+    private static JsonNode data;
+    private static JsonNode prevRoom;
+
 
     public GameClient(Prompter prompter) {
         this.prompter = prompter;
@@ -31,8 +33,9 @@ public class GameClient {
         //Step 1 -- first generate the location info from the json
 
         try{
-            JsonNode data = mapper.readTree(SourceData.asString());
-            JsonNode filteredData = getRoomDesc(data, player.getLocation(), "desc");
+            data = mapper.readTree(SourceData.asString());
+            prevRoom = getLastRoom(data, player.getLocation(), player.getGrade());
+            JsonNode filteredData = getRoomDesc(data, player.getLocation(), player.getGrade(),"desc");
             System.out.println(filteredData);
         }catch(IOException e){
             System.out.println(e);
@@ -41,24 +44,43 @@ public class GameClient {
         //Step 2 -- use stephens questions to advance
         System.out.println("The teacher stares you down to ask you a question. Your body is locked. You are forced to stay\n\n");
         PointSystem.teacherQuestions();
+    }
 
+    public static void nextLocation(String location){
+        //need to grab the previous and read the location according to direction
+        System.out.println(location + " \n\n" + prevRoom);
+        String nextLoc = prevRoom.get(location).textValue();
+        player.setLocation(nextLoc);
+
+        //looks the same could seperate in one method but theres a slight difference I can fix later -- pierre
+        try{
+            data = mapper.readTree(SourceData.asString());
+            prevRoom = getLastRoom(data, player.getLocation(), player.getGrade());
+            JsonNode filteredData = getRoomDesc(data, player.getLocation(), player.getGrade(),"desc");
+            System.out.println(filteredData);
+            //Some conditional seeing if its is a subject
+            //but for now will will continue -- assuming its to a subject class
+            PointSystem.teacherQuestions();
+        }catch(IOException e){
+            System.out.println(e);
+        }
     }
 
     public static void continueJourney(){
-        System.out.println("Your body is unfrozen!!! You can now move!");
+        System.out.println("You can now move! Where to go next?");
         GameAction.getAction();
     }
 
-    private static JsonNode getRoomDesc(JsonNode neoJsonNode, String location, String field) {
-        JsonNode requestedData = neoJsonNode.get(location).get(field);
-        return requestedData;
+    private static JsonNode getRoomDesc(JsonNode node, String location, Grade grade, String field) {
+         return node.get(String.valueOf(grade)).get(location).get(field);
     }
 
-
+    private static JsonNode getLastRoom(JsonNode node, String location, Grade grade) {
+        return node.get(String.valueOf(grade)).get(location);
+    }
 
     public Player getPlayer() {
         String userName = prompter.prompt("Please enter your name below \n");
-        Player player = new Player(userName, 0, 10, Grade.FRESHMAN, "Literature");        //starting point for the player
-        return player;
+        return new Player(userName, 0, 10, Grade.FRESHMAN, "Literature");
     }
 }
