@@ -52,6 +52,7 @@ public class Question {
         }
         int counter = 0;
         for (QuestionDetail sample : samples) {
+            //create a new set of answers
             Map<Character, String> possible_answers = new LinkedHashMap<>();
             System.out.println(Jsoup.parse(sample.getQuestion()).text());
             List<String> answers = new ArrayList<>();
