@@ -22,43 +22,32 @@ public class GameClient {
     }
     public void initialize(){
         player = getPlayer();
-        //if it's a subject room then go to questions
-        //after questions the player can move. -- GameAction move = new GameAction
-        //move()
-        //would have to set the location of the player
-
-        //Step 1 -- first generate the location info from the json
-
-        try{
-            data = mapper.readTree(SourceData.asString());
-            prevRoom = getLastRoom(data, player.getLocation(), player.getGrade());
-            JsonNode filteredData = getRoomDesc(data, player.getLocation(), player.getGrade(),"desc");
-            System.out.println(filteredData);
-        }catch(IOException e){
-            System.out.println(e);
+        //Step 1 -- Generate the location info from the json
+        getLevelDetails();
+        System.out.println("You are somehow in the computer lab... Mr.Tindall stares you down to ask you a question. Your body is locked. You are forced to stay\n\n");
+        //Step 2a -- Some conditional seeing if its is a subject
+        if(player.getLocation().equals("cafeteria") || player.getLocation().equals("gym") || player.getLocation().equals("hallway")){
+            System.out.println("Pierre fgiure out what we do here -- possible item grab"); //TO-DO
+        }else{
+            //Step 2b -- Call method to initalize the question sequence
+            PointSystem.teacherQuestions(player.getLocation().toLowerCase());
         }
-
-        //Step 2 -- use stephens questions to advance
-        System.out.println("The teacher stares you down to ask you a question. Your body is locked. You are forced to stay\n\n");
-       // String user = player.getLocation().;
-        PointSystem.teacherQuestions(player.getLocation().toLowerCase());
     }
 
     public static void nextLocation(String location){
         //need to grab the previous and read the location according to direction
-        System.out.println(location + " \n\n" + prevRoom);
         String nextLoc = prevRoom.get(location).textValue();
         player.setLocation(nextLoc);
+        getLevelDetails();
+        PointSystem.teacherQuestions(player.getLocation().toLowerCase());
+    }
 
-        //looks the same could seperate in one method but theres a slight difference I can fix later -- pierre
+    public static void getLevelDetails(){
         try{
             data = mapper.readTree(SourceData.asString());
             prevRoom = getLastRoom(data, player.getLocation(), player.getGrade());
             JsonNode filteredData = getRoomDesc(data, player.getLocation(), player.getGrade(),"desc");
             System.out.println(filteredData);
-            //Some conditional seeing if its is a subject
-            //but for now will will continue -- assuming its to a subject class
-            PointSystem.teacherQuestions(player.getLocation().toLowerCase());
         }catch(IOException e){
             System.out.println(e);
         }

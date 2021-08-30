@@ -24,13 +24,6 @@ public class GameAction {
                 break;
             case "get":
                 System.out.println("you got  " + moveArray[1] + "!");
-
-                break;
-            case "look":
-                System.out.println("you looked " + moveArray[1] + "!");
-                break;
-            case "use":
-                System.out.println("you used " + moveArray[1] + "!");
                 break;
             default:
                 System.out.println("You entered a an invalid move. Type \"help\" for the instructions");
