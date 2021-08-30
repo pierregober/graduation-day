@@ -40,6 +40,7 @@ public class PointSystem {
             score = questions.generateQuestions(subject);
             while (pointSystem.getScore(score) < 2) {
                 System.out.println("Your score of " + pointSystem.getScore(score) + " is less than 2.0, you need to take " + subject + " again");
+                System.out.println();
                 score = questions.generateQuestions(subject);
             }
 
