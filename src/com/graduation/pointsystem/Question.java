@@ -60,9 +60,11 @@ public class Question {
             for (Object incorrect : sample.getIncorrect_answers()) {
                 answers.add(incorrect.toString());
             }
+            //randomize the possible answers
             Collections.shuffle(answers);
             char option = 'A';
             for (String possible_answer : answers) {
+                //stripping the answer of any html tags
                 possible_answers.put(option++, Jsoup.parse(possible_answer).text());
             }
 
