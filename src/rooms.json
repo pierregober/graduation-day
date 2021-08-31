@@ -1,18 +1,18 @@
 {
-  "FRESHMAN":{
-    "Computers" : {
-      "north" : "Maths",
-      "desc" : "You are in a computer room, something tells you that you rather not be here. Also you get the feeling you are being watched. To the north is a Math class "
+  "FRESHMAN": {
+    "Computers": {
+      "north": "Maths",
+      "desc": "You are in a computer room, something tells you that you rather not be here. Also you get the feeling you are being watched. To the north is a Math class "
     },
     "Maths": {
-      "east" : "Cafeteria",
-      "desc" : "Mrs.Peterson's Maths class... omg I'm in trouble"
+      "east": "Cafeteria",
+      "desc": "Mrs.Peterson's Maths class... omg I'm in trouble"
     },
     "Cafeteria": {
-      "west" : "Maths",
-      "east" : "History",
-      "item" : "Big Mac",
-      "desc" : "Looks like there has been a food fight in the cafeteria.... You see something tasty on the ground"
+      "west": "Maths",
+      "east": "History",
+      "item": "Big Mac",
+      "desc": "Looks like there has been a food fight in the cafeteria.... You see something tasty on the ground"
     },
     "History": {
       "west": "Cafeteria",
@@ -22,17 +22,138 @@
     "Hallway": {
       "south": "History",
       "north": "Geography",
-      "item" : "Sharpened Pencil",
+      "item": "Sharpened Pencil",
       "desc": "Empty hallway with flicking lights... you saw someone move fast in the background."
     },
-    "Geography":{
+    "Geography": {
       "south": "Hallway",
       "west": "Gym",
       "desc": "Just a regular Geo class.... or is it... You get a tap on the shoulder... it's Mrs.Beaverwich"
     },
     "Gym": {
-      "east" : "Geography",
-      "desc": "Dodgeballs are on the floor..."
+      "east": "Geography",
+      "desc": "Dodgeballs are on the floor...",
+      "item": "Dodgeball"
+    }
+  },
+  "SOPHOMORE":{
+    "Computers": {
+      "north": "Maths",
+      "desc": "You are in a computer room, something tells you that you rather not be here. Also you get the feeling you are being watched. To the north is a Math class "
+    },
+    "Maths": {
+      "west": "Cafeteria",
+      "south": "Computers",
+      "north": "Hallway",
+      "desc": "Mrs.Peterson's Maths class... omg I'm in trouble"
+    },
+    "Cafeteria": {
+      "east": "Maths",
+      "north": "History",
+      "item": "Fire Extinguisher",
+      "desc": "Looks like there has been a food fight in the cafeteria.... You see something red on the ground"
+    },
+    "History": {
+      "south": "Cafeteria",
+      "east": "Hallway",
+      "north": "Gym",
+      "desc": "A pile of books sits in a corner... You see see the substitute teacher Mr.Korenick. He's heading toward you wanting to ask some questions"
+    },
+    "Hallway": {
+      "south": "Maths",
+      "north": "Geography",
+      "west": "History",
+      "item": "Redbull",
+      "desc": "Empty hallway with flicking lights... you saw someone move fast in the background."
+    },
+    "Geography": {
+      "south": "Hallway",
+      "west": "Gym",
+      "desc": "Just a regular Geo class.... or is it... You get a tap on the shoulder... it's Mrs.Beaverwich"
+    },
+    "Gym": {
+      "south": "History",
+      "east": "Geography",
+      "desc": "Dodgeballs are on the floor...",
+      "item": "Dodgeball"
+    }
+  },
+  "JUNIOR":{
+    "Computers": {
+      "south": "Gym",
+      "desc": "You are in a computer room, something tells you that you rather not be here. Also you get the feeling you are being watched. To the north is a Math class "
+    },
+    "Maths": {
+      "south": "History",
+      "north": "Cafeteria",
+      "desc": "Mrs.Peterson's Maths class... omg I'm in trouble"
+    },
+    "Cafeteria": {
+      "south": "Maths",
+      "north": "Geography",
+      "item": "Apple",
+      "desc": "Looks like there has been a food fight in the cafeteria.... You see something shiny on the ground"
+    },
+    "History": {
+      "west": "Hallway",
+      "north": "Maths",
+      "desc": "A pile of books sits in a corner... You see see the substitute teacher Mr.Korenick. He's heading toward you wanting to ask some questions"
+    },
+    "Hallway": {
+      "east": "History",
+      "item": "Redbull",
+      "desc": "Empty hallway with flicking lights... you saw someone move fast in the background. You may need to grab a weapon"
+    },
+    "Geography": {
+      "south": "Cafeteria",
+      "east": "Gym",
+      "desc": "Just a regular Geo class.... or is it... You get a tap on the shoulder... it's Mrs.Beaverwich"
+    },
+    "Gym": {
+      "north": "Computers",
+      "west": "Geography",
+      "desc": "Dodgeballs are on the floor...",
+      "item": "Dodgeball"
+    }
+  },
+  "SENIOR":{
+    "Computers": {
+      "south": "Gym",
+      "desc": "You are in a computer room, something tells you that you rather not be here. Also you get the feeling you are being watched. To the north is a Math class "
+    },
+    "Maths": {
+      "north": "History",
+      "east": "Geography",
+      "desc": "Mrs.Peterson's Maths class... omg I'm in trouble"
+    },
+    "Cafeteria": {
+      "south": "Hallway",
+      "north": "Geography",
+      "item": "Helmet",
+      "desc": "Looks like there has been a food fight in the cafeteria.... You see something tasty on the ground"
+    },
+    "History": {
+      "east": "Gym",
+      "south": "Maths",
+      "desc": "A pile of books sits in a corner... You see see the substitute teacher Mr.Korenick. He's heading toward you wanting to ask some questions"
+    },
+    "Hallway": {
+      "north": "Cafeteria",
+      "item": "Exam Answers",
+      "desc": "Empty hallway with flicking lights... you saw someone move fast in the background."
+    },
+    "Geography": {
+      "south": "Cafeteria",
+      "west": "Maths",
+      "north": "Gym",
+      "desc": "Just a regular Geo class.... or is it... You get a tap on the shoulder... it's Mrs.Beaverwich"
+    },
+    "Gym": {
+      "west": "History",
+      "south": "Geography",
+      "north": "Computers",
+      "desc": "Dodgeballs are on the floor...",
+      "item": "Dodgeball"
     }
   }
 }
