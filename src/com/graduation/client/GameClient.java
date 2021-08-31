@@ -10,6 +10,9 @@ import com.graduation.utils.Grade;
 import com.graduation.utils.Prompter;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class GameClient {
     private final Prompter prompter;
@@ -17,61 +20,87 @@ public class GameClient {
     private static ObjectMapper mapper = new ObjectMapper();
     private static JsonNode data;
     private static JsonNode prevRoom;
+    private static List<String> notSubject = new ArrayList<>(Arrays.asList("gym", "cafeteria", "hallway"));
+
     public GameClient(Prompter prompter) {
         this.prompter = prompter;
     }
     public void initialize(){
         player = getPlayer();
-        //if it's a subject room then go to questions
-        //after questions the player can move. -- GameAction move = new GameAction
-        //move()
-        //would have to set the location of the player
+        //Step 1 -- Generate the location info from the json
+        getLevelDetails("desc");
+        System.out.println("You are somehow in the computer lab... Mr.Tindall stares you down to ask you a question. Your body is locked. You are forced to stay\n\n");
 
-        //Step 1 -- first generate the location info from the json
-
-        try{
-            data = mapper.readTree(SourceData.asString());
-            prevRoom = getLastRoom(data, player.getLocation(), player.getGrade());
-            JsonNode filteredData = getRoomDesc(data, player.getLocation(), player.getGrade(),"desc");
-            System.out.println(filteredData);
-        }catch(IOException e){
-            System.out.println(e);
+        //Step 2a -- Some conditional seeing if its is a subject
+        if(player.getLocation().equals("cafeteria") || player.getLocation().equals("gym") || player.getLocation().equals("hallway")){
+            continueJourney();
+        }else{
+            //Step 2b -- Call method to initalize the question sequence
+            PointSystem.teacherQuestions(player.getLocation().toLowerCase(),player.getGrade(),player);
         }
-
-        //Step 2 -- use stephens questions to advance
-        System.out.println("The teacher stares you down to ask you a question. Your body is locked. You are forced to stay\n\n");
-       // String user = player.getLocation().;
-       PointSystem.teacherQuestions(player.getLocation().toLowerCase(),player.getGrade(),player);
-        //PointSystem.teacherQuestions("");
     }
 
     public static void nextLocation(String location){
-        //need to grab the previous and read the location according to direction
-        System.out.println(location + " \n\n" + prevRoom);
-        String nextLoc = prevRoom.get(location).textValue();
-        player.setLocation(nextLoc);
+        //Grab the previous and read the location according to direction within it's JSON properties
+        try{
+            String nextLoc = prevRoom.get(location).textValue();
+            player.setLocation(nextLoc);
+            getLevelDetails("desc");
+            //Determine if it's a subject room
+            if(!notSubject.contains(nextLoc)){
+                PointSystem.teacherQuestions(player.getLocation().toLowerCase(),player.getGrade(),player);
+            }else{
+                //What to do if you are in these areas? -- capture the action
+                continueJourney();
+            }
+            //Catch if the direction is null
+        }catch(NullPointerException e){
+            System.out.println("You can't go that direction! Quick Try a different cardinal direction please");
+            GameAction.getAction();
+        }
+    }
 
-        //looks the same could seperate in one method but theres a slight difference I can fix later -- pierre
+    public static void getLevelDetails(String key){
         try{
             data = mapper.readTree(SourceData.asString());
             prevRoom = getLastRoom(data, player.getLocation(), player.getGrade());
-            JsonNode filteredData = getRoomDesc(data, player.getLocation(), player.getGrade(),"desc");
-            System.out.println(filteredData);
-            //Some conditional seeing if its is a subject
-            //but for now will will continue -- assuming its to a subject class
-            PointSystem.teacherQuestions(player.getLocation().toLowerCase(),player.getGrade(),player);
+            JsonNode filteredData = getDetails(data, player.getLocation(), player.getGrade(), key);
+            if(key.equals("item")){
+                //if the room does have an item check if player already has it!
+                if(player.getInventory().contains(filteredData.asText())){
+                    //View to tell the user that they grabbed the room item already
+                    System.out.println("There are no more items to grab from this room...\nremember you grabbed the " + filteredData + "\n");
+                    continueJourney();
+                }else{
+                    //Method to add the item to the player's bookbag
+                    List<String> items = player.getInventory();
+                    items.add(filteredData.textValue());
+                    System.out.println("Sucessfully added " + filteredData + " to your backpack!");
+                    continueJourney();
+                }
+            }else{
+                System.out.println(filteredData);
+            }
         }catch(IOException e){
             System.out.println(e);
         }
     }
 
+//    public static void nextLevel(){
+//        //Step 1: set the new grade of the player
+//        System.out.println(Grade.values()[player.getGrade().ordinal() + 1]);
+//        //Step 2: clear the taken courses
+//            //Stephen work your magic
+//        //Step 3: call continue journey accordign to the first entry of the JSON
+//    }
+
     public static void continueJourney(){
-        System.out.println("You can now move! Where to go next?");
+        System.out.println("Whats your next move?");
         GameAction.getAction();
     }
 
-    private static JsonNode getRoomDesc(JsonNode node, String location, Grade grade, String field) {
-         return node.get(String.valueOf(grade)).get(location).get(field);
+    private static JsonNode getDetails(JsonNode node, String location, Grade grade, String key) {
+         return node.get(String.valueOf(grade)).get(location).get(key);
     }
 
     private static JsonNode getLastRoom(JsonNode node, String location, Grade grade) {
@@ -82,5 +111,4 @@ public class GameClient {
         String userName = prompter.prompt("Please enter your name below \n");
         return new Player(userName, 0, 10, Grade.FRESHMAN, "Computers");
     }
-
 }
