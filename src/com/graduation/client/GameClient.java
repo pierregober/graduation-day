@@ -41,8 +41,7 @@ public class GameClient {
         //Step 2 -- use stephens questions to advance
         System.out.println("The teacher stares you down to ask you a question. Your body is locked. You are forced to stay\n\n");
        // String user = player.getLocation().;
-       PointSystem.teacherQuestions(player.getLocation().toLowerCase());
-        //PointSystem.teacherQuestions("");
+        PointSystem.teacherQuestions(player.getLocation().toLowerCase());
     }
 
     public static void nextLocation(String location){

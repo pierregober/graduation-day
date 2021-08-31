@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="34bb8994-1a51-4613-b27d-ad4ef5afde22" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/com/graduation/pointsystem/Question.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/graduation-day/room_extended.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/graduation/pointsystem/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/pointsystem/Question.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graduation-day.iml" beforeDir="false" afterPath="$PROJECT_DIR$/graduation-day.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/graduation/pointsystem/Breakdown.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/pointsystem/QuestionDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/graduation/pointsystem/PointSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/pointsystem/PointSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/graduation/pointsystem/Questions.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/graduation/pointsystem/Trivial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/pointsystem/QuestionTemplate.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,11 +30,11 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/jackson-core-2.13.0-rc1.jar" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
