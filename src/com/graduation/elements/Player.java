@@ -3,12 +3,25 @@ package com.graduation.elements;
 import com.graduation.utils.Grade;
 import com.graduation.utils.Prompter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Player {
     private String name;
-    private int credit;
+    private double credit;
     private String location;
     private int health;
     private Grade grade;
+
+    public List<String> getSubjectTaken() {
+        return subjectTaken;
+    }
+
+    public void setSubjectTaken(List<String> subjectTaken) {
+        this.subjectTaken = subjectTaken;
+    }
+
+    private List<String> subjectTaken=new ArrayList<>();
 
     public Player(String name, int credit, int health, Grade grade, String location){
         this.name = name;
@@ -26,7 +39,7 @@ public class Player {
         return answer;
     }
 
-    public void setCredit(int credit) {
+    public void setCredit(double credit) {
         this.credit = credit;
     }
 
@@ -54,7 +67,7 @@ public class Player {
         return location;
     }
 
-    public int getCredit() {
+    public double getCredit() {
         return credit;
     }
 

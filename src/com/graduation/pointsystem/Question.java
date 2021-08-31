@@ -2,6 +2,7 @@ package com.graduation.pointsystem;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.graduation.utils.Grade;
 import org.jsoup.Jsoup;
 import com.graduation.utils.Prompter;
 
@@ -22,15 +23,18 @@ public class Question {
     public static final Map<String, Integer> categories =
             Map.of("maths", 19, "history", 23, "geography", 22, "sports", 21, "general knowledge", 9
                     , "computers", 18);
-    private static final Map<Integer, String> difficulties = Map.of(1, "easy", 2, "medium", 3, "hard");
+    private static final Map<Grade, String> difficulties = Map.of(Grade.FRESHMAN, "easy", Grade.SOPHOMORE, "easy", Grade.JUNIOR, "medium",
+            Grade.SENIOR,"hard");
 
-    private List<QuestionDetail> getQuestions(String type) throws JsonProcessingException, ExecutionException, InterruptedException {
+    private List<QuestionDetail> getQuestions(String type,Grade grade) throws JsonProcessingException, ExecutionException, InterruptedException {
+        //testing level
+        System.out.println("level="+difficulties.get(grade));
         //make a client object
         HttpClient client = HttpClient.newHttpClient();
         //create a request object
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("https://opentdb.com/api.php?amount=5&category=" + categories.get(type.toLowerCase()) +
-                        "&difficulty="+difficulties.get(1)))
+                        "&difficulty="+difficulties.get(grade)))
                 .build();
         CompletableFuture<HttpResponse<String>> response = client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
         String text = response.thenApply(HttpResponse::body).join();
@@ -42,13 +46,13 @@ public class Question {
         return lists;
     }
 
-    public int generateQuestions(String type) {
+    public int generateQuestions(String type,Grade level) {
         if (type.equals("")) {
             return -1;
         }
         List<QuestionDetail> samples = null;
         try {
-            samples = getQuestions(type);
+            samples = getQuestions(type,level);
         } catch (ExecutionException | JsonProcessingException | InterruptedException ex) {
             ex.printStackTrace();
         }
