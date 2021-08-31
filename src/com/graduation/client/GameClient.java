@@ -41,7 +41,8 @@ public class GameClient {
         //Step 2 -- use stephens questions to advance
         System.out.println("The teacher stares you down to ask you a question. Your body is locked. You are forced to stay\n\n");
        // String user = player.getLocation().;
-        PointSystem.teacherQuestions(player.getLocation().toLowerCase());
+       PointSystem.teacherQuestions(player.getLocation().toLowerCase(),player.getGrade(),player);
+        //PointSystem.teacherQuestions("");
     }
 
     public static void nextLocation(String location){
@@ -58,7 +59,7 @@ public class GameClient {
             System.out.println(filteredData);
             //Some conditional seeing if its is a subject
             //but for now will will continue -- assuming its to a subject class
-            PointSystem.teacherQuestions(player.getLocation().toLowerCase());
+            PointSystem.teacherQuestions(player.getLocation().toLowerCase(),player.getGrade(),player);
         }catch(IOException e){
             System.out.println(e);
         }
