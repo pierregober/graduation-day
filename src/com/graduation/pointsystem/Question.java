@@ -22,13 +22,15 @@ public class Question {
     public static final Map<String, Integer> categories =
             Map.of("maths", 19, "history", 23, "geography", 22, "sports", 21, "general knowledge", 9
                     , "computers", 18);
+    private static final Map<Integer, String> difficulties = Map.of(1, "easy", 2, "medium", 3, "hard");
 
     private List<QuestionDetail> getQuestions(String type) throws JsonProcessingException, ExecutionException, InterruptedException {
         //make a client object
         HttpClient client = HttpClient.newHttpClient();
         //create a request object
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://opentdb.com/api.php?amount=5&category=" + categories.get(type.toLowerCase()) + "&difficulty=easy"))
+                .uri(URI.create("https://opentdb.com/api.php?amount=5&category=" + categories.get(type.toLowerCase()) +
+                        "&difficulty="+difficulties.get(1)))
                 .build();
         CompletableFuture<HttpResponse<String>> response = client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
         String text = response.thenApply(HttpResponse::body).join();
