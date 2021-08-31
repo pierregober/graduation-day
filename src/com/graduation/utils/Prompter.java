@@ -55,8 +55,16 @@ public class Prompter {
      * @return the line of text that was input, as a string.
      */
     public String prompt(String promptText) {
-        System.out.print(promptText);
-        return scanner.nextLine();
+        String response = "help";
+        while (response.matches("help")) {
+            System.out.print(promptText);
+            response = scanner.nextLine();
+            if (response.matches("help")){
+                System.out.println("helps on the way");}
+            else{
+            break;}
+        }
+        return response;
     }
 
     /**
@@ -92,8 +100,13 @@ public class Prompter {
         while (!validResponse) {
             System.out.print(promptText);
             response = scanner.nextLine();
+            if (response.matches("help")) {
+                System.out.println("helps on the way");
+                break;
+            }
+
             validResponse = response.matches(pattern);
-            if (!validResponse) {
+            if (!validResponse){
                 System.out.println(retryText);
             }
             else {
@@ -102,4 +115,5 @@ public class Prompter {
         }
         return response;
     }
+
 }
