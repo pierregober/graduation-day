@@ -26,7 +26,7 @@ public class GameClient {
         this.prompter = prompter;
     }
     public void initialize(){
-        player = getPlayer();
+        player = setPlayer();
         //Step 1 -- Generate the location info from the json
         getLevelDetails("desc");
         System.out.println("You are somehow in the computer lab... Mr.Tindall stares you down to ask you a question. Your body is locked. You are forced to stay\n\n");
@@ -107,8 +107,12 @@ public class GameClient {
         return node.get(String.valueOf(grade)).get(location);
     }
 
-    public Player getPlayer() {
+    public Player setPlayer() {
         String userName = prompter.prompt("Please enter your name below \n");
         return new Player(userName, 0, 10, Grade.FRESHMAN, "Computers");
+    }
+
+    public static Player getPlayer() {
+        return player;
     }
 }
