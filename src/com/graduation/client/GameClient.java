@@ -31,7 +31,6 @@ public class GameClient {
         getLevelDetails("desc");
         System.out.println("You are somehow in the computer lab... Mr.Tindall stares you down to ask you a question. Your body is locked. You are forced to stay\n\n");
 
-        nextLevel();
         //Step 2a -- Some conditional seeing if its is a subject
         if(player.getLocation().equals("cafeteria") || player.getLocation().equals("gym") || player.getLocation().equals("hallway")){
             System.out.println("Pierre fgiure out what we do here -- possible item grab"); //TO-DO
