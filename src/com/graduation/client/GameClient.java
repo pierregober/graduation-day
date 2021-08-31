@@ -33,7 +33,7 @@ public class GameClient {
 
         //Step 2a -- Some conditional seeing if its is a subject
         if(player.getLocation().equals("cafeteria") || player.getLocation().equals("gym") || player.getLocation().equals("hallway")){
-            System.out.println("Pierre fgiure out what we do here -- possible item grab"); //TO-DO
+            continueJourney();
         }else{
             //Step 2b -- Call method to initalize the question sequence
             PointSystem.teacherQuestions(player.getLocation().toLowerCase(),player.getGrade(),player);
