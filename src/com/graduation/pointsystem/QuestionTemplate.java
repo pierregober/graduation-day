@@ -3,7 +3,7 @@ package com.graduation.pointsystem;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Trivial {
+public class QuestionTemplate {
     private int response_code;
 
     public int getResponse_code() {
@@ -14,13 +14,13 @@ public class Trivial {
         this.response_code = response_code;
     }
 
-    public List<Breakdown> getResults() {
+    public List<QuestionDetail> getResults() {
         return results;
     }
 
-    public void setResults(List<Breakdown> results) {
+    public void setResults(List<QuestionDetail> results) {
         this.results = results;
     }
 
-    private List<Breakdown> results =new ArrayList<>();
+    private List<QuestionDetail> results =new ArrayList<>();
 }

@@ -36,7 +36,7 @@ public class GameClient {
             System.out.println("Pierre fgiure out what we do here -- possible item grab"); //TO-DO
         }else{
             //Step 2b -- Call method to initalize the question sequence
-            PointSystem.teacherQuestions(player.getLocation().toLowerCase());
+            PointSystem.teacherQuestions(player.getLocation().toLowerCase(),player.getGrade(),player);
         }
     }
 
@@ -48,7 +48,7 @@ public class GameClient {
             getLevelDetails("desc");
             //Determine if it's a subject room
             if(!notSubject.contains(nextLoc)){
-                PointSystem.teacherQuestions(player.getLocation().toLowerCase());
+                PointSystem.teacherQuestions(player.getLocation().toLowerCase(),player.getGrade(),player);
             }else{
                 //What to do if you are in these areas? -- capture the action
                 continueJourney();

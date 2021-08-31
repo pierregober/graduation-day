@@ -5,7 +5,7 @@ import com.graduation.client.GameClient;
 import java.util.Scanner;
 
 public class GameAction {
-    private static Scanner action = new Scanner(System.in);;
+    private static Scanner action = new Scanner(System.in);
 
     public static void getAction() {
         System.out.println("Enter a move: ");
@@ -15,9 +15,8 @@ public class GameAction {
         switch (moveArray[0]) {
             case "go":
                 if(moveArray[1].equals("north") || moveArray[1].equals("south") || moveArray[1].equals("east") || moveArray[1].equals("west")){
-
                     GameClient.nextLocation(moveArray[1]);
-                }else{
+                } else {
                     System.out.println("\n\nAht aht.. you didn't enter a valid cardinal direction");
                     getAction();
                 }
