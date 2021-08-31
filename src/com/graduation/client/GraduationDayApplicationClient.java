@@ -15,6 +15,7 @@ class GraduationDayApplicationClient {
 
 
         TitleScreen.displayInstructions();
+
         Prompter prompter = new Prompter(new Scanner(System.in));
         GameClient game = new GameClient(prompter);
 
