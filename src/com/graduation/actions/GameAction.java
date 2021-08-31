@@ -15,7 +15,7 @@ public class GameAction {
         switch (moveArray[0]) {
             case "go":
                 if(moveArray[1].equals("north") || moveArray[1].equals("south") || moveArray[1].equals("east") || moveArray[1].equals("west")){
-                    System.out.println("you went " + moveArray[1] + "!");
+
                     GameClient.nextLocation(moveArray[1]);
                 }else{
                     System.out.println("\n\nAht aht.. you didn't enter a valid cardinal direction");
@@ -23,7 +23,8 @@ public class GameAction {
                 }
                 break;
             case "get":
-                System.out.println("you got  " + moveArray[1] + "!");
+                //Calls the method to initate the item sequence
+                GameClient.getLevelDetails("item");
                 break;
             default:
                 System.out.println("You entered a an invalid move. Type \"help\" for the instructions");
