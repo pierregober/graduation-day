@@ -3,12 +3,28 @@ package com.graduation.elements;
 import com.graduation.utils.Grade;
 import com.graduation.utils.Prompter;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+
 public class Player {
     private String name;
-    private int credit;
+    private double credit;
     private String location;
     private int health;
     private Grade grade;
+    private static List<String> inventory = new ArrayList<>(Arrays.asList("notebook"));
+
+    public List<String> getSubjectTaken() {
+        return subjectTaken;
+    }
+
+    public void setSubjectTaken(List<String> subjectTaken) {
+        this.subjectTaken = subjectTaken;
+    }
+
+    private List<String> subjectTaken=new ArrayList<>();
 
     public Player(String name, int credit, int health, Grade grade, String location){
         this.name = name;
@@ -16,6 +32,7 @@ public class Player {
         this.health = health;
         this.grade = grade;
         this.location = location;
+        this.inventory = inventory;
     }
 
     public String answerQuestion(Prompter prompter){
@@ -26,12 +43,16 @@ public class Player {
         return answer;
     }
 
-    public void setCredit(int credit) {
+    public void setCredit(double credit) {
         this.credit = credit;
     }
 
     public void setGrade(Grade grade) {
         this.grade = grade;
+    }
+
+    public void setInventory(List<String> inventory) {
+        this.inventory = inventory;
     }
 
     public void setLocation(String location) {
@@ -54,11 +75,15 @@ public class Player {
         return location;
     }
 
-    public int getCredit() {
+    public double getCredit() {
         return credit;
     }
 
     public String getName() {
         return name;
+    }
+
+    public List<String> getInventory() {
+        return inventory;
     }
 }

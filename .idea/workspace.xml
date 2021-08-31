@@ -3,6 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="531bf425-6720-437d-97da-633fac0f6456" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
+=======
+      <change beforePath="$PROJECT_DIR$/src/com/graduation/pointsystem/PointSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/pointsystem/PointSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/graduation/pointsystem/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/pointsystem/Question.java" afterDir="false" />
+>>>>>>> 629386feebd1a108b28077b13fc11d6cf3a78957
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,6 +19,7 @@
   </component>
   <component name="ProjectId" id="1xK9Qm4NqpStzmjKgG9sEqmpSSv" />
   <component name="ProjectViewState">
+    <option name="flattenModules" value="true" />
     <option name="flattenPackages" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="false" />
@@ -22,13 +28,20 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+=======
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="nodejs_package_manager_path" value="npm" />
+>>>>>>> 629386feebd1a108b28077b13fc11d6cf3a78957
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+<<<<<<< HEAD
       <recent name="D:\AmazonSDE\6_mini\graduation-day" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -37,6 +50,12 @@
     </key>
   </component>
   <component name="RunManager">
+=======
+      <recent name="C:\AmazonSDE\Practical Applications\graduation-day\src" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.GraduationDayApplicationClient">
+>>>>>>> 629386feebd1a108b28077b13fc11d6cf3a78957
     <configuration name="GraduationDayApplicationClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.graduation.client.GraduationDayApplicationClient" />
       <module name="graduation-day" />
@@ -63,8 +82,51 @@
       <created>1630092898577</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
+<<<<<<< HEAD
       <updated>1630092898577</updated>
     </task>
     <servers />
   </component>
+=======
+      <updated>1630012665362</updated>
+      <workItem from="1630196177367" duration="720000" />
+      <workItem from="1630259984212" duration="4135000" />
+      <workItem from="1630332575527" duration="9710000" />
+      <workItem from="1630346315856" duration="5725000" />
+      <workItem from="1630359409967" duration="1837000" />
+      <workItem from="1630420788388" duration="21607000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Merge branch 'dev' of https://github.com/pierregober/graduation-day into gameStats&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;graduation-day.iml&#10;#&#9;src/com/graduation/actions/GameAction.java&#10;#&#9;src/com/graduation/client/GameClient.java&#10;#&#9;src/com/graduation/elements/Player.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'dev' of https://github.com/pierregober/graduation-day into gameStats&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;graduation-day.iml&#10;#&#9;src/com/graduation/actions/GameAction.java&#10;#&#9;src/com/graduation/client/GameClient.java&#10;#&#9;src/com/graduation/elements/Player.java" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/graduation/pointsystem/PointSystem.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+>>>>>>> 629386feebd1a108b28077b13fc11d6cf3a78957
 </project>

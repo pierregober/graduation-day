@@ -30,25 +30,25 @@ class TitleScreen {
             "\n" +
             "INV/INVENTORY";
 
-    public void title() {
+    public void inputOptions(String keystroke) {
         //We will use this later during the game as an option to bring
         System.out.println("Type 'Q' to quit the game." +
-                "Type 'C' to look at the credits. Type 'H' to look at the help tutorial");
+                "Type 'Z' to look at the credits. Type 'H' to look at the help tutorial");
         switch (keystroke) {
             case "q":
                 System.exit(0);
                 break;
-            case "c":
+            case "z":
                 System.out.println(credits);
                 break;
             case "h":
                 System.out.println(help);
                 break;
             default:
-                keystroke = "Invalid input";
+                System.out.println("Invalid input");
                 break;
         }
-        System.out.println(keystroke);
+//        System.out.println(keystroke);
     }
 
 

@@ -1,5 +1,6 @@
 package com.graduation.utils;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 /**
@@ -33,6 +34,7 @@ public class Prompter {
     /**
      * Creates a {@code Scanner}-based prompter object, that delegates to the {@code Scanner}
      * for all input.  All input is read (and returned) as a single line of text.
+     *
      * @param scanner delegate object used by this prompter for reading input.
      */
     public Prompter(Scanner scanner) {
@@ -41,6 +43,7 @@ public class Prompter {
 
     /**
      * Outputs provided text.  Simply calls {@code System.out.println(info)}.
+     *
      * @param info informative text to show the user, not a prompt message.
      * @return the provided text - most applications will ignore this return value.
      */
@@ -51,12 +54,39 @@ public class Prompter {
 
     /**
      * Prompts for input, and returns the line of text entered, as a string.
+     *
      * @param promptText prompt message.
      * @return the line of text that was input, as a string.
      */
     public String prompt(String promptText) {
-        System.out.print(promptText);
-        return scanner.nextLine();
+        String response;
+        while (true) {
+            System.out.print(promptText);
+            response = scanner.nextLine().toLowerCase();
+            if (response.matches("s")) {
+                //add function to show player status
+                System.out.println("Should show player status");
+                //blank line
+                System.out.println();
+                //give player a helpful message
+            }  else if (response.matches("h")) {
+                System.out.println(
+                        "Use the following actions:" +
+                        "GO [north, south, east, west, up, down]\n" +
+                        "GET/USE [item]\n"+
+                        "Look") ;
+                //blank line
+                System.out.println();
+                break;
+                //quit the game by inputting Q/q
+            } else if (response.matches("q")) {
+                System.exit(0);
+                break;
+            }
+            break;
+        }
+
+        return response;
     }
 
     /**
@@ -81,8 +111,8 @@ public class Prompter {
      * </pre>
      *
      * @param promptText prompt message.
-     * @param pattern regex pattern, used to validate the input string.
-     * @param retryText error message displayed when input string does not match regex pattern.
+     * @param pattern    regex pattern, used to validate the input string.
+     * @param retryText  error message displayed when input string does not match regex pattern.
      * @return the line of text that was input, as a string.
      */
     public String prompt(String promptText, String pattern, String retryText) {
@@ -92,14 +122,21 @@ public class Prompter {
         while (!validResponse) {
             System.out.print(promptText);
             response = scanner.nextLine();
+            if (response.matches("help")) {
+                System.out.println("helps on the way");
+                break;
+            }
+
+
+            //check user input if it match pattern
             validResponse = response.matches(pattern);
             if (!validResponse) {
                 System.out.println(retryText);
-            }
-            else {
+            } else {
                 break;
             }
         }
         return response;
     }
+
 }

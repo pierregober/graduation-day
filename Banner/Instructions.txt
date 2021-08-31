@@ -5,4 +5,8 @@ You need a 2.0 to graduate.
 Go around each classroom and answer the teacher’s question.
 You may be rewarded with special items.
 Also, avoid the bathroom.
-At any point in the game, you can press ‘C’, ‘H’, or ‘Q.’ ‘C’ will display the credits. ‘H’ will give helpful tips. ‘Q’ Will force the game to quit.
+At any point in the game,
+you can press 'S', ‘H’, or ‘Q.’
+'S' will give the players status.
+‘H’ will give helpful tips.
+‘Q’ Will force the game to quit.
