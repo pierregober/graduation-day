@@ -30,6 +30,8 @@ public class GameClient {
         //Step 1 -- Generate the location info from the json
         getLevelDetails("desc");
         System.out.println("You are somehow in the computer lab... Mr.Tindall stares you down to ask you a question. Your body is locked. You are forced to stay\n\n");
+
+        nextLevel();
         //Step 2a -- Some conditional seeing if its is a subject
         if(player.getLocation().equals("cafeteria") || player.getLocation().equals("gym") || player.getLocation().equals("hallway")){
             System.out.println("Pierre fgiure out what we do here -- possible item grab"); //TO-DO
@@ -84,11 +86,14 @@ public class GameClient {
             System.out.println(e);
         }
     }
-    public static void nextLevel(){
-        //Step 1: set the new grade of the player
-        //Step 2: clear the taken courses
-        //Step 3: call continue journey
-    }
+
+//    public static void nextLevel(){
+//        //Step 1: set the new grade of the player
+//        System.out.println(Grade.values()[player.getGrade().ordinal() + 1]);
+//        //Step 2: clear the taken courses
+//            //Stephen work your magic
+//        //Step 3: call continue journey accordign to the first entry of the JSON
+//    }
 
     public static void continueJourney(){
         System.out.println("Whats your next move?");
