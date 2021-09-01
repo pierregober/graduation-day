@@ -115,7 +115,7 @@ public class GameClient {
             String strNew = node.replace("{\"", "");
             String[] arrOfStr = strNew.split("\"", 2);
             //Step 4: Send back the first part which is the init location for the level
-            return arrOfStr[0];
+           return arrOfStr[0];
         }catch(IOException e){
             System.out.println("Something went wrong: " + e);
             return "Computers"; //default value
