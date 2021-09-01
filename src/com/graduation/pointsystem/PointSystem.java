@@ -16,6 +16,7 @@ public class PointSystem {
     private static final int GRADE = 4;
     private static double player_total_grade = 0;
     private static final List<String> core = new ArrayList<>(Arrays.asList("maths", "computers", "geography", "history"));
+    private static boolean isNewLevel = false;
 
     private double getScore(int correct) {
         double current_class = 0;
@@ -62,16 +63,17 @@ public class PointSystem {
 
         } else {
             System.out.println("You have already passed " + subject);
+            GameClient.continueJourney(isNewLevel);
         }
+        GameClient.continueJourney(isNewLevel);
         //see the class list
         // System.out.println(Arrays.toString(player.getSubjectTaken().toArray(new String[0])));
-        GameClient.continueJourney();
-
     }
 
     private static void changePlayerGrade(Player player) {
         //Step 1: Determine if we can go to the next grade level
         if (player.getSubjectTaken().containsAll(core) && player.getCredit() >= 2.0) {
+            isNewLevel = true;
             switch (player.getGrade()) {
                 case FRESHMAN:
                     player.setGrade(Grade.SOPHOMORE);
@@ -86,6 +88,8 @@ public class PointSystem {
             player.getSubjectTaken().clear();
             //Step 3: Get the first location of the next level
             player.setLocation(GameClient.getFirstLocation());
+            //Step 4: Pass the boolean true to continueJourney
+            GameClient.continueJourney(isNewLevel);
         }
     }
 }

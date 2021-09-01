@@ -30,7 +30,7 @@ public class GameClient {
 
         //Step 2a -- Some conditional seeing if its is a subject
         if(player.getLocation().equals("cafeteria") || player.getLocation().equals("gym") || player.getLocation().equals("hallway")){
-            continueJourney();
+            continueJourney(false);
         }else{
             //Step 2b -- Call method to initialize the question sequence
             PointSystem.teacherQuestions(player.getLocation().toLowerCase(),player.getGrade(),player);
@@ -47,7 +47,7 @@ public class GameClient {
             if(!notSubject.contains(nextLoc)){
                 PointSystem.teacherQuestions(player.getLocation().toLowerCase(),player.getGrade(),player);
             }else{
-                continueJourney();
+                continueJourney(false);
             }
             //Catch if the direction is null
         }catch(NullPointerException e){
@@ -66,16 +66,16 @@ public class GameClient {
                 if(player.getInventory().contains(filteredData.asText())){
                     //View to tell the user that they grabbed the room item already
                     System.out.println("There are no more items to grab from this room...\nremember you grabbed the " + filteredData + "\n");
-                    continueJourney();
+                    continueJourney(false);
                 }else{
                     //Method to add the item to the player's bookbag
                     List<String> items = player.getInventory();
                     items.add(filteredData.textValue());
-                    System.out.println("Sucessfully added " + filteredData + " to your backpack!");
-                    continueJourney();
+                    System.out.println("Successfully added " + filteredData + " to your backpack!");
+                    continueJourney(false);
                 }
             }else{
-                System.out.println("Hit1" + filteredData);
+                System.out.println(filteredData);
             }
         }catch(IOException e){
             System.out.println(e);
@@ -83,9 +83,16 @@ public class GameClient {
     }
 
     //Method to initialize the action to move
-    public static void continueJourney(){
-        System.out.println("Whats your next move?");
-        GameAction.getAction();
+    public static void continueJourney(boolean val){
+        //Have a conditional that switch when it's a new level
+
+        if(val){
+            getLevelDetails("desc");
+            PointSystem.teacherQuestions(player.getLocation().toLowerCase(),player.getGrade(),player);
+        }else{
+            System.out.println("Whats your next move?");
+            GameAction.getAction();
+        }
     }
 
     //Gets the description of the current room
@@ -95,7 +102,7 @@ public class GameClient {
 
     //Assigns value to the prevRoom. Assists with keeping track of the location of player
     private static JsonNode getLastRoom(JsonNode node, String location, Grade grade) {
-        return node.get(String.valueOf(grade)).get(location);
+         return node.get(String.valueOf(grade)).get(location);
     }
 
     public static String getFirstLocation(){
