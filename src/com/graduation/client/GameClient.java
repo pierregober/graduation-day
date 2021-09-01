@@ -24,7 +24,7 @@ public class GameClient {
         this.prompter = prompter;
     }
     public void initialize(){
-        player = getPlayer();
+        player = setPlayer();
         //Step 1 -- Generate the location info from the json
         getLevelDetails("desc");
 
@@ -98,6 +98,7 @@ public class GameClient {
         return node.get(String.valueOf(grade)).get(location);
     }
 
+<<<<<<< HEAD
     public static String getFirstLocation(){
         try{
             //Step 1: Read our JSON file
@@ -117,7 +118,14 @@ public class GameClient {
 
     //Initialize the player as a FRESHMAN aka first level
     public Player getPlayer() {
+=======
+    public Player setPlayer() {
+>>>>>>> afffcbaf4867a89c6d88706eee602c7ada000624
         String userName = prompter.prompt("Please enter your name below \n");
         return new Player(userName, 0, 10, Grade.FRESHMAN, "Computers");
+    }
+
+    public static Player getPlayer() {
+        return player;
     }
 }
