@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="34bb8994-1a51-4613-b27d-ad4ef5afde22" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/graduation/pointsystem/PointSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/pointsystem/PointSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/graduation/pointsystem/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/pointsystem/Question.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/graduation-day/rooms.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/graduation-day/rooms.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/com/graduation/client/TitleScreenTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/graduation/client/TitleScreenTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,9 +27,9 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../StudentWork/IntmJ/Software/junit-4.13/lib/junit-4.13.jar" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
@@ -85,7 +85,8 @@
       <workItem from="1630332575527" duration="9710000" />
       <workItem from="1630346315856" duration="5725000" />
       <workItem from="1630359409967" duration="1837000" />
-      <workItem from="1630420788388" duration="21607000" />
+      <workItem from="1630420788388" duration="24299000" />
+      <workItem from="1630505837315" duration="1365000" />
     </task>
     <servers />
   </component>
@@ -107,16 +108,5 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Merge branch 'dev' of https://github.com/pierregober/graduation-day into gameStats&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;graduation-day.iml&#10;#&#9;src/com/graduation/actions/GameAction.java&#10;#&#9;src/com/graduation/client/GameClient.java&#10;#&#9;src/com/graduation/elements/Player.java" />
     <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'dev' of https://github.com/pierregober/graduation-day into gameStats&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;graduation-day.iml&#10;#&#9;src/com/graduation/actions/GameAction.java&#10;#&#9;src/com/graduation/client/GameClient.java&#10;#&#9;src/com/graduation/elements/Player.java" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/graduation/pointsystem/PointSystem.java</url>
-          <line>21</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
