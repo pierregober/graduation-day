@@ -47,7 +47,7 @@ public class Question {
     }
 
     public int generateQuestions(String type, Grade level) {
-        if (type.equals("")) {
+        if (type.isBlank()) {
             return -1;
         } else {
             List<QuestionDetail> samples = null;
