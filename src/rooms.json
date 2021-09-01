@@ -79,6 +79,11 @@
     }
   },
   "JUNIOR":{
+    "Hallway": {
+      "east": "History",
+      "item": "Redbull",
+      "desc": "Empty hallway with flicking lights... you saw someone move fast in the background. You may need to grab a weapon"
+    },
     "Computers": {
       "south": "Gym",
       "desc": "You are in a computer room, something tells you that you rather not be here. Also you get the feeling you are being watched. To the north is a Math class "
@@ -99,11 +104,6 @@
       "north": "Maths",
       "desc": "A pile of books sits in a corner... You see see the substitute teacher Mr.Korenick. He's heading toward you wanting to ask some questions"
     },
-    "Hallway": {
-      "east": "History",
-      "item": "Redbull",
-      "desc": "Empty hallway with flicking lights... you saw someone move fast in the background. You may need to grab a weapon"
-    },
     "Geography": {
       "south": "Cafeteria",
       "east": "Gym",
@@ -117,6 +117,11 @@
     }
   },
   "SENIOR":{
+    "Hallway": {
+      "north": "Cafeteria",
+      "item": "Exam Answers",
+      "desc": "Empty hallway with flicking lights... you saw someone move fast in the background. There's a open locker"
+    },
     "Computers": {
       "south": "Gym",
       "desc": "You are in a computer room, something tells you that you rather not be here. Also you get the feeling you are being watched. To the north is a Math class "
@@ -136,11 +141,6 @@
       "east": "Gym",
       "south": "Maths",
       "desc": "A pile of books sits in a corner... You see see the substitute teacher Mr.Korenick. He's heading toward you wanting to ask some questions"
-    },
-    "Hallway": {
-      "north": "Cafeteria",
-      "item": "Exam Answers",
-      "desc": "Empty hallway with flicking lights... you saw someone move fast in the background."
     },
     "Geography": {
       "south": "Cafeteria",

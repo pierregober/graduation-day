@@ -22,7 +22,7 @@ public class GameAction {
                 }
                 break;
             case "get":
-                //Calls the method to initate the item sequence
+                //Calls the method to initiate the item sequence
                 GameClient.getLevelDetails("item");
                 break;
             default:
