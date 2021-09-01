@@ -4,8 +4,8 @@
     <list default="true" id="34bb8994-1a51-4613-b27d-ad4ef5afde22" name="Default Changelist" comment="Merge branch 'dev' of https://github.com/pierregober/graduation-day into gameStats&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;graduation-day.iml&#10;#&#9;src/com/graduation/actions/GameAction.java&#10;#&#9;src/com/graduation/client/GameClient.java&#10;#&#9;src/com/graduation/elements/Player.java">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/graduation-day/rooms.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/graduation-day/rooms.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/graduation/actions/GameAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/actions/GameAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/graduation/client/GameClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/client/GameClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/graduation/elements/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/elements/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/graduation/pointsystem/PointSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/pointsystem/PointSystem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rooms.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/rooms.json" afterDir="false" />
     </list>
@@ -15,10 +15,17 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="dev" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1xHWo6hcWes4S8iQvWXQKlHMqJF" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="flattenPackages" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />

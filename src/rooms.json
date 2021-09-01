@@ -79,8 +79,13 @@
     }
   },
   "JUNIOR":{
-    "Hallway": {
+    "Geography": {
       "east": "History",
+      "desc": "Just a regular Geo class.... or is it... You get a tap on the shoulder... it's Mrs.Beaverwich"
+    },
+    "Hallway": {
+      "east": "Gym",
+      "south": "Cafeteria",
       "item": "Redbull",
       "desc": "Empty hallway with flicking lights... you saw someone move fast in the background. You may need to grab a weapon"
     },
@@ -104,11 +109,7 @@
       "north": "Maths",
       "desc": "A pile of books sits in a corner... You see see the substitute teacher Mr.Korenick. He's heading toward you wanting to ask some questions"
     },
-    "Geography": {
-      "south": "Cafeteria",
-      "east": "Gym",
-      "desc": "Just a regular Geo class.... or is it... You get a tap on the shoulder... it's Mrs.Beaverwich"
-    },
+
     "Gym": {
       "north": "Computers",
       "west": "Geography",
@@ -117,19 +118,19 @@
     }
   },
   "SENIOR":{
-    "Hallway": {
+    "Maths": {
       "north": "Cafeteria",
+      "desc": "Mrs.Peterson's Maths class... omg I'm in trouble"
+    },
+    "Hallway": {
+      "north": "History",
+      "east": "Geography",
       "item": "Exam Answers",
       "desc": "Empty hallway with flicking lights... you saw someone move fast in the background. There's a open locker"
     },
     "Computers": {
       "south": "Gym",
       "desc": "You are in a computer room, something tells you that you rather not be here. Also you get the feeling you are being watched. To the north is a Math class "
-    },
-    "Maths": {
-      "north": "History",
-      "east": "Geography",
-      "desc": "Mrs.Peterson's Maths class... omg I'm in trouble"
     },
     "Cafeteria": {
       "south": "Hallway",

@@ -27,7 +27,7 @@ public class Player {
     private List<String> subjectTaken=new ArrayList<>();
 
     public Player(String name, int credit, int health, Grade grade, String location){
-        this.name = name;
+            this.name = name;
         this.credit = credit;
         this.health = health;
         this.grade = grade;
