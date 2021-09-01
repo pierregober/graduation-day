@@ -10,9 +10,7 @@ import com.graduation.utils.Grade;
 import com.graduation.utils.Prompter;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class GameClient {
     private final Prompter prompter;
@@ -29,13 +27,12 @@ public class GameClient {
         player = getPlayer();
         //Step 1 -- Generate the location info from the json
         getLevelDetails("desc");
-        System.out.println("You are somehow in the computer lab... Mr.Tindall stares you down to ask you a question. Your body is locked. You are forced to stay\n\n");
 
         //Step 2a -- Some conditional seeing if its is a subject
         if(player.getLocation().equals("cafeteria") || player.getLocation().equals("gym") || player.getLocation().equals("hallway")){
             continueJourney();
         }else{
-            //Step 2b -- Call method to initalize the question sequence
+            //Step 2b -- Call method to initialize the question sequence
             PointSystem.teacherQuestions(player.getLocation().toLowerCase(),player.getGrade(),player);
         }
     }
@@ -50,7 +47,6 @@ public class GameClient {
             if(!notSubject.contains(nextLoc)){
                 PointSystem.teacherQuestions(player.getLocation().toLowerCase(),player.getGrade(),player);
             }else{
-                //What to do if you are in these areas? -- capture the action
                 continueJourney();
             }
             //Catch if the direction is null
@@ -66,7 +62,7 @@ public class GameClient {
             prevRoom = getLastRoom(data, player.getLocation(), player.getGrade());
             JsonNode filteredData = getDetails(data, player.getLocation(), player.getGrade(), key);
             if(key.equals("item")){
-                //if the room does have an item check if player already has it!
+                //If the room does have an item check if player already has it!
                 if(player.getInventory().contains(filteredData.asText())){
                     //View to tell the user that they grabbed the room item already
                     System.out.println("There are no more items to grab from this room...\nremember you grabbed the " + filteredData + "\n");
@@ -79,34 +75,47 @@ public class GameClient {
                     continueJourney();
                 }
             }else{
-                System.out.println(filteredData);
+                System.out.println("Hit1" + filteredData);
             }
         }catch(IOException e){
             System.out.println(e);
         }
     }
 
-//    public static void nextLevel(){
-//        //Step 1: set the new grade of the player
-//        System.out.println(Grade.values()[player.getGrade().ordinal() + 1]);
-//        //Step 2: clear the taken courses
-//            //Stephen work your magic
-//        //Step 3: call continue journey accordign to the first entry of the JSON
-//    }
-
+    //Method to initialize the action to move
     public static void continueJourney(){
         System.out.println("Whats your next move?");
         GameAction.getAction();
     }
 
+    //Gets the description of the current room
     private static JsonNode getDetails(JsonNode node, String location, Grade grade, String key) {
          return node.get(String.valueOf(grade)).get(location).get(key);
     }
 
+    //Assigns value to the prevRoom. Assists with keeping track of the location of player
     private static JsonNode getLastRoom(JsonNode node, String location, Grade grade) {
         return node.get(String.valueOf(grade)).get(location);
     }
 
+    public static String getFirstLocation(){
+        try{
+            //Step 1: Read our JSON file
+            data = mapper.readTree(SourceData.asString());
+            //Step 2: Access to my level
+            String node = String.valueOf(data.get(String.valueOf(player.getGrade())));
+            //Step 3: Spilt to get my location string
+            String strNew = node.replace("{\"", "");
+            String[] arrOfStr = strNew.split("\"", 2);
+            //Step 4: Send back the first part which is the init location for the level
+            return arrOfStr[0];
+        }catch(IOException e){
+            System.out.println("Something went wrong: " + e);
+            return "Computers"; //default value
+        }
+    }
+
+    //Initialize the player as a FRESHMAN aka first level
     public Player getPlayer() {
         String userName = prompter.prompt("Please enter your name below \n");
         return new Player(userName, 0, 10, Grade.FRESHMAN, "Computers");

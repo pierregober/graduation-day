@@ -66,6 +66,7 @@ public class PointSystem {
     }
 
     private static void changePlayerGrade(Player player) {
+        //Step 1: Determine if we can go to the next grade level
         if (player.getSubjectTaken().containsAll(core) && player.getCredit() >= 2.0) {
             switch (player.getGrade()) {
                 case FRESHMAN:
@@ -77,7 +78,10 @@ public class PointSystem {
                 case JUNIOR:
                     player.setGrade(Grade.SENIOR);
             }
+            //Step 2: Clear the subjects that we passed from the player
             player.getSubjectTaken().clear();
+            //Step 3: Get the first location of the next level
+            player.setLocation(GameClient.getFirstLocation());
         }
     }
 }
