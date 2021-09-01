@@ -9,11 +9,11 @@ import java.util.List;
 import java.util.Map;
 
 public class Player {
+    private static Grade grade;
     private String name;
-    private double credit;
-    private String location;
+    private static double credit;
+    private static String location;
     private int health;
-    private Grade grade;
     private static List<String> inventory = new ArrayList<>(Arrays.asList("notebook"));
 
     public List<String> getSubjectTaken() {
@@ -67,15 +67,15 @@ public class Player {
         return health;
     }
 
-    public Grade getGrade() {
+    public static Grade getGrade() {
         return grade;
     }
 
-    public String getLocation() {
+    public static String getLocation() {
         return location;
     }
 
-    public double getCredit() {
+    public static double getCredit() {
         return credit;
     }
 

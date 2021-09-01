@@ -1,5 +1,11 @@
 package com.graduation.utils;
 
+import com.graduation.client.GameClient;
+import com.graduation.elements.Player;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -63,13 +69,21 @@ public class Prompter {
         while (true) {
             System.out.print(promptText);
             response = scanner.nextLine().toLowerCase();
-            if (response.matches("s")) {
+            if (response.matches("s") && GameClient.getPlayer() != null) {
                 //add function to show player status
-                System.out.println("Should show player status");
+                System.out.println(displayMAP());
                 //blank line
-                System.out.println();
+                System.out.println(
+                        "Grade: "+Player.getGrade()+" | "+
+                        "Credit: "+Player.getCredit()+" | \n"+
+                        "Location: "+Player.getLocation()+"\n"+
+                        "###################################");
                 //give player a helpful message
-            }  else if (response.matches("h")) {
+            }
+            else if (response.matches("s") ) {
+                System.out.println("No player!!!");
+            }
+            else if (response.matches("h")) {
                 System.out.println(
                         "Use the following actions:" +
                         "GO [north, south, east, west, up, down]\n" +
@@ -77,16 +91,16 @@ public class Prompter {
                         "Look") ;
                 //blank line
                 System.out.println();
-                break;
                 //quit the game by inputting Q/q
             } else if (response.matches("q")) {
                 System.exit(0);
-                break;
             }
-            break;
+            else{
+                return response;
+            }
         }
 
-        return response;
+
     }
 
     /**
@@ -137,6 +151,15 @@ public class Prompter {
             }
         }
         return response;
+    }
+
+    public static String displayMAP() {
+        String result = null;
+        try {
+            result = Files.readString(Path.of("Banner/map-" + Player.getGrade().toString() + ".txt"));
+        } catch (IOException e) {
+        }
+        return result;
     }
 
 }
