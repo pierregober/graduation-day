@@ -1,0 +1,11 @@
+###########   MAP   ##############
+
+MAP NORTH        GYM -- Geography
+      🠕                     |
+                         Hallway
+                            |
+   AlegbraII -- Cafe -- US History
+       |
+   Literature
+
+###########   Status   ###########

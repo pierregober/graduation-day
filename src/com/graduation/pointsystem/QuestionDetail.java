@@ -3,7 +3,7 @@ package com.graduation.pointsystem;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Breakdown {
+public class QuestionDetail {
     private String category;
     private String type;
     private String difficulty;

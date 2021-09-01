@@ -33,7 +33,7 @@ class TitleScreen {
     public void inputOptions(String keystroke) {
         //We will use this later during the game as an option to bring
         System.out.println("Type 'Q' to quit the game." +
-                "Type 'C' to look at the credits. Type 'H' to look at the help tutorial");
+                "Type 'Z' to look at the credits. Type 'H' to look at the help tutorial");
         switch (keystroke) {
             case "q":
                 System.exit(0);

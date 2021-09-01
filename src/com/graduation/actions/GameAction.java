@@ -6,17 +6,14 @@ import java.util.Scanner;
 
 public class GameAction {
     private static Scanner action = new Scanner(System.in);
-    ;
 
     public static void getAction() {
-        System.out.println("Enter a move: ");
-        String move = action.nextLine();
+        String move = GameClient.getPrompter().prompt("Enter a move: ");
         String[] moveArray = move.toLowerCase().split(" ");
 
         switch (moveArray[0]) {
             case "go":
-                if (moveArray[1].equals("north") || moveArray[1].equals("south") || moveArray[1].equals("east") || moveArray[1].equals("west")) {
-                    System.out.println("you went " + moveArray[1] + "!");
+                if(moveArray[1].equals("north") || moveArray[1].equals("south") || moveArray[1].equals("east") || moveArray[1].equals("west")){
                     GameClient.nextLocation(moveArray[1]);
                 } else {
                     System.out.println("\n\nAht aht.. you didn't enter a valid cardinal direction");
@@ -24,14 +21,8 @@ public class GameAction {
                 }
                 break;
             case "get":
-                System.out.println("you got  " + moveArray[1] + "!");
-
-                break;
-            case "look":
-                System.out.println("you looked " + moveArray[1] + "!");
-                break;
-            case "use":
-                System.out.println("you used " + moveArray[1] + "!");
+                //Calls the method to initiate the item sequence
+                GameClient.getLevelDetails("item");
                 break;
             default:
                 System.out.println("You entered a an invalid move. Type \"help\" for the instructions");
