@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3fdfdc4a-5a4d-4f68-843d-ed9dab36e69a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Banner/map-FRESHMAN.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/junit-4.13.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graduation-day.iml" beforeDir="false" afterPath="$PROJECT_DIR$/graduation-day.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/graduation/client/GameClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/client/GameClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/graduation/elements/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/elements/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/graduation/utils/Prompter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/utils/Prompter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/com/graduation/client/TitleScreenTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/graduation/client/TitleScreenTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
