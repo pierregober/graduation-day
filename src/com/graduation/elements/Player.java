@@ -16,6 +16,16 @@ public class Player {
     private int health;
     private static List<String> inventory = new ArrayList<>(Arrays.asList("notebook"));
 
+    public int getTotalSubject() {
+        return totalSubject;
+    }
+
+    public void setTotalSubject(int totalSubject) {
+        this.totalSubject = totalSubject;
+    }
+
+    private int totalSubject = 0;
+
     public List<String> getSubjectTaken() {
         return subjectTaken;
     }

@@ -25,7 +25,7 @@ public class Question {
 
     private List<QuestionDetail> getQuestions(String type, Grade grade) throws JsonProcessingException, ExecutionException, InterruptedException {
         //testing level
-        //System.out.println("level=" + difficulties.get(grade));
+        System.out.println("level=" + difficulties.get(grade));
         //make a client object
         HttpClient client = HttpClient.newHttpClient();
         //create a request object
@@ -85,7 +85,7 @@ public class Question {
                     System.out.println("correct");
                     counter += 1;
                 } else {
-                    System.out.println("Incorrect");
+                    System.out.println("Incorrect: The correct answer is "+sample.getCorrect_answer());
                 }
                 System.out.println();
             }
