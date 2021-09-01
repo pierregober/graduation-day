@@ -4,10 +4,12 @@
     <list default="true" id="34bb8994-1a51-4613-b27d-ad4ef5afde22" name="Default Changelist" comment="Merge branch 'dev' of https://github.com/pierregober/graduation-day into gameStats&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;graduation-day.iml&#10;#&#9;src/com/graduation/actions/GameAction.java&#10;#&#9;src/com/graduation/client/GameClient.java&#10;#&#9;src/com/graduation/elements/Player.java">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/graduation-day/rooms.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/graduation-day/rooms.json" afterDir="false" />
+
       <change beforePath="$PROJECT_DIR$/src/com/graduation/actions/GameAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/actions/GameAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/graduation/client/GameClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/client/GameClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/graduation/pointsystem/PointSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/pointsystem/PointSystem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rooms.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/rooms.json" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,12 +31,14 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/jackson-core-2.13.0-rc1.jar" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="restartRequiresConfirmation" value="false" />
+
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -88,7 +92,9 @@
       <workItem from="1630332575527" duration="9710000" />
       <workItem from="1630346315856" duration="5725000" />
       <workItem from="1630359409967" duration="1837000" />
+
       <workItem from="1630420788388" duration="17624000" />
+
     </task>
     <servers />
   </component>
