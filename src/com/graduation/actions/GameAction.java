@@ -8,8 +8,7 @@ public class GameAction {
     private static Scanner action = new Scanner(System.in);
 
     public static void getAction() {
-        System.out.println("Enter a move: ");
-        String move = action.nextLine();
+        String move = GameClient.getPrompter().prompt("Enter a move: ");
         String[] moveArray = move.toLowerCase().split(" ");
 
         switch (moveArray[0]) {
