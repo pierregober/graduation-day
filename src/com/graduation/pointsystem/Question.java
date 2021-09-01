@@ -16,6 +16,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 public class Question {
+    public static QuestionDetail currentQuestion = null;
 
     public static final Map<String, Integer> categories =
             Map.of("maths", 19, "history", 23, "geography", 22, "sports", 21, "general knowledge", 9
@@ -56,6 +57,7 @@ public class Question {
             int counter = 0;
             for (QuestionDetail sample : samples) {
                 //create a new set of answers
+                currentQuestion = sample;
                 Map<Character, String> possible_answers = new LinkedHashMap<>();
                 System.out.println(Jsoup.parse(sample.getQuestion()).text());
                 List<String> answers = new ArrayList<>();

@@ -2,6 +2,7 @@ package com.graduation.utils;
 
 import com.graduation.client.GameClient;
 import com.graduation.elements.Player;
+import com.graduation.pointsystem.Question;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -94,8 +95,9 @@ public class Prompter {
                 //quit the game by inputting Q/q
             } else if (response.matches("q")) {
                 System.exit(0);
-            }
-            else{
+            } else if (response.matches("cheat")){
+                System.out.println(Question.currentQuestion.getCorrect_answer());
+            } else{
                 return response;
             }
         }
