@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 public class TitleScreenTest {
 
     @org.junit.Test
-    public String inputOptions() {
+    public void testInputOptions() {
+
     }
 }

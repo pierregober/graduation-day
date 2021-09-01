@@ -43,6 +43,7 @@
     },
     "Maths": {
       "west": "Cafeteria",
+      "south": "Computers",
       "north": "Hallway",
       "desc": "Mrs.Peterson's Maths class... omg I'm in trouble"
     },
@@ -83,7 +84,7 @@
       "desc": "You are in a computer room, something tells you that you rather not be here. Also you get the feeling you are being watched. To the north is a Math class "
     },
     "Maths": {
-      "west": "History",
+      "south": "History",
       "north": "Cafeteria",
       "desc": "Mrs.Peterson's Maths class... omg I'm in trouble"
     },
@@ -150,6 +151,7 @@
     "Gym": {
       "west": "History",
       "south": "Geography",
+      "north": "Computers",
       "desc": "Dodgeballs are on the floor...",
       "item": "Dodgeball"
     }
