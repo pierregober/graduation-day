@@ -13,7 +13,9 @@ import java.io.IOException;
 import java.util.*;
 
 public class GameClient {
-    private final Prompter prompter;
+
+
+    private static Prompter prompter;
     private static Player player;
     private static ObjectMapper mapper = new ObjectMapper();
     private static JsonNode data;
@@ -130,5 +132,9 @@ public class GameClient {
 
     public static Player getPlayer() {
         return player;
+    }
+
+    public static Prompter getPrompter() {
+        return prompter;
     }
 }

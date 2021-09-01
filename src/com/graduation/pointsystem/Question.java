@@ -2,6 +2,7 @@ package com.graduation.pointsystem;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.graduation.client.GameClient;
 import com.graduation.utils.Grade;
 import org.jsoup.Jsoup;
 import com.graduation.utils.Prompter;
@@ -15,11 +16,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 public class Question {
-    public Question(Prompter prompter) {
-        this.prompter = prompter;
-    }
 
-    private Prompter prompter;
     public static final Map<String, Integer> categories =
             Map.of("maths", 19, "history", 23, "geography", 22, "sports", 21, "general knowledge", 9
                     , "computers", 18);
@@ -77,11 +74,11 @@ public class Question {
                 for (Map.Entry<Character, String> options : possible_answers.entrySet()) {
                     System.out.println(options.getKey() + ") " + options.getValue());
                 }
-                String userChoice = prompter.prompt(":>").trim().toUpperCase();
+                String userChoice = GameClient.getPrompter().prompt(":>").trim().toUpperCase();
                 char chosen = ' ';
                 while (userChoice.compareTo("") == 0 || !possible_answers.keySet().contains(userChoice.toUpperCase().charAt(0))) {
                     System.out.println("You can choose from these options: " + Arrays.toString(possible_answers.keySet().toArray(new Character[0])));
-                    userChoice = prompter.prompt(":>").trim().toUpperCase();
+                    userChoice = GameClient.getPrompter().prompt(":>").trim().toUpperCase();
                 }
                 chosen = userChoice.charAt(0);
                 if (possible_answers.get(chosen).compareTo(Jsoup.parse(sample.getCorrect_answer()).text()) == 0) {

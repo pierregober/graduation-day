@@ -33,7 +33,7 @@ public class PointSystem {
     public static void teacherQuestions(String subject, Grade level, Player player) {
 
         if (!player.getSubjectTaken().contains(subject)) {
-            Question questions = new Question(new Prompter(new Scanner(System.in)));
+            Question questions = new Question();
             PointSystem pointSystem = new PointSystem();
             int score = 0;
             if (!notSubject.contains(subject.toLowerCase())) {
