@@ -2,7 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3fdfdc4a-5a4d-4f68-843d-ed9dab36e69a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/com/graduation/pointsystem/QuestionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/graduation-day/rooms.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/graduation-day/rooms.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/graduation/actions/GameAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/actions/GameAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/graduation/client/GameClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/client/GameClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/graduation/elements/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/elements/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/graduation/pointsystem/PointSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/pointsystem/PointSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/graduation/pointsystem/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/pointsystem/Question.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rooms.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/rooms.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/com/graduation/client/TitleScreenTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/graduation/client/TitleScreenTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,7 +22,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1xVmaAQHf0HviY5eoGMmnq7Cy6s" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -61,6 +70,9 @@
       <updated>1630448690329</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
