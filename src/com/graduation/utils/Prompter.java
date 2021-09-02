@@ -2,15 +2,13 @@ package com.graduation.utils;
 
 import com.graduation.client.GameClient;
 import com.graduation.elements.Player;
+import com.graduation.pointsystem.PointSystem;
 import com.graduation.pointsystem.Question;
 import org.jsoup.Jsoup;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Locale;
-import java.util.Random;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * <p>
@@ -110,7 +108,19 @@ public class Prompter {
                 } else {
                     System.out.println(Question.currentQuestion.getCorrect_answer());
                 }
-            } else {
+            }
+            else if(response.split(" ")[0].matches("hack")){
+                Question.isHacked=true;
+                PointSystem.currentPlayer.getSubjectTaken().add(response.split(" ")[1]);
+                double currentGPA = PointSystem.currentPlayer.getCredit();
+                currentGPA=(currentGPA+2.0)/PointSystem.currentPlayer.getSubjectTaken().size();
+                PointSystem.currentPlayer.setCredit(currentGPA);
+                //testing
+                System.out.println(Arrays.toString(PointSystem.currentPlayer.getSubjectTaken().toArray(new String[0])));
+                System.out.println(PointSystem.currentPlayer.getCredit());
+            }
+
+            else {
                 return response;
             }
         }
