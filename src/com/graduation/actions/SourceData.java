@@ -9,10 +9,10 @@ import java.util.stream.Stream;
 
 public class SourceData {
 
-    public static String asString(){
+    public static String asString(String dataset){
         try {
             Stream<String> lines = Files.lines(
-                    Paths.get(ClassLoader.getSystemResource("rooms.json").toURI()));
+                    Paths.get(ClassLoader.getSystemResource(dataset).toURI()));
 
             return lines.collect(Collectors.joining());
 

@@ -90,6 +90,7 @@ public class PointSystem {
             player.setLocation(GameClient.getFirstLocation());
             //Step 4: Pass the boolean true to continueJourney
             GameClient.continueJourney(isNewLevel);
+
         }
     }
 }

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.graduation.actions.GameAction;
 import com.graduation.actions.SourceData;
+import com.graduation.elements.Bully;
 import com.graduation.elements.Player;
 import com.graduation.pointsystem.PointSystem;
 import com.graduation.utils.Grade;
@@ -15,10 +16,11 @@ import java.util.*;
 public class GameClient {
     private final Prompter prompter;
     private static Player player;
-    private static ObjectMapper mapper = new ObjectMapper();
+    private static Bully bully;
+    private static final ObjectMapper mapper = new ObjectMapper();
     private static JsonNode data;
     private static JsonNode prevRoom;
-    private static List<String> notSubject = new ArrayList<>(Arrays.asList("gym", "cafeteria", "hallway"));
+    private static final List<String> notSubject = new ArrayList<>(Arrays.asList("gym", "cafeteria", "hallway"));
 
     public GameClient(Prompter prompter) {
         this.prompter = prompter;
@@ -29,11 +31,11 @@ public class GameClient {
         getLevelDetails("desc");
 
         //Step 2a -- Some conditional seeing if its is a subject
-        if(player.getLocation().equals("cafeteria") || player.getLocation().equals("gym") || player.getLocation().equals("hallway")){
+        if(Player.getLocation().equals("cafeteria") || Player.getLocation().equals("gym") || Player.getLocation().equals("hallway")){
             continueJourney(false);
         }else{
             //Step 2b -- Call method to initialize the question sequence
-            PointSystem.teacherQuestions(player.getLocation().toLowerCase(),player.getGrade(),player);
+            PointSystem.teacherQuestions(Player.getLocation().toLowerCase(), Player.getGrade(),player);
         }
     }
 
@@ -45,9 +47,18 @@ public class GameClient {
             getLevelDetails("desc");
             //Determine if it's a subject room
             if(!notSubject.contains(nextLoc)){
-                PointSystem.teacherQuestions(player.getLocation().toLowerCase(),player.getGrade(),player);
+                PointSystem.teacherQuestions(Player.getLocation().toLowerCase(), Player.getGrade(),player);
             }else{
-                continueJourney(false);
+                //Step 1: random number generator to see if a bully will engage in combat
+                int combat = (int)(Math.random() * 100);
+                    //You have a 20% chance of a bully not being there.
+                if(combat >= 20){
+                    System.out.println("Uh oh... " + bully.getName() + " is here. And they spot you. Engaging in combat ");
+                    //Engage in combat
+
+                }else {
+                    continueJourney(false);
+                }
             }
             //Catch if the direction is null
         }catch(NullPointerException e){
@@ -58,9 +69,9 @@ public class GameClient {
 
     public static void getLevelDetails(String key){
         try{
-            data = mapper.readTree(SourceData.asString());
-            prevRoom = getLastRoom(data, player.getLocation(), player.getGrade());
-            JsonNode filteredData = getDetails(data, player.getLocation(), player.getGrade(), key);
+            data = mapper.readTree(SourceData.asString("rooms.json"));
+            prevRoom = getLastRoom(data, Player.getLocation(), Player.getGrade());
+            JsonNode filteredData = getDetails(data, Player.getLocation(), Player.getGrade(), key);
             if(key.equals("item")){
                 //If the room does have an item check if player already has it!
                 if(player.getInventory().contains(filteredData.asText())){
@@ -85,10 +96,9 @@ public class GameClient {
     //Method to initialize the action to move
     public static void continueJourney(boolean val){
         //Have a conditional that switch when it's a new level
-
         if(val){
             getLevelDetails("desc");
-            PointSystem.teacherQuestions(player.getLocation().toLowerCase(),player.getGrade(),player);
+            PointSystem.teacherQuestions(Player.getLocation().toLowerCase(), Player.getGrade(),player);
         }else{
             System.out.println("Whats your next move?");
             GameAction.getAction();
@@ -108,9 +118,9 @@ public class GameClient {
     public static String getFirstLocation(){
         try{
             //Step 1: Read our JSON file
-            data = mapper.readTree(SourceData.asString());
+            data = mapper.readTree(SourceData.asString("rooms.json"));
             //Step 2: Access to my level
-            String node = String.valueOf(data.get(String.valueOf(player.getGrade())));
+            String node = String.valueOf(data.get(String.valueOf(Player.getGrade())));
             //Step 3: Spilt to get my location string
             String strNew = node.replace("{\"", "");
             String[] arrOfStr = strNew.split("\"", 2);
@@ -122,10 +132,16 @@ public class GameClient {
         }
     }
 
+    //Initialize the bully
+    public Bully setBully() {
+        String bullyName = prompter.prompt("Please enter your name below \n");
+        return new Bully(bullyName);
+    }
+
     //Initialize the player as a FRESHMAN aka first level
     public Player setPlayer() {
         String userName = prompter.prompt("Please enter your name below \n");
-        return new Player(userName, 0, 10, Grade.FRESHMAN, "Computers");
+        return new Player(userName, 0, 100, Grade.FRESHMAN, "Hallway");
     }
 
     public static Player getPlayer() {
