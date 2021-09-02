@@ -73,13 +73,9 @@ public class Prompter {
             response = scanner.nextLine().toLowerCase();
             if (response.matches("s") && GameClient.getPlayer() != null) {
                 //add function to show player status
-                System.out.println(displayMAP());
+                System.out.println(GameClient.getPlayer().getGrade().toString());
+                System.out.println(readMap.convertedMap());
                 //blank line
-                System.out.println(
-                        "Grade: " + Player.getGrade() + " | " +
-                                "Credit: " + Player.getCredit() + " | \n" +
-                                "Location: " + Player.getLocation() + "\n" +
-                                "###################################");
                 //give player a helpful message
 
                 //display the current question to remind the user to answer it
@@ -168,14 +164,7 @@ public class Prompter {
         return response;
     }
 
-    public static String displayMAP() {
-        String result = null;
-        try {
-            result = Files.readString(Path.of("Banner/map-" + Player.getGrade().toString() + ".txt"));
-        } catch (IOException e) {
-        }
-        return result;
-    }
+
 
     public static int getRandomNumber(int n) {
         Random rand = new Random();
