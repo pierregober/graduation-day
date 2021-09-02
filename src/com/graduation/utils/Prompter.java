@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Locale;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -37,7 +38,6 @@ import java.util.Scanner;
  */
 public class Prompter {
     private Scanner scanner;
-
     /**
      * Creates a {@code Scanner}-based prompter object, that delegates to the {@code Scanner}
      * for all input.  All input is read (and returned) as a single line of text.
@@ -75,29 +75,33 @@ public class Prompter {
                 System.out.println(displayMAP());
                 //blank line
                 System.out.println(
-                        "Grade: "+Player.getGrade()+" | "+
-                        "Credit: "+Player.getCredit()+" | \n"+
-                        "Location: "+Player.getLocation()+"\n"+
-                        "###################################");
+                        "Grade: " + Player.getGrade() + " | " +
+                                "Credit: " + Player.getCredit() + " | \n" +
+                                "Location: " + Player.getLocation() + "\n" +
+                                "###################################");
                 //give player a helpful message
-            }
-            else if (response.matches("s") ) {
+            } else if (response.matches("s")) {
                 System.out.println("No player!!!");
-            }
-            else if (response.matches("h")) {
+            } else if (response.matches("h")) {
                 System.out.println(
                         "Use the following actions:" +
-                        "GO [north, south, east, west, up, down]\n" +
-                        "GET/USE [item]\n"+
-                        "Look") ;
+                                "GO [north, south, east, west, up, down]\n" +
+                                "GET/USE [item]\n" +
+                                "Look");
                 //blank line
                 System.out.println();
                 //quit the game by inputting Q/q
             } else if (response.matches("q")) {
                 System.exit(0);
-            } else if (response.matches("cheat")){
-                System.out.println(Question.currentQuestion.getCorrect_answer());
-            } else{
+            } else if (response.matches("cheat")) {
+                //if random integer between 1-10 is even then the user will get the question wrong
+                if (((getRandomNumber(10) % 2) == 0)) {
+                    System.out.println("You have been caught and your answer is incorrect." );
+
+                } else {
+                    System.out.println(Question.currentQuestion.getCorrect_answer());
+                }
+            } else {
                 return response;
             }
         }
@@ -162,6 +166,11 @@ public class Prompter {
         } catch (IOException e) {
         }
         return result;
+    }
+
+    public static int getRandomNumber(int n) {
+        Random rand = new Random();
+        return rand.nextInt(n) + 1;
     }
 
 }
