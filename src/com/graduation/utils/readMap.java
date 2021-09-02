@@ -10,8 +10,9 @@ import java.util.HashMap;
 
 public class readMap {
 
-    static String path = "Banner/map-" + GameClient.getPlayer().getGrade().toString() + ".txt";
-    static String map = importTXT(path);
+
+    private static String map;
+
 
     public static String convertedMap(){
         String newMap = null;
@@ -27,7 +28,8 @@ public class readMap {
         mapCode.put("Computers", "  ");
 
         if (Player.getGrade() == Grade.FRESHMAN) {
-            mapCode.replace(GameClient.getPlayer().getLocation(), "**");
+            map = importTXT("Banner/map-" + GameClient.getPlayer().getGrade().toString() + ".txt");
+            mapCode.replace(GameClient.getPlayer().getLocation(), "☺");
 
             newMap = String.format(map, mapCode.get("Gym"), mapCode.get("Geography"),
                     mapCode.get("Player"), mapCode.get("Hallway"), mapCode.get("Credit"),
@@ -36,24 +38,24 @@ public class readMap {
 
         }
         else if (Player.getGrade() == Grade.SOPHOMORE){
-            mapCode.replace(GameClient.getPlayer().getLocation(), "**");
-
+            map = importTXT("Banner/map-" + GameClient.getPlayer().getGrade().toString() + ".txt");
+            mapCode.replace(GameClient.getPlayer().getLocation(), "☺");
             newMap = String.format(map, mapCode.get("Gym"), mapCode.get("Geography"),
                     mapCode.get("Player"), mapCode.get("History"),mapCode.get("Hallway"),
                     mapCode.get("Credit"), mapCode.get("Cafeteria"), mapCode.get("Maths"),
                     mapCode.get("Computers"));
         }
         else if (Player.getGrade() == Grade.JUNIOR){
-            mapCode.replace(GameClient.getPlayer().getLocation(), "**");
-
+            map = importTXT("Banner/map-" + GameClient.getPlayer().getGrade().toString() + ".txt");
+            mapCode.replace(GameClient.getPlayer().getLocation(), "☺");
             newMap = String.format(map, mapCode.get("Computers"), mapCode.get("Player"),
                     mapCode.get("Hallway"),mapCode.get("Gym"), mapCode.get("Credit"),
                     mapCode.get("Cafeteria"), mapCode.get("Maths"), mapCode.get("Geography"),
                     mapCode.get("History"));
         }
         else if (Player.getGrade() == Grade.SENIOR){
-            mapCode.replace(GameClient.getPlayer().getLocation(), "**");
-
+            map = importTXT("Banner/map-" + GameClient.getPlayer().getGrade().toString() + ".txt");
+            mapCode.replace(GameClient.getPlayer().getLocation(), "☺");
             newMap = String.format(map, mapCode.get("Computers"), mapCode.get("Player"),
                     mapCode.get("History"),mapCode.get("Gym"), mapCode.get("Credit"),
                     mapCode.get("Hallway"), mapCode.get("Geography"), mapCode.get("Cafeteria"),
