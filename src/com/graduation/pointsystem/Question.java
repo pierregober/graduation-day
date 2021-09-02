@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.graduation.client.GameClient;
 import com.graduation.utils.Grade;
 import org.jsoup.Jsoup;
-import com.graduation.utils.Prompter;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -16,14 +15,14 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 public class Question {
-    public static QuestionDetail currentQuestion = null;
-    public static Map<Character, String> currentAnswer = null;
-    public static boolean isHacked = false;
     public static final Map<String, Integer> categories =
             Map.of("maths", 19, "history", 23, "geography", 22, "sports", 21, "general knowledge", 9
                     , "computers", 18);
     private static final Map<Grade, String> difficulties = Map.of(Grade.FRESHMAN, "easy", Grade.SOPHOMORE, "easy", Grade.JUNIOR, "medium",
             Grade.SENIOR, "hard");
+    public static QuestionDetail currentQuestion = null;
+    public static Map<Character, String> currentAnswer = null;
+    public static boolean isHacked = false;
 
     private List<QuestionDetail> getQuestions(String type, Grade grade) throws JsonProcessingException, ExecutionException, InterruptedException {
         //testing level
@@ -60,45 +59,44 @@ public class Question {
             for (QuestionDetail sample : samples) {
                 //assign the current question to currentQuestion class variable
                 currentQuestion = sample;
-                if (isHacked) {
-                    isHacked = false;
+                Map<Character, String> possible_answers = new LinkedHashMap<>();
+                System.out.println(Jsoup.parse(sample.getQuestion()).text());
+                List<String> answers = new ArrayList<>();
+                answers.add(sample.getCorrect_answer());
+                for (Object incorrect : sample.getIncorrect_answers()) {
+                    answers.add(incorrect.toString());
+                }
+                //randomize the possible answers
+                Collections.shuffle(answers);
+                char option = 'A';
+                for (String possible_answer : answers) {
+                    //stripping the answer of any html tags
+                    possible_answers.put(option++, Jsoup.parse(possible_answer).text());
+                }
+                //assign the current set of answers to the class variable currentAnswer
+                currentAnswer = possible_answers;
+                for (Map.Entry<Character, String> options : possible_answers.entrySet()) {
+                    System.out.println(options.getKey() + ") " + options.getValue());
+                }
+                //get user response
+                String userChoice = GameClient.getPrompter().prompt(":>").trim().toUpperCase();
+                if (userChoice.matches("QUIT")){
                     return 0;
                 }
-                    Map<Character, String> possible_answers = new LinkedHashMap<>();
-                    System.out.println(Jsoup.parse(sample.getQuestion()).text());
-                    List<String> answers = new ArrayList<>();
-                    answers.add(sample.getCorrect_answer());
-                    for (Object incorrect : sample.getIncorrect_answers()) {
-                        answers.add(incorrect.toString());
-                    }
-                    //randomize the possible answers
-                    Collections.shuffle(answers);
-                    char option = 'A';
-                    for (String possible_answer : answers) {
-                        //stripping the answer of any html tags
-                        possible_answers.put(option++, Jsoup.parse(possible_answer).text());
-                    }
-                    //assign the current set of answers to the class variable currentAnswer
-                    currentAnswer = possible_answers;
-                    for (Map.Entry<Character, String> options : possible_answers.entrySet()) {
-                        System.out.println(options.getKey() + ") " + options.getValue());
-                    }
-                    //get user response
-                    String userChoice = GameClient.getPrompter().prompt(":>").trim().toUpperCase();
-                    char chosen = ' ';
-                    //while user response does not meet certain criteria, keep asking
-                    while (userChoice.compareTo("") == 0 || !possible_answers.keySet().contains(userChoice.toUpperCase().charAt(0))) {
-                        System.out.println("You can choose from these options: " + Arrays.toString(possible_answers.keySet().toArray(new Character[0])));
-                        userChoice = GameClient.getPrompter().prompt(":>").trim().toUpperCase();
-                    }
-                    chosen = userChoice.charAt(0);
-                    if (possible_answers.get(chosen).compareTo(Jsoup.parse(sample.getCorrect_answer()).text()) == 0) {
-                        System.out.println("correct");
-                        counter += 1;
-                    } else {
-                        System.out.println("Incorrect: The correct answer is " + sample.getCorrect_answer());
-                    }
-                    System.out.println();
+                char chosen = ' ';
+                //while user response does not meet certain criteria, keep asking
+                while (userChoice.compareTo("") == 0 || !possible_answers.keySet().contains(userChoice.toUpperCase().charAt(0))) {
+                    System.out.println("You can choose from these options: " + Arrays.toString(possible_answers.keySet().toArray(new Character[0])));
+                    userChoice = GameClient.getPrompter().prompt(":>").trim().toUpperCase();
+                }
+                chosen = userChoice.charAt(0);
+                if (possible_answers.get(chosen).compareTo(Jsoup.parse(sample.getCorrect_answer()).text()) == 0) {
+                    System.out.println("correct");
+                    counter += 1;
+                } else {
+                    System.out.println("Incorrect: The correct answer is " + sample.getCorrect_answer());
+                }
+                System.out.println();
 
             }
             return counter;

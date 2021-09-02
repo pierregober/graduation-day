@@ -110,7 +110,6 @@ public class Prompter {
                 }
             }
             else if(response.split(" ")[0].matches("hack")){
-                Question.isHacked=true;
                 PointSystem.currentPlayer.getSubjectTaken().add(response.split(" ")[1]);
                 double currentGPA = PointSystem.currentPlayer.getCredit();
                 currentGPA=(currentGPA+2.0)/PointSystem.currentPlayer.getSubjectTaken().size();
@@ -118,6 +117,8 @@ public class Prompter {
                 //testing
                 System.out.println(Arrays.toString(PointSystem.currentPlayer.getSubjectTaken().toArray(new String[0])));
                 System.out.println(PointSystem.currentPlayer.getCredit());
+                response = "quit";
+                return response;
             }
 
             else {
