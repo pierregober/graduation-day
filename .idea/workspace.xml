@@ -1,20 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3fdfdc4a-5a4d-4f68-843d-ed9dab36e69a" name="Default Changelist" comment="Merge branch 'dev' of https://github.com/pierregober/graduation-day into hongyiDev&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
-      <change afterPath="$PROJECT_DIR$/Banner/map-JUNIOR.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Banner/map-SENIOR.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Banner/map-SOPHOMORE.txt" afterDir="false" />
+    <list default="true" id="a203a820-24ae-4d05-81f8-91be6ea4cba0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/graduation/actions/GameAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/actions/GameAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/graduation/client/GameClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/client/GameClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/graduation/pointsystem/PointSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/pointsystem/PointSystem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/graduation/pointsystem/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/pointsystem/Question.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/graduation/utils/Location.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/com/graduation/pointsystem/QuestionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/graduation/pointsystem/QuestionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/graduation/elements/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/elements/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/graduation/pointsystem/PointSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/pointsystem/PointSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/graduation/pointsystem/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/pointsystem/Question.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/graduation/utils/Prompter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/utils/Prompter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +28,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/Banner" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -71,13 +62,17 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="3fdfdc4a-5a4d-4f68-843d-ed9dab36e69a" name="Default Changelist" comment="" />
+      <changelist id="a203a820-24ae-4d05-81f8-91be6ea4cba0" name="Changes" comment="" />
       <created>1630448690329</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1630448690329</updated>
+      <workItem from="1630599294511" duration="850000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="oldMeFiltersMigrated" value="true" />
