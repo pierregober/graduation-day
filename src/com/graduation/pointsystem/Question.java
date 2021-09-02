@@ -22,7 +22,7 @@ public class Question {
                     , "computers", 18);
     private static final Map<Grade, String> difficulties = Map.of(Grade.FRESHMAN, "easy", Grade.SOPHOMORE, "easy", Grade.JUNIOR, "medium",
             Grade.SENIOR, "hard");
-
+    public static QuestionDetail currentQuestion = null;
     private List<QuestionDetail> getQuestions(String type, Grade grade) throws JsonProcessingException, ExecutionException, InterruptedException {
         //testing level
         //System.out.println("level=" + difficulties.get(grade));
@@ -56,6 +56,7 @@ public class Question {
             int counter = 0;
             for (QuestionDetail sample : samples) {
                 //create a new set of answers
+                currentQuestion = sample;
                 Map<Character, String> possible_answers = new LinkedHashMap<>();
                 System.out.println(Jsoup.parse(sample.getQuestion()).text());
                 List<String> answers = new ArrayList<>();
