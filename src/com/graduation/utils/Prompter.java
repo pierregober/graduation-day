@@ -3,12 +3,13 @@ package com.graduation.utils;
 import com.graduation.client.GameClient;
 import com.graduation.elements.Player;
 import com.graduation.pointsystem.Question;
-
+import org.jsoup.Jsoup;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Locale;
 import java.util.Random;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -80,7 +81,14 @@ public class Prompter {
                                 "Location: " + Player.getLocation() + "\n" +
                                 "###################################");
                 //give player a helpful message
-            } else if (response.matches("s")) {
+
+                //display the current question to remind the user to answer it
+                System.out.println(Jsoup.parse(Question.currentQuestion.getQuestion()).text());
+                for (Map.Entry<Character, String> options : Question.currentAnswer.entrySet()) {
+                    System.out.println(options.getKey() + ") " + options.getValue());
+                }
+            }
+            else if (response.matches("s") ) {
                 System.out.println("No player!!!");
             } else if (response.matches("h")) {
                 System.out.println(
@@ -93,6 +101,7 @@ public class Prompter {
                 //quit the game by inputting Q/q
             } else if (response.matches("q")) {
                 System.exit(0);
+
             } else if (response.matches("cheat")) {
                 //if random integer between 1-10 is even then the user will get the question wrong
                 if (((getRandomNumber(10) % 2) == 0)) {
