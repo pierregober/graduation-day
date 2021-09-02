@@ -7,7 +7,6 @@ import org.jsoup.Jsoup;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Locale;
 import java.util.Random;
 import java.util.Map;
 import java.util.Scanner;
@@ -106,6 +105,7 @@ public class Prompter {
                 //if random integer between 1-10 is even then the user will get the question wrong
                 if (((getRandomNumber(10) % 2) == 0)) {
                     System.out.println("You have been caught and your answer is incorrect." );
+                    Question.cheatCounter++;
 
                 } else {
                     System.out.println(Question.currentQuestion.getCorrect_answer());
