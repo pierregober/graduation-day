@@ -25,7 +25,7 @@ public class PointSystem {
     }
 
     public double getCumulativeScore(int eachScore, int numberOfSubjects) {
-        // System.out.println("Counter = " + numberOfSubjects);
+        System.out.println("Counter = " + numberOfSubjects);
         player_total_grade += (getScore(eachScore));
         return Double.parseDouble(new DecimalFormat("#.##").format(player_total_grade / (double) numberOfSubjects));
     }
@@ -34,6 +34,9 @@ public class PointSystem {
 
         if (!player.getSubjectTaken().contains(subject)) {
             Question questions = new Question();
+            if(player.getSubjectTaken().size()==0){
+                isNewLevel = false;
+            }
             PointSystem pointSystem = new PointSystem();
             int score = 0;
             if (!notSubject.contains(subject.toLowerCase())) {
@@ -63,7 +66,7 @@ public class PointSystem {
 
         } else {
             System.out.println("You have already passed " + subject);
-            GameClient.continueJourney(isNewLevel);
+            //GameClient.continueJourney(isNewLevel);
         }
         GameClient.continueJourney(isNewLevel);
         //see the class list
@@ -73,6 +76,8 @@ public class PointSystem {
     private static void changePlayerGrade(Player player) {
         //Step 1: Determine if we can go to the next grade level
         if (player.getSubjectTaken().containsAll(core) && player.getCredit() >= 2.0) {
+            //display a congratulation message on moving to the next grade
+            System.out.println("congratulations, you've passed "+player.getGrade());
             isNewLevel = true;
             switch (player.getGrade()) {
                 case FRESHMAN:
@@ -84,12 +89,14 @@ public class PointSystem {
                 case JUNIOR:
                     player.setGrade(Grade.SENIOR);
             }
-            //Step 2: Clear the subjects that we passed from the player
+           //Step 2: Clear the subjects that we passed from the player
             player.getSubjectTaken().clear();
             //Step 3: Get the first location of the next level
             player.setLocation(GameClient.getFirstLocation());
+            //reset the GPA for the new level to zero
+            player_total_grade = 0;
             //Step 4: Pass the boolean true to continueJourney
-            GameClient.continueJourney(isNewLevel);
+            //GameClient.continueJourney(isNewLevel);
         }
     }
 }

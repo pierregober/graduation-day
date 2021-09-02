@@ -16,13 +16,15 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 public class Question {
+    public static QuestionDetail currentQuestion = null;
+    public static Map<Character,String> currentAnswer =null;
 
     public static final Map<String, Integer> categories =
             Map.of("maths", 19, "history", 23, "geography", 22, "sports", 21, "general knowledge", 9
                     , "computers", 18);
     private static final Map<Grade, String> difficulties = Map.of(Grade.FRESHMAN, "easy", Grade.SOPHOMORE, "easy", Grade.JUNIOR, "medium",
             Grade.SENIOR, "hard");
-    public static QuestionDetail currentQuestion = null;
+
     private List<QuestionDetail> getQuestions(String type, Grade grade) throws JsonProcessingException, ExecutionException, InterruptedException {
         //testing level
         //System.out.println("level=" + difficulties.get(grade));
@@ -54,9 +56,11 @@ public class Question {
                 ex.printStackTrace();
             }
             int counter = 0;
+            //loop through the questions
             for (QuestionDetail sample : samples) {
-                //create a new set of answers
+                //assign the current question to currentQuestion class variable
                 currentQuestion = sample;
+
                 Map<Character, String> possible_answers = new LinkedHashMap<>();
                 System.out.println(Jsoup.parse(sample.getQuestion()).text());
                 List<String> answers = new ArrayList<>();
@@ -71,12 +75,15 @@ public class Question {
                     //stripping the answer of any html tags
                     possible_answers.put(option++, Jsoup.parse(possible_answer).text());
                 }
-
+                //assign the current set of answers to the class variable currentAnswer
+                currentAnswer = possible_answers;
                 for (Map.Entry<Character, String> options : possible_answers.entrySet()) {
                     System.out.println(options.getKey() + ") " + options.getValue());
                 }
+                //get user response
                 String userChoice = GameClient.getPrompter().prompt(":>").trim().toUpperCase();
                 char chosen = ' ';
+                //while user response does not meet certain criteria, keep asking
                 while (userChoice.compareTo("") == 0 || !possible_answers.keySet().contains(userChoice.toUpperCase().charAt(0))) {
                     System.out.println("You can choose from these options: " + Arrays.toString(possible_answers.keySet().toArray(new Character[0])));
                     userChoice = GameClient.getPrompter().prompt(":>").trim().toUpperCase();
@@ -86,7 +93,7 @@ public class Question {
                     System.out.println("correct");
                     counter += 1;
                 } else {
-                    System.out.println("Incorrect");
+                    System.out.println("Incorrect: The correct answer is "+sample.getCorrect_answer());
                 }
                 System.out.println();
             }
