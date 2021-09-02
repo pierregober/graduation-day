@@ -24,6 +24,19 @@ public class Question {
     private static final Map<Grade, String> difficulties = Map.of(Grade.FRESHMAN, "easy", Grade.SOPHOMORE, "easy", Grade.JUNIOR, "medium",
             Grade.SENIOR, "hard");
 
+    public static QuestionDetail getCurrentQuestion() {
+        return currentQuestion;
+    }
+
+    private static QuestionDetail currentQuestion = null;
+
+    public static Map<Character, String> getCurrentAnswer() {
+        return currentAnswer;
+    }
+
+    private static Map<Character, String> currentAnswer = null;
+    //public static boolean isHacked = false;
+
     private List<QuestionDetail> getQuestions(String type, Grade grade) throws JsonProcessingException, ExecutionException, InterruptedException {
         //testing level
         //System.out.println("level=" + difficulties.get(grade));
@@ -59,7 +72,8 @@ public class Question {
             for (QuestionDetail sample : samples) {
                 //assign the current question to currentQuestion class variable
                 currentQuestion = sample;
-                cheatCounter = 0;
+
+
                 Map<Character, String> possible_answers = new LinkedHashMap<>();
                 System.out.println(Jsoup.parse(sample.getQuestion()).text());
                 List<String> answers = new ArrayList<>();
@@ -81,6 +95,10 @@ public class Question {
                 }
                 //get user response
                 String userChoice = GameClient.getPrompter().prompt(":>").trim().toUpperCase();
+                if (userChoice.matches("QUIT")){
+                    return 0;
+                }
+
                 char chosen = ' ';
                 //while user response does not meet certain criteria, keep asking
                 while (userChoice.compareTo("") == 0 || !possible_answers.keySet().contains(userChoice.toUpperCase().charAt(0))) {
@@ -92,10 +110,11 @@ public class Question {
                     System.out.println("correct");
                     counter += 1;
                 } else {
-                    System.out.println("Incorrect: The correct answer is "+sample.getCorrect_answer());
+                    System.out.println("Incorrect: The correct answer is " + sample.getCorrect_answer());
                 }
                 counter = counter - cheatCounter;
                 System.out.println();
+
             }
             return counter;
         }

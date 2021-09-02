@@ -12,11 +12,16 @@ import java.util.List;
 import java.util.Scanner;
 
 public class PointSystem {
+    public static List<String> getNotSubject() {
+        return notSubject;
+    }
+
     private static List<String> notSubject = new ArrayList<>(Arrays.asList("gym", "cafeteria", "hallway"));
     private static final int GRADE = 4;
     private static double player_total_grade = 0;
     private static final List<String> core = new ArrayList<>(Arrays.asList("maths", "computers", "geography", "history"));
     private static boolean isNewLevel = false;
+    public static Player currentPlayer=null;
 
     private double getScore(int correct) {
         double current_class = 0;
@@ -31,7 +36,7 @@ public class PointSystem {
     }
 
     public static void teacherQuestions(String subject, Grade level, Player player) {
-
+        currentPlayer=player;
         if (!player.getSubjectTaken().contains(subject)) {
             Question questions = new Question();
             if(player.getSubjectTaken().size()==0){
@@ -43,7 +48,11 @@ public class PointSystem {
                 score = questions.generateQuestions(subject, level);
                 if (score == -1) {
                     System.out.println(subject+" is a required field");
-                } else {
+                }
+                else if(score==0){
+                    GameClient.continueJourney(isNewLevel);
+                }
+                else {
                     while (pointSystem.getScore(score) < 2) {
                         System.out.println("Your score of " + pointSystem.getScore(score) + " is less than 2.0, you need to take " + subject + " again");
                         System.out.println();
@@ -73,7 +82,7 @@ public class PointSystem {
         // System.out.println(Arrays.toString(player.getSubjectTaken().toArray(new String[0])));
     }
 
-    private static void changePlayerGrade(Player player) {
+    public static void changePlayerGrade(Player player) {
         //Step 1: Determine if we can go to the next grade level
         if (player.getSubjectTaken().containsAll(core) && player.getCredit() >= 2.0) {
             //display a congratulation message on moving to the next grade

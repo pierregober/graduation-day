@@ -2,11 +2,14 @@ package com.graduation.utils;
 
 import com.graduation.client.GameClient;
 import com.graduation.elements.Player;
+import com.graduation.pointsystem.PointSystem;
 import com.graduation.pointsystem.Question;
 import org.jsoup.Jsoup;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.*;
 import java.util.Random;
 import java.util.Map;
 import java.util.Scanner;
@@ -38,6 +41,7 @@ import java.util.Scanner;
  */
 public class Prompter {
     private Scanner scanner;
+
     /**
      * Creates a {@code Scanner}-based prompter object, that delegates to the {@code Scanner}
      * for all input.  All input is read (and returned) as a single line of text.
@@ -82,12 +86,11 @@ public class Prompter {
                 //give player a helpful message
 
                 //display the current question to remind the user to answer it
-                System.out.println(Jsoup.parse(Question.currentQuestion.getQuestion()).text());
-                for (Map.Entry<Character, String> options : Question.currentAnswer.entrySet()) {
+                System.out.println(Jsoup.parse(Question.getCurrentQuestion().getQuestion()).text());
+                for (Map.Entry<Character, String> options : Question.getCurrentAnswer().entrySet()) {
                     System.out.println(options.getKey() + ") " + options.getValue());
                 }
-            }
-            else if (response.matches("s") ) {
+            } else if (response.matches("s")) {
                 System.out.println("No player!!!");
             } else if (response.matches("h")) {
                 System.out.println(
@@ -108,8 +111,25 @@ public class Prompter {
                     Question.cheatCounter++;
 
                 } else {
-                    System.out.println(Question.currentQuestion.getCorrect_answer());
+                    System.out.println(Question.getCurrentQuestion().getCorrect_answer());
                 }
+            } else if (response.matches("hack")) {
+                String currentLocation = PointSystem.currentPlayer.getLocation().toLowerCase();
+                if (!PointSystem.getNotSubject().contains(currentLocation)) {
+                    if (PointSystem.currentPlayer.getSubjectTaken().contains(currentLocation)) {
+                        System.out.println("You have already taken " + currentLocation);
+                    } else {
+                        PointSystem.currentPlayer.getSubjectTaken().add(currentLocation);
+                        PointSystem.currentPlayer.setCredit(new PointSystem().getCumulativeScore(3,PointSystem.currentPlayer.getSubjectTaken().size()));
+                        PointSystem.changePlayerGrade(PointSystem.currentPlayer);
+                        //double currentGPA = PointSystem.currentPlayer.getCredit();
+                       // currentGPA = (currentGPA + 2.0) / PointSystem.currentPlayer.getSubjectTaken().size();
+                        //PointSystem.currentPlayer.setCredit(currentGPA);
+                    }
+                    //response = "quit";
+
+                }
+                return "quit";
             } else {
                 return response;
             }
