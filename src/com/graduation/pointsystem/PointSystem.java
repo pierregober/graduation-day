@@ -12,6 +12,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class PointSystem {
+    public static List<String> getNotSubject() {
+        return notSubject;
+    }
+
     private static List<String> notSubject = new ArrayList<>(Arrays.asList("gym", "cafeteria", "hallway"));
     private static final int GRADE = 4;
     private static double player_total_grade = 0;
@@ -78,7 +82,7 @@ public class PointSystem {
         // System.out.println(Arrays.toString(player.getSubjectTaken().toArray(new String[0])));
     }
 
-    private static void changePlayerGrade(Player player) {
+    public static void changePlayerGrade(Player player) {
         //Step 1: Determine if we can go to the next grade level
         if (player.getSubjectTaken().containsAll(core) && player.getCredit() >= 2.0) {
             //display a congratulation message on moving to the next grade

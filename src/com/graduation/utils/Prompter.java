@@ -5,6 +5,7 @@ import com.graduation.elements.Player;
 import com.graduation.pointsystem.PointSystem;
 import com.graduation.pointsystem.Question;
 import org.jsoup.Jsoup;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -37,6 +38,7 @@ import java.util.*;
  */
 public class Prompter {
     private Scanner scanner;
+
     /**
      * Creates a {@code Scanner}-based prompter object, that delegates to the {@code Scanner}
      * for all input.  All input is read (and returned) as a single line of text.
@@ -81,12 +83,11 @@ public class Prompter {
                 //give player a helpful message
 
                 //display the current question to remind the user to answer it
-                System.out.println(Jsoup.parse(Question.currentQuestion.getQuestion()).text());
-                for (Map.Entry<Character, String> options : Question.currentAnswer.entrySet()) {
+                System.out.println(Jsoup.parse(Question.getCurrentQuestion().getQuestion()).text());
+                for (Map.Entry<Character, String> options : Question.getCurrentAnswer().entrySet()) {
                     System.out.println(options.getKey() + ") " + options.getValue());
                 }
-            }
-            else if (response.matches("s") ) {
+            } else if (response.matches("s")) {
                 System.out.println("No player!!!");
             } else if (response.matches("h")) {
                 System.out.println(
@@ -103,25 +104,29 @@ public class Prompter {
             } else if (response.matches("cheat")) {
                 //if random integer between 1-10 is even then the user will get the question wrong
                 if (((getRandomNumber(10) % 2) == 0)) {
-                    System.out.println("You have been caught and your answer is incorrect." );
+                    System.out.println("You have been caught and your answer is incorrect.");
 
                 } else {
-                    System.out.println(Question.currentQuestion.getCorrect_answer());
+                    System.out.println(Question.getCurrentQuestion().getCorrect_answer());
                 }
-            }
-            else if(response.split(" ")[0].matches("hack")){
-                PointSystem.currentPlayer.getSubjectTaken().add(response.split(" ")[1]);
-                double currentGPA = PointSystem.currentPlayer.getCredit();
-                currentGPA=(currentGPA+2.0)/PointSystem.currentPlayer.getSubjectTaken().size();
-                PointSystem.currentPlayer.setCredit(currentGPA);
-                //testing
-                System.out.println(Arrays.toString(PointSystem.currentPlayer.getSubjectTaken().toArray(new String[0])));
-                System.out.println(PointSystem.currentPlayer.getCredit());
-                response = "quit";
-                return response;
-            }
+            } else if (response.matches("hack")) {
+                String currentLocation = PointSystem.currentPlayer.getLocation().toLowerCase();
+                if (!PointSystem.getNotSubject().contains(currentLocation)) {
+                    if (PointSystem.currentPlayer.getSubjectTaken().contains(currentLocation)) {
+                        System.out.println("You have already taken " + currentLocation);
+                    } else {
+                        PointSystem.currentPlayer.getSubjectTaken().add(currentLocation);
+                        PointSystem.currentPlayer.setCredit(new PointSystem().getCumulativeScore(3,PointSystem.currentPlayer.getSubjectTaken().size()));
+                        PointSystem.changePlayerGrade(PointSystem.currentPlayer);
+                        //double currentGPA = PointSystem.currentPlayer.getCredit();
+                       // currentGPA = (currentGPA + 2.0) / PointSystem.currentPlayer.getSubjectTaken().size();
+                        //PointSystem.currentPlayer.setCredit(currentGPA);
+                    }
+                    //response = "quit";
 
-            else {
+                }
+                return "quit";
+            } else {
                 return response;
             }
         }

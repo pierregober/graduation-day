@@ -20,9 +20,19 @@ public class Question {
                     , "computers", 18);
     private static final Map<Grade, String> difficulties = Map.of(Grade.FRESHMAN, "easy", Grade.SOPHOMORE, "easy", Grade.JUNIOR, "medium",
             Grade.SENIOR, "hard");
-    public static QuestionDetail currentQuestion = null;
-    public static Map<Character, String> currentAnswer = null;
-    public static boolean isHacked = false;
+
+    public static QuestionDetail getCurrentQuestion() {
+        return currentQuestion;
+    }
+
+    private static QuestionDetail currentQuestion = null;
+
+    public static Map<Character, String> getCurrentAnswer() {
+        return currentAnswer;
+    }
+
+    private static Map<Character, String> currentAnswer = null;
+    //public static boolean isHacked = false;
 
     private List<QuestionDetail> getQuestions(String type, Grade grade) throws JsonProcessingException, ExecutionException, InterruptedException {
         //testing level
@@ -83,6 +93,7 @@ public class Question {
                 if (userChoice.matches("QUIT")){
                     return 0;
                 }
+
                 char chosen = ' ';
                 //while user response does not meet certain criteria, keep asking
                 while (userChoice.compareTo("") == 0 || !possible_answers.keySet().contains(userChoice.toUpperCase().charAt(0))) {
