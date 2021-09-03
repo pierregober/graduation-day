@@ -25,7 +25,7 @@ public class GameAction {
                 GameClient.getLevelDetails("item");
                 break;
             default:
-                System.out.println("You entered a an invalid move. Type \"help\" for the instructions");
+                System.out.println("You entered a an invalid move.");
                 getAction();
                 break;
         }

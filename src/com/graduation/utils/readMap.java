@@ -65,7 +65,7 @@ public class readMap {
     }
 
 
-    private static String importTXT(String path) {
+    public static String importTXT(String path) {
         String result = null;
         try {
             result = Files.readString(Path.of(path));

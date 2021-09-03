@@ -2,11 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a503103-a7f2-40ad-8901-369a43946f74" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Banner/rooms.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Banner/rooms.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/graduation/elements/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/elements/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/graduation/pointsystem/PointSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/pointsystem/PointSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/graduation/pointsystem/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/pointsystem/Question.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Graduation_Day-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Graduation_Day-1.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/srcam/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/graduation/actions/GameAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/actions/GameAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/graduation/actions/SourceData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/actions/SourceData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/graduation/client/GameClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/client/GameClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/graduation/utils/Prompter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/utils/Prompter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/graduation/utils/readMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/utils/readMap.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +20,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="1xdHYJy9TFTBDwN7rEB1jCFQQtn" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -28,10 +41,19 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Banner" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\AmazonSDE\6_mini\graduation-day\Banner" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\AmazonSDE\6_mini\graduation-day\src" />
+      <recent name="D:\AmazonSDE\6_mini\graduation-day" />
+      <recent name="D:\AmazonSDE\6_mini\graduation-day\Banner" />
     </key>
   </component>
   <component name="RunManager">

@@ -6,6 +6,7 @@ import com.graduation.pointsystem.PointSystem;
 import com.graduation.pointsystem.Question;
 import org.jsoup.Jsoup;
 
+import java.io.IOException;
 import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
@@ -70,7 +71,7 @@ public class Prompter {
      * @param promptText prompt message.
      * @return the line of text that was input, as a string.
      */
-    public String prompt(String promptText, String init){
+    public String prompt(String promptText, String init) {
         System.out.print(promptText);
         String response = response = scanner.nextLine();
         return response;
@@ -86,8 +87,8 @@ public class Prompter {
                 System.out.println(GameClient.getPlayer().getGrade().toString());
                 System.out.println(readMap.convertedMap());
                 String subjectList = "Subjects Token: ";
-                for (String subject : Player.getSubjectTaken()){
-                    subjectList += subject+ "; ";
+                for (String subject : Player.getSubjectTaken()) {
+                    subjectList += subject + "; ";
                 }
                 System.out.println(subjectList);
                 System.out.println(" ");
@@ -130,8 +131,7 @@ public class Prompter {
             } else if (response.matches("quit")) {
                 //get the current room
                 return "quit";
-            }
-            else {
+            } else {
                 return response;
             }
         }
@@ -149,9 +149,9 @@ public class Prompter {
             } else {
                 PointSystem.currentPlayer.getSubjectTaken().add(currentLocation);
                 //default 2.4 GPA if you hack
-                PointSystem.currentPlayer.setCredit(new PointSystem().getCumulativeScore(3,PointSystem.currentPlayer.getSubjectTaken().size()));
+                PointSystem.currentPlayer.setCredit(new PointSystem().getCumulativeScore(3, PointSystem.currentPlayer.getSubjectTaken().size()));
                 PointSystem.changePlayerGrade(PointSystem.currentPlayer);
-              }
+            }
 
 
         }
@@ -205,6 +205,21 @@ public class Prompter {
             }
         }
         return response;
+    }
+
+    public static void clearScreen() {
+        try {
+            String os = System.getProperty("os.name").toLowerCase();
+            ProcessBuilder process = (os.contains("windows")) ?
+                    new ProcessBuilder("cmd", "/c", "cls") :
+                    new ProcessBuilder("clear");
+            try {
+                process.inheritIO().start().waitFor();
+            } catch (InterruptedException ignored) {
+            }
+        } catch (IOException exception) {
+
+        }
     }
 
 }
