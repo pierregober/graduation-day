@@ -1,6 +1,7 @@
 package com.graduation.utils;
 
 import com.graduation.client.GameClient;
+import com.graduation.elements.Player;
 import com.graduation.pointsystem.PointSystem;
 import com.graduation.pointsystem.Question;
 import org.jsoup.Jsoup;
@@ -84,11 +85,17 @@ public class Prompter {
                 //add function to show player status
                 System.out.println(GameClient.getPlayer().getGrade().toString());
                 System.out.println(readMap.convertedMap());
+                String subjectList = "Subjects Token: ";
+                for (String subject : Player.getSubjectTaken()){
+                    subjectList += subject+ "; ";
+                }
+                System.out.println(subjectList);
+                System.out.println(" ");
                 //blank line
                 //give player a helpful message
 
                 //display the current question to remind the user to answer it
-                if (Question.currentQuestion != null) {
+                if (Question.getCurrentQuestion() != null) {
                     System.out.println(Jsoup.parse(Question.getCurrentQuestion().getQuestion()).text());
                     for (Map.Entry<Character, String> options : Question.getCurrentAnswer().entrySet()) {
                         System.out.println(options.getKey() + ") " + options.getValue());
@@ -115,31 +122,39 @@ public class Prompter {
                 } else {
                     System.out.println(Question.getCurrentQuestion().getCorrect_answer());
                 }
+                //hacking a room
             } else if (response.matches("hack")) {
-                String currentLocation = PointSystem.currentPlayer.getLocation().toLowerCase();
-                if (!PointSystem.getNotSubject().contains(currentLocation)) {
-                    if (PointSystem.currentPlayer.getSubjectTaken().contains(currentLocation)) {
-                        System.out.println("You have already taken " + currentLocation);
-                    } else {
-                        PointSystem.currentPlayer.getSubjectTaken().add(currentLocation);
-                        PointSystem.currentPlayer.setCredit(new PointSystem().getCumulativeScore(3, PointSystem.currentPlayer.getSubjectTaken().size()));
-                        PointSystem.changePlayerGrade(PointSystem.currentPlayer);
-                        //double currentGPA = PointSystem.currentPlayer.getCredit();
-                        // currentGPA = (currentGPA + 2.0) / PointSystem.currentPlayer.getSubjectTaken().size();
-                        //PointSystem.currentPlayer.setCredit(currentGPA);
-                    }
-                    //response = "quit";
-
-                }
-                Question.currentQuestion = null;
-                Question.currentAnswer = null;
+                //get the current room
+                hackClass();
                 return "quit";
-            } else {
+            } else if (response.matches("quit")) {
+                //get the current room
+                return "quit";
+            }
+            else {
                 return response;
             }
         }
 
 
+    }
+
+    private void hackClass() {
+        String currentLocation = PointSystem.currentPlayer.getLocation().toLowerCase();
+        //check if the current room is not a non-subject room
+        if (!PointSystem.getNotSubject().contains(currentLocation)) {
+            //check if the list of subject taken contains the current room
+            if (PointSystem.currentPlayer.getSubjectTaken().contains(currentLocation)) {
+                System.out.println("You have already taken " + currentLocation);
+            } else {
+                PointSystem.currentPlayer.getSubjectTaken().add(currentLocation);
+                //default 2.4 GPA if you hack
+                PointSystem.currentPlayer.setCredit(new PointSystem().getCumulativeScore(3,PointSystem.currentPlayer.getSubjectTaken().size()));
+                PointSystem.changePlayerGrade(PointSystem.currentPlayer);
+              }
+
+
+        }
     }
 
     /**

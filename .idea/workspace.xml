@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="7a503103-a7f2-40ad-8901-369a43946f74" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rooms.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rooms.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/rooms.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/graduation/elements/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/elements/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/graduation/pointsystem/PointSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/pointsystem/PointSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/graduation/pointsystem/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/pointsystem/Question.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/graduation/utils/Prompter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/utils/Prompter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,19 +16,23 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1xc5WDM5KXUi73lbtUPyrXkMUDi" />
+  <component name="ProjectId" id="1xdHYJy9TFTBDwN7rEB1jCFQQtn" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
-    <option name="flattenPackages" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\AmazonSDE\6_mini\graduation-day\src" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="GraduationDayApplicationClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -51,12 +57,17 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <created>1630641571151</created>
+      <changelist id="7a503103-a7f2-40ad-8901-369a43946f74" name="Changes" comment="" />
+      <created>1630678100200</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1630641571151</updated>
+      <updated>1630678100200</updated>
+      <workItem from="1630678108761" duration="3013000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="oldMeFiltersMigrated" value="true" />
