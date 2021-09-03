@@ -1,11 +1,15 @@
 package com.graduation.utils;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.graduation.client.GameClient;
 import com.graduation.elements.Player;
 import com.graduation.pointsystem.PointSystem;
 import com.graduation.pointsystem.Question;
 import org.jsoup.Jsoup;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
@@ -111,6 +115,11 @@ public class Prompter {
                 System.out.println();
                 //quit the game by inputting Q/q
             } else if (response.matches("q")) {
+                System.out.println("Do you want to save before exiting? (yes/no)");
+                response = scanner.nextLine().trim().toLowerCase();
+                if(response.matches("yes|y")){
+                    saveCurrentState();
+                }
                 System.exit(0);
 
             } else if (response.matches("cheat")) {
@@ -154,6 +163,20 @@ public class Prompter {
               }
 
 
+        }
+    }
+
+    private void saveCurrentState(){
+        ObjectMapper save=new ObjectMapper();
+        try{
+            save.writeValue(new File("storage.txt"),save.writeValueAsString(PointSystem.currentPlayer));
+        }
+
+        catch (JsonProcessingException ex){
+            ex.printStackTrace();
+        }
+        catch (IOException e){
+            e.printStackTrace();
         }
     }
 
