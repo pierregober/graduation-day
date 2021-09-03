@@ -115,24 +115,10 @@ public class Prompter {
                 } else {
                     System.out.println(Question.getCurrentQuestion().getCorrect_answer());
                 }
+                //hacking a room
             } else if (response.matches("hack")) {
-                String currentLocation = PointSystem.currentPlayer.getLocation().toLowerCase();
-                if (!PointSystem.getNotSubject().contains(currentLocation)) {
-                    if (PointSystem.currentPlayer.getSubjectTaken().contains(currentLocation)) {
-                        System.out.println("You have already taken " + currentLocation);
-                    } else {
-                        PointSystem.currentPlayer.getSubjectTaken().add(currentLocation);
-                        PointSystem.currentPlayer.setCredit(new PointSystem().getCumulativeScore(3, PointSystem.currentPlayer.getSubjectTaken().size()));
-                        PointSystem.changePlayerGrade(PointSystem.currentPlayer);
-                        //double currentGPA = PointSystem.currentPlayer.getCredit();
-                        // currentGPA = (currentGPA + 2.0) / PointSystem.currentPlayer.getSubjectTaken().size();
-                        //PointSystem.currentPlayer.setCredit(currentGPA);
-                    }
-                    //response = "quit";
-
-                }
-                Question.currentQuestion = null;
-                Question.currentAnswer = null;
+                //get the current room
+                hackClass();
                 return "quit";
             } else {
                 return response;
@@ -140,6 +126,24 @@ public class Prompter {
         }
 
 
+    }
+
+    private void hackClass() {
+        String currentLocation = PointSystem.currentPlayer.getLocation().toLowerCase();
+        //check if the current room is not a non-subject room
+        if (!PointSystem.getNotSubject().contains(currentLocation)) {
+            //check if the list of subject taken contains the current room
+            if (PointSystem.currentPlayer.getSubjectTaken().contains(currentLocation)) {
+                System.out.println("You have already taken " + currentLocation);
+            } else {
+                PointSystem.currentPlayer.getSubjectTaken().add(currentLocation);
+                //default 2.4 GPA if you hack
+                PointSystem.currentPlayer.setCredit(new PointSystem().getCumulativeScore(3,PointSystem.currentPlayer.getSubjectTaken().size()));
+                PointSystem.changePlayerGrade(PointSystem.currentPlayer);
+              }
+
+
+        }
     }
 
     /**
