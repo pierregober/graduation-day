@@ -15,14 +15,14 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 public class Question {
-    private static QuestionDetail currentQuestion = null;
-    private static Map<Character,String> currentAnswer = null;
-    public static int cheatCounter = 0;
     public static final Map<String, Integer> categories =
             Map.of("maths", 19, "history", 23, "geography", 22, "sports", 21, "general knowledge", 9
                     , "computers", 18);
     private static final Map<Grade, String> difficulties = Map.of(Grade.FRESHMAN, "easy", Grade.SOPHOMORE, "easy", Grade.JUNIOR, "medium",
             Grade.SENIOR, "hard");
+    public static int cheatCounter = 0;
+    private static QuestionDetail currentQuestion = null;
+    private static Map<Character, String> currentAnswer = null;
 
     public static QuestionDetail getCurrentQuestion() {
         return currentQuestion;
@@ -102,6 +102,9 @@ public class Question {
                 while (userChoice.compareTo("") == 0 || !possible_answers.keySet().contains(userChoice.toUpperCase().charAt(0))) {
                     System.out.println("You can choose from these options: " + Arrays.toString(possible_answers.keySet().toArray(new Character[0])));
                     userChoice = GameClient.getPrompter().prompt(":>").trim().toUpperCase();
+                    if (userChoice.matches("QUIT")) {
+                        return 0;
+                    }
                 }
                 chosen = userChoice.charAt(0);
                 if (possible_answers.get(chosen).compareTo(Jsoup.parse(sample.getCorrect_answer()).text()) == 0) {

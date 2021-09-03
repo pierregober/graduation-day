@@ -100,19 +100,19 @@
     },
     "Cafeteria": {
       "south": "Maths",
-      "north": "Geography",
+      "north": "Hallway",
       "item": "Apple",
       "desc": "Looks like there has been a food fight in the cafeteria.... You see something shiny on the ground"
     },
     "History": {
-      "west": "Hallway",
+      "west": "Geography",
       "north": "Maths",
       "desc": "A pile of books sits in a corner... You see see the substitute teacher Mr.Korenick. He's heading toward you wanting to ask some questions"
     },
 
     "Gym": {
       "north": "Computers",
-      "west": "Geography",
+      "west": "Hallway",
       "desc": "Dodgeballs are on the floor...",
       "item": "Dodgeball"
     }
@@ -133,19 +133,19 @@
       "desc": "You are in a computer room, something tells you that you rather not be here. Also you get the feeling you are being watched. To the north is a Math class "
     },
     "Cafeteria": {
-      "south": "Hallway",
+      "south": "Maths",
       "north": "Geography",
       "item": "Helmet",
       "desc": "Looks like there has been a food fight in the cafeteria.... You see something tasty on the ground"
     },
     "History": {
       "east": "Gym",
-      "south": "Maths",
+      "south": "Hallway",
       "desc": "A pile of books sits in a corner... You see see the substitute teacher Mr.Korenick. He's heading toward you wanting to ask some questions"
     },
     "Geography": {
       "south": "Cafeteria",
-      "west": "Maths",
+      "west": "Hallway",
       "north": "Gym",
       "desc": "Just a regular Geo class.... or is it... You get a tap on the shoulder... it's Mrs.Beaverwich"
     },

@@ -1,6 +1,7 @@
 package com.graduation.utils;
 
 import com.graduation.client.GameClient;
+import com.graduation.elements.Player;
 import com.graduation.pointsystem.PointSystem;
 import com.graduation.pointsystem.Question;
 import org.jsoup.Jsoup;
@@ -84,11 +85,17 @@ public class Prompter {
                 //add function to show player status
                 System.out.println(GameClient.getPlayer().getGrade().toString());
                 System.out.println(readMap.convertedMap());
+                String subjectList = "Subjects Token: ";
+                for (String subject : Player.getSubjectTaken()){
+                    subjectList += subject+ "; ";
+                }
+                System.out.println(subjectList);
+                System.out.println(" ");
                 //blank line
                 //give player a helpful message
 
                 //display the current question to remind the user to answer it
-                if (Question.currentQuestion != null) {
+                if (Question.getCurrentQuestion() != null) {
                     System.out.println(Jsoup.parse(Question.getCurrentQuestion().getQuestion()).text());
                     for (Map.Entry<Character, String> options : Question.getCurrentAnswer().entrySet()) {
                         System.out.println(options.getKey() + ") " + options.getValue());
@@ -120,7 +127,11 @@ public class Prompter {
                 //get the current room
                 hackClass();
                 return "quit";
-            } else {
+            } else if (response.matches("quit")) {
+                //get the current room
+                return "quit";
+            }
+            else {
                 return response;
             }
         }
