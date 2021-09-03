@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.*;
 
 public class GameClient {
-    private final Prompter prompter;
+    private static Prompter prompter;
     private static Player player;
     private static Bully bully;
     private static final ObjectMapper mapper = new ObjectMapper();
@@ -44,20 +44,22 @@ public class GameClient {
     public static void nextLocation(String location){
         //Grab the previous and read the location according to direction within it's JSON properties
         try{
+
             String nextLoc = prevRoom.get(location).textValue();
             player.setLocation(nextLoc);
             getLevelDetails("desc");
+
             //Determine if it's a subject room
-            if(!notSubject.contains(nextLoc)){
+            if(!notSubject.contains(nextLoc.toLowerCase())){
                 PointSystem.teacherQuestions(Player.getLocation().toLowerCase(), Player.getGrade(),player);
             }else{
                 //Step 1: random number generator to see if a bully will engage in combat
                 int combat = (int)(Math.random() * 100);
-                    //You have a 20% chance of a bully not being there.
-                if(combat >= 20){
+                    //You have a 50% chance of a bully not being there.
+                if(combat >= 50){
                     System.out.println("Uh oh... " + bully.getName() + " is here. And they spot you. Engaging in combat ");
                     //Engage in combat
-
+                    GameCombat.initializeCombatScene();
                 }else {
                     continueJourney(false);
                 }
@@ -143,7 +145,7 @@ public class GameClient {
     //Initialize the player as a FRESHMAN aka first level
     public Player setPlayer() {
         String userName = prompter.prompt("Please enter your name below \n", "this is a trashCAN to put player in");
-        return new Player(userName, 0, 10, Grade.FRESHMAN, "Computers");
+        return new Player(userName, 0, 100, Grade.FRESHMAN, "Computers");
     }
 
     public static Player getPlayer() {
@@ -153,5 +155,4 @@ public class GameClient {
     public static Prompter getPrompter() {
         return prompter;
     }
-
 }

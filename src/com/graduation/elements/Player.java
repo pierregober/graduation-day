@@ -14,11 +14,7 @@ public class Player {
     private static String location;
     private static int health;
     private static List<String> inventory = new ArrayList<>();
-    private static List<String> subjectTaken = new ArrayList<>(Arrays.asList("maths", "geography"));
-
-    public static List<String> getSubjectTaken() {
-        return subjectTaken;
-    }
+    private static List<String> subjectTaken = new ArrayList<>();
 
     public int getTotalSubject() {
         return totalSubject;

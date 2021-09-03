@@ -77,7 +77,7 @@ public class Prompter {
      */
     public String prompt(String promptText, String init) {
         System.out.print(promptText);
-        String response = response = scanner.nextLine();
+        String response = scanner.nextLine();
         return response;
     }
 
@@ -170,7 +170,7 @@ public class Prompter {
         }
     }
 
-    public static void clearScreen(){
+    public static void clearScreen() {
         String os = System.getProperty("os.name").toLowerCase();
         ProcessBuilder process = (os.contains("windows")) ?
                 new ProcessBuilder("cmd", "/c", "cls") :
@@ -178,17 +178,17 @@ public class Prompter {
         try {
             process.inheritIO().start().waitFor();
         } catch (InterruptedException | IOException ignored) {
+            System.out.println(ignored);
+        }
+    }
 
-    private void saveCurrentState(){
+    private static void saveCurrentState(){
         ObjectMapper save=new ObjectMapper();
         try{
             save.writeValue(new File("storage.txt"),save.writeValueAsString(PointSystem.currentPlayer));
-        }
-
-        catch (JsonProcessingException ex){
+        }catch (JsonProcessingException ex){
             ex.printStackTrace();
-        }
-        catch (IOException e){
+        }catch (IOException e){
             e.printStackTrace();
         }
     }
