@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.graduation.client.GameClient;
 import com.graduation.utils.Grade;
 import com.graduation.utils.Prompter;
+import com.graduation.utils.readMap;
 import org.jsoup.Jsoup;
 
 import java.io.IOException;
@@ -116,6 +117,7 @@ public class Question {
 //                System.out.println();
                 Prompter.clearScreen();
                 System.out.println(GameClient.getPlayer());
+                System.out.println(readMap.convertedMap());
             }
             return counter;
         }
