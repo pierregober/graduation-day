@@ -30,7 +30,7 @@ public class PointSystem {
     }
 
     public double getCumulativeScore(int eachScore, int numberOfSubjects) {
-        System.out.println("Counter = " + numberOfSubjects);
+       // System.out.println("Counter = " + numberOfSubjects);
         player_total_grade += (getScore(eachScore));
         return Double.parseDouble(new DecimalFormat("#.##").format(player_total_grade / (double) numberOfSubjects));
     }

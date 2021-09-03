@@ -15,8 +15,6 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 public class Question {
-    public static QuestionDetail currentQuestion = null;
-    public static Map<Character,String> currentAnswer =null;
     public static int cheatCounter = 0;
     public static final Map<String, Integer> categories =
             Map.of("maths", 19, "history", 23, "geography", 22, "sports", 21, "general knowledge", 9
@@ -72,8 +70,7 @@ public class Question {
             for (QuestionDetail sample : samples) {
                 //assign the current question to currentQuestion class variable
                 currentQuestion = sample;
-
-
+                cheatCounter = 0;
                 Map<Character, String> possible_answers = new LinkedHashMap<>();
                 System.out.println(Jsoup.parse(sample.getQuestion()).text());
                 List<String> answers = new ArrayList<>();
@@ -95,7 +92,7 @@ public class Question {
                 }
                 //get user response
                 String userChoice = GameClient.getPrompter().prompt(":>").trim().toUpperCase();
-                if (userChoice.matches("QUIT")){
+                if (userChoice.matches("QUIT")) {
                     return 0;
                 }
 
