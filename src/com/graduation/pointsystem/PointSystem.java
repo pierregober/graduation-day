@@ -1,6 +1,7 @@
 package com.graduation.pointsystem;
 
 import com.graduation.client.GameClient;
+import com.graduation.elements.Bully;
 import com.graduation.elements.Player;
 import com.graduation.utils.Grade;
 import com.graduation.utils.Prompter;
@@ -104,8 +105,8 @@ public class PointSystem {
             player.setLocation(GameClient.getFirstLocation());
             //reset the GPA for the new level to zero
             player_total_grade = 0;
-            //Step 4: Pass the boolean true to continueJourney
-            //GameClient.continueJourney(isNewLevel);
+            //Step 4: Toggle the bully
+            Bully.setPresence(true);
         }
     }
 }

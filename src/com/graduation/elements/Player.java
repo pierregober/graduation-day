@@ -6,15 +6,15 @@ import com.graduation.utils.Prompter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 public class Player {
     private static Grade grade;
     private static String name;
     private static double credit;
     private static String location;
-    private int health;
-    private static List<String> inventory = new ArrayList<>(Arrays.asList("notebook"));
+    private static int health;
+    private static List<String> inventory = new ArrayList<>();
+    private static List<String> subjectTaken = new ArrayList<>();
 
     public int getTotalSubject() {
         return totalSubject;
@@ -30,14 +30,12 @@ public class Player {
         return subjectTaken;
     }
 
-    public void setSubjectTaken(List<String> subjectTaken) {
-        this.subjectTaken = subjectTaken;
+    public static void setSubjectTaken(List<String> newSubjectTaken) {
+        subjectTaken = newSubjectTaken;
     }
 
-    private static List<String> subjectTaken=new ArrayList<>();
-
     public Player(String name, int credit, int health, Grade grade, String location){
-            this.name = name;
+        this.name = name;
         this.credit = credit;
         this.health = health;
         this.grade = grade;
@@ -62,11 +60,11 @@ public class Player {
         this.location = location;
     }
 
-    public void setHealth(int health) {
-        this.health = health;
+    public static int setHealth(int health) {
+        return Player.health = health;
     }
 
-    public int getHealth() {
+    public static int getHealth() {
         return health;
     }
 
@@ -82,11 +80,11 @@ public class Player {
         return credit;
     }
 
-    public String getName() {
+    public static String getName() {
         return name;
     }
 
-    public List<String> getInventory() {
+    public static List<String> getInventory() {
         return inventory;
     }
 
