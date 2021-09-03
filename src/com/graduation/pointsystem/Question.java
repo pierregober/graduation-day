@@ -4,8 +4,10 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.graduation.client.GameClient;
 import com.graduation.utils.Grade;
+import com.graduation.utils.Prompter;
 import org.jsoup.Jsoup;
 
+import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -114,8 +116,9 @@ public class Question {
                     System.out.println("Incorrect: The correct answer is " + sample.getCorrect_answer());
                 }
                 counter = counter - cheatCounter;
-                System.out.println();
-
+//                System.out.println();
+                Prompter.clearScreen();
+                System.out.println(GameClient.getPlayer());
             }
             return counter;
         }

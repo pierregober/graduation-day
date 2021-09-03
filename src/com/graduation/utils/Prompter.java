@@ -7,6 +7,7 @@ import com.graduation.elements.Player;
 import com.graduation.pointsystem.PointSystem;
 import com.graduation.pointsystem.Question;
 import org.jsoup.Jsoup;
+import org.w3c.dom.ls.LSOutput;
 
 import java.io.File;
 import java.io.IOException;
@@ -74,7 +75,7 @@ public class Prompter {
      * @param promptText prompt message.
      * @return the line of text that was input, as a string.
      */
-    public String prompt(String promptText, String init){
+    public String prompt(String promptText, String init) {
         System.out.print(promptText);
         String response = response = scanner.nextLine();
         return response;
@@ -99,7 +100,7 @@ public class Prompter {
                 //give player a helpful message
 
                 //display the current question to remind the user to answer it
-                if (Question.getCurrentQuestion() != null) {
+                if (Question.getCurrentQuestion().getQuestion() != null) {
                     System.out.println(Jsoup.parse(Question.getCurrentQuestion().getQuestion()).text());
                     for (Map.Entry<Character, String> options : Question.getCurrentAnswer().entrySet()) {
                         System.out.println(options.getKey() + ") " + options.getValue());
@@ -111,6 +112,12 @@ public class Prompter {
                                 "GO [north, south, east, west, up, down]\n" +
                                 "GET/USE [item]\n" +
                                 "Look");
+                if (Question.getCurrentQuestion().getQuestion() != null) {
+                    System.out.println(Jsoup.parse(Question.getCurrentQuestion().getQuestion()).text());
+                    for (Map.Entry<Character, String> options : Question.getCurrentAnswer().entrySet()) {
+                        System.out.println(options.getKey() + ") " + options.getValue());
+                    }
+                }
                 //blank line
                 System.out.println();
                 //quit the game by inputting Q/q
@@ -139,13 +146,10 @@ public class Prompter {
             } else if (response.matches("quit")) {
                 //get the current room
                 return "quit";
-            }
-            else {
+            } else {
                 return response;
             }
         }
-
-
     }
 
     private void hackClass() {
@@ -158,13 +162,22 @@ public class Prompter {
             } else {
                 PointSystem.currentPlayer.getSubjectTaken().add(currentLocation);
                 //default 2.4 GPA if you hack
-                PointSystem.currentPlayer.setCredit(new PointSystem().getCumulativeScore(3,PointSystem.currentPlayer.getSubjectTaken().size()));
+                PointSystem.currentPlayer.setCredit(new PointSystem().getCumulativeScore(3, PointSystem.currentPlayer.getSubjectTaken().size()));
                 PointSystem.changePlayerGrade(PointSystem.currentPlayer);
-              }
+            }
 
 
         }
     }
+
+    public static void clearScreen(){
+        String os = System.getProperty("os.name").toLowerCase();
+        ProcessBuilder process = (os.contains("windows")) ?
+                new ProcessBuilder("cmd", "/c", "cls") :
+                new ProcessBuilder("clear");
+        try {
+            process.inheritIO().start().waitFor();
+        } catch (InterruptedException | IOException ignored) {
 
     private void saveCurrentState(){
         ObjectMapper save=new ObjectMapper();
