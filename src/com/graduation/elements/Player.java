@@ -26,7 +26,7 @@ public class Player {
 
     private int totalSubject = 0;
 
-    public List<String> getSubjectTaken() {
+    public static List<String> getSubjectTaken() {
         return subjectTaken;
     }
 
@@ -34,7 +34,7 @@ public class Player {
         this.subjectTaken = subjectTaken;
     }
 
-    private List<String> subjectTaken=new ArrayList<>();
+    private static List<String> subjectTaken=new ArrayList<>();
 
     public Player(String name, int credit, int health, Grade grade, String location){
             this.name = name;

@@ -1,11 +1,15 @@
 package com.graduation.utils;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.graduation.client.GameClient;
+import com.graduation.elements.Player;
 import com.graduation.pointsystem.PointSystem;
 import com.graduation.pointsystem.Question;
 import org.jsoup.Jsoup;
 import org.w3c.dom.ls.LSOutput;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 import java.util.Random;
@@ -86,12 +90,17 @@ public class Prompter {
                 //add function to show player status
                 System.out.println(GameClient.getPlayer().getGrade().toString());
                 System.out.println(readMap.convertedMap());
+                String subjectList = "Subjects Token: ";
+                for (String subject : Player.getSubjectTaken()){
+                    subjectList += subject+ "; ";
+                }
+                System.out.println(subjectList);
+                System.out.println(" ");
                 //blank line
                 //give player a helpful message
 
                 //display the current question to remind the user to answer it
                 if (Question.getCurrentQuestion().getQuestion() != null) {
-
                     System.out.println(Jsoup.parse(Question.getCurrentQuestion().getQuestion()).text());
                     for (Map.Entry<Character, String> options : Question.getCurrentAnswer().entrySet()) {
                         System.out.println(options.getKey() + ") " + options.getValue());
@@ -113,6 +122,11 @@ public class Prompter {
                 System.out.println();
                 //quit the game by inputting Q/q
             } else if (response.matches("q")) {
+                System.out.println("Do you want to save before exiting? (yes/no)");
+                response = scanner.nextLine().trim().toLowerCase();
+                if(response.matches("yes|y")){
+                    saveCurrentState();
+                }
                 System.exit(0);
 
             } else if (response.matches("cheat")) {
@@ -129,15 +143,13 @@ public class Prompter {
                 //get the current room
                 hackClass();
                 return "quit";
+            } else if (response.matches("quit")) {
+                //get the current room
+                return "quit";
             } else {
-
                 return response;
-
             }
-
         }
-
-
     }
 
     private void hackClass() {
@@ -166,6 +178,18 @@ public class Prompter {
         try {
             process.inheritIO().start().waitFor();
         } catch (InterruptedException | IOException ignored) {
+
+    private void saveCurrentState(){
+        ObjectMapper save=new ObjectMapper();
+        try{
+            save.writeValue(new File("storage.txt"),save.writeValueAsString(PointSystem.currentPlayer));
+        }
+
+        catch (JsonProcessingException ex){
+            ex.printStackTrace();
+        }
+        catch (IOException e){
+            e.printStackTrace();
         }
     }
 
