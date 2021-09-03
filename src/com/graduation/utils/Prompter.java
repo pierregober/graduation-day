@@ -1,17 +1,12 @@
 package com.graduation.utils;
 
 import com.graduation.client.GameClient;
-import com.graduation.elements.Player;
 import com.graduation.pointsystem.PointSystem;
 import com.graduation.pointsystem.Question;
 import org.jsoup.Jsoup;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.*;
-import java.util.Random;
 import java.util.Map;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -52,6 +47,11 @@ public class Prompter {
         this.scanner = scanner;
     }
 
+    public static int getRandomNumber(int n) {
+        Random rand = new Random();
+        return rand.nextInt(n) + 1;
+    }
+
     /**
      * Outputs provided text.  Simply calls {@code System.out.println(info)}.
      *
@@ -69,29 +69,31 @@ public class Prompter {
      * @param promptText prompt message.
      * @return the line of text that was input, as a string.
      */
+    public String prompt(String promptText, String init){
+        System.out.print(promptText);
+        String response = response = scanner.nextLine();
+        return response;
+    }
+
     public String prompt(String promptText) {
         String response;
         while (true) {
             System.out.print(promptText);
             response = scanner.nextLine().toLowerCase();
-            if (response.matches("s") && GameClient.getPlayer() != null) {
+            if (response.matches("s")) {
                 //add function to show player status
-                System.out.println(displayMAP());
+                System.out.println(GameClient.getPlayer().getGrade().toString());
+                System.out.println(readMap.convertedMap());
                 //blank line
-                System.out.println(
-                        "Grade: " + Player.getGrade() + " | " +
-                                "Credit: " + Player.getCredit() + " | \n" +
-                                "Location: " + Player.getLocation() + "\n" +
-                                "###################################");
                 //give player a helpful message
 
                 //display the current question to remind the user to answer it
-                System.out.println(Jsoup.parse(Question.getCurrentQuestion().getQuestion()).text());
-                for (Map.Entry<Character, String> options : Question.getCurrentAnswer().entrySet()) {
-                    System.out.println(options.getKey() + ") " + options.getValue());
+                if (Question.currentQuestion != null) {
+                    System.out.println(Jsoup.parse(Question.getCurrentQuestion().getQuestion()).text());
+                    for (Map.Entry<Character, String> options : Question.getCurrentAnswer().entrySet()) {
+                        System.out.println(options.getKey() + ") " + options.getValue());
+                    }
                 }
-            } else if (response.matches("s")) {
-                System.out.println("No player!!!");
             } else if (response.matches("h")) {
                 System.out.println(
                         "Use the following actions:" +
@@ -107,7 +109,7 @@ public class Prompter {
             } else if (response.matches("cheat")) {
                 //if random integer between 1-10 is even then the user will get the question wrong
                 if (((getRandomNumber(10) % 2) == 0)) {
-                    System.out.println("You have been caught and your answer is incorrect." );
+                    System.out.println("You have been caught and your answer is incorrect.");
                     Question.cheatCounter++;
 
                 } else {
@@ -120,15 +122,17 @@ public class Prompter {
                         System.out.println("You have already taken " + currentLocation);
                     } else {
                         PointSystem.currentPlayer.getSubjectTaken().add(currentLocation);
-                        PointSystem.currentPlayer.setCredit(new PointSystem().getCumulativeScore(3,PointSystem.currentPlayer.getSubjectTaken().size()));
+                        PointSystem.currentPlayer.setCredit(new PointSystem().getCumulativeScore(3, PointSystem.currentPlayer.getSubjectTaken().size()));
                         PointSystem.changePlayerGrade(PointSystem.currentPlayer);
                         //double currentGPA = PointSystem.currentPlayer.getCredit();
-                       // currentGPA = (currentGPA + 2.0) / PointSystem.currentPlayer.getSubjectTaken().size();
+                        // currentGPA = (currentGPA + 2.0) / PointSystem.currentPlayer.getSubjectTaken().size();
                         //PointSystem.currentPlayer.setCredit(currentGPA);
                     }
                     //response = "quit";
 
                 }
+                Question.currentQuestion = null;
+                Question.currentAnswer = null;
                 return "quit";
             } else {
                 return response;
@@ -186,20 +190,6 @@ public class Prompter {
             }
         }
         return response;
-    }
-
-    public static String displayMAP() {
-        String result = null;
-        try {
-            result = Files.readString(Path.of("Banner/map-" + Player.getGrade().toString() + ".txt"));
-        } catch (IOException e) {
-        }
-        return result;
-    }
-
-    public static int getRandomNumber(int n) {
-        Random rand = new Random();
-        return rand.nextInt(n) + 1;
     }
 
 }
