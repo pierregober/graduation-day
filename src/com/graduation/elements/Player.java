@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class Player {
     private static Grade grade;
-    private String name;
+    private static String name;
     private static double credit;
     private static String location;
     private int health;
@@ -45,13 +45,6 @@ public class Player {
         this.inventory = inventory;
     }
 
-    public String answerQuestion(Prompter prompter){
-        String answer = prompter.prompt(
-                "Answer with A,B,C, or D \n",
-                "[A-D]|[a-d]",
-                "A,B,C or D ONLY");
-        return answer;
-    }
 
     public void setCredit(double credit) {
         this.credit = credit;

@@ -15,6 +15,8 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 public class Question {
+    private static QuestionDetail currentQuestion = null;
+    private static Map<Character,String> currentAnswer = null;
     public static int cheatCounter = 0;
     public static final Map<String, Integer> categories =
             Map.of("maths", 19, "history", 23, "geography", 22, "sports", 21, "general knowledge", 9
@@ -26,13 +28,12 @@ public class Question {
         return currentQuestion;
     }
 
-    private static QuestionDetail currentQuestion = null;
 
     public static Map<Character, String> getCurrentAnswer() {
         return currentAnswer;
     }
 
-    private static Map<Character, String> currentAnswer = null;
+
     //public static boolean isHacked = false;
 
     private List<QuestionDetail> getQuestions(String type, Grade grade) throws JsonProcessingException, ExecutionException, InterruptedException {
