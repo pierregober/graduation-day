@@ -170,7 +170,7 @@ public class Prompter {
         }
     }
 
-    public static void clearScreen(){
+    public static void clearScreen() {
         String os = System.getProperty("os.name").toLowerCase();
         ProcessBuilder process = (os.contains("windows")) ?
                 new ProcessBuilder("cmd", "/c", "cls") :
@@ -178,69 +178,47 @@ public class Prompter {
         try {
             process.inheritIO().start().waitFor();
         } catch (InterruptedException | IOException ignored) {
-
-    private void saveCurrentState(){
-        ObjectMapper save=new ObjectMapper();
-        try{
-            save.writeValue(new File("storage.txt"),save.writeValueAsString(PointSystem.currentPlayer));
-        }
-
-        catch (JsonProcessingException ex){
-            ex.printStackTrace();
-        }
-        catch (IOException e){
-            e.printStackTrace();
+            System.out.println(ignored);
         }
     }
 
-    /**
-     * <p>
-     * Prompts for input, validates it against the regex pattern provided, and returns
-     * the line of text entered, as a string.  If the input does not match the pattern,
-     * the error message text is displayed, and then the prompt text is displayed again.
-     * The input is validated against the regex pattern via {@code String.matches()}.
-     * </p>
-     *
-     * <p>
-     * The prompt text and error message text are output verbatim, exactly as provided.
-     * To add a blank line or two between the user input line, the error message line,
-     * and the follow-on user prompt, just include {@code "\n"} in the {@code retryText} value,
-     * as appropriate.  For example:
-     * </p>
-     *
-     * <pre>
-     * <code>
-     *     prompter.prompt("Please enter your age: ", "\\d+", "\nThat is not a valid age!\n");
-     * </code>
-     * </pre>
-     *
-     * @param promptText prompt message.
-     * @param pattern    regex pattern, used to validate the input string.
-     * @param retryText  error message displayed when input string does not match regex pattern.
-     * @return the line of text that was input, as a string.
-     */
-    public String prompt(String promptText, String pattern, String retryText) {
-        String response = null;
-        boolean validResponse = false;
-
-        while (!validResponse) {
-            System.out.print(promptText);
-            response = scanner.nextLine();
-            if (response.matches("help")) {
-                System.out.println("helps on the way");
-                break;
+            private void saveCurrentState(){
+                ObjectMapper save = new ObjectMapper();
+                try {
+                    save.writeValue(new File("storage.txt"), save.writeValueAsString(PointSystem.currentPlayer));
+                } catch (JsonProcessingException ex) {
+                    ex.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
 
+            /**
+             * <p>
+             * Prompts for input, validates it against the regex pattern provided, and returns
+             * the line of text entered, as a string.  If the input does not match the pattern,
+             * the error message text is displayed, and then the prompt text is displayed again.
+             * The input is validated against the regex pattern via {@code String.matches()}.
+             * </p>
+             *
+             * <p>
+             * The prompt text and error message text are output verbatim, exactly as provided.
+             * To add a blank line or two between the user input line, the error message line,
+             * and the follow-on user prompt, just include {@code "\n"} in the {@code retryText} value,
+             * as appropriate.  For example:
+             * </p>
+             *
+             * <pre>
+             * <code>
+             *     prompter.prompt("Please enter your age: ", "\\d+", "\nThat is not a valid age!\n");
+             * </code>
+             * </pre>
+             *
+             * @param promptText prompt message.
+             * @param pattern    regex pattern, used to validate the input string.
+             * @param retryText  error message displayed when input string does not match regex pattern.
+             * @return the line of text that was input, as a string.
+             */
 
-            //check user input if it match pattern
-            validResponse = response.matches(pattern);
-            if (!validResponse) {
-                System.out.println(retryText);
-            } else {
-                break;
-            }
-        }
-        return response;
-    }
 
 }
