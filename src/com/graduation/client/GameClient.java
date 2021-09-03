@@ -3,6 +3,7 @@ package com.graduation.client;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.graduation.actions.GameAction;
+import com.graduation.actions.GameCombat;
 import com.graduation.actions.SourceData;
 import com.graduation.elements.Bully;
 import com.graduation.elements.Player;
@@ -27,6 +28,7 @@ public class GameClient {
     }
     public void initialize(){
         player = setPlayer();
+        bully = setBully();
         //Step 1 -- Generate the location info from the json
         getLevelDetails("desc");
 
@@ -134,14 +136,14 @@ public class GameClient {
 
     //Initialize the bully
     public Bully setBully() {
-        String bullyName = prompter.prompt("Please enter your name below \n");
-        return new Bully(bullyName);
+        String bullyName = prompter.prompt("Please enter bully name below \n");
+        return new Bully(bullyName, 100, true);
     }
 
     //Initialize the player as a FRESHMAN aka first level
     public Player setPlayer() {
         String userName = prompter.prompt("Please enter your name below \n");
-        return new Player(userName, 0, 100, Grade.FRESHMAN, "Hallway");
+        return new Player(userName, 0, 100, Grade.FRESHMAN, "Computers");
     }
 
     public static Player getPlayer() {

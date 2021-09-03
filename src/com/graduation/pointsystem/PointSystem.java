@@ -1,6 +1,7 @@
 package com.graduation.pointsystem;
 
 import com.graduation.client.GameClient;
+import com.graduation.elements.Bully;
 import com.graduation.elements.Player;
 import com.graduation.utils.Grade;
 import com.graduation.utils.Prompter;
@@ -90,7 +91,8 @@ public class PointSystem {
             player.setLocation(GameClient.getFirstLocation());
             //Step 4: Pass the boolean true to continueJourney
             GameClient.continueJourney(isNewLevel);
-
+            //Step 5: Reset the bully toggle
+            Bully.setPresence(true);
         }
     }
 }

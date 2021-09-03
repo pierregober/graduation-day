@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="34bb8994-1a51-4613-b27d-ad4ef5afde22" name="Default Changelist" comment="Merge branch 'dev' of https://github.com/pierregober/graduation-day into gameStats&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;graduation-day.iml&#10;#&#9;src/com/graduation/actions/GameAction.java&#10;#&#9;src/com/graduation/client/GameClient.java&#10;#&#9;src/com/graduation/elements/Player.java">
-      <change afterPath="$PROJECT_DIR$/src/com/graduation/actions/GameCombat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/graduation/elements/Bully.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/items.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="7a503103-a7f2-40ad-8901-369a43946f74" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/graduation/actions/SourceData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/actions/SourceData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/graduation/actions/GameAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/actions/GameAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/graduation/actions/GameCombat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/actions/GameCombat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/graduation/client/GameClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/client/GameClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/graduation/client/TitleScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/client/TitleScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/graduation/elements/Bully.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/elements/Bully.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/graduation/elements/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/elements/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/graduation/pointsystem/PointSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/pointsystem/PointSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/items.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/items.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
