@@ -91,8 +91,8 @@ public class Prompter {
                 System.out.println(GameClient.getPlayer().getGrade().toString());
                 System.out.println(readMap.convertedMap());
                 String subjectList = "Subjects Token: ";
-                for (String subject : Player.getSubjectTaken()){
-                    subjectList += subject+ "; ";
+                for (String subject : Player.getSubjectTaken()) {
+                    subjectList += subject + "; ";
                 }
                 System.out.println(subjectList);
                 System.out.println(" ");
@@ -100,7 +100,7 @@ public class Prompter {
                 //give player a helpful message
 
                 //display the current question to remind the user to answer it
-                if (Question.getCurrentQuestion().getQuestion() != null) {
+                if (Question.getCurrentQuestion() != null) {
                     System.out.println(Jsoup.parse(Question.getCurrentQuestion().getQuestion()).text());
                     for (Map.Entry<Character, String> options : Question.getCurrentAnswer().entrySet()) {
                         System.out.println(options.getKey() + ") " + options.getValue());
@@ -170,7 +170,7 @@ public class Prompter {
         }
     }
 
-    public static void clearScreen() {
+    public static void clearScreen(){
         String os = System.getProperty("os.name").toLowerCase();
         ProcessBuilder process = (os.contains("windows")) ?
                 new ProcessBuilder("cmd", "/c", "cls") :
@@ -178,17 +178,17 @@ public class Prompter {
         try {
             process.inheritIO().start().waitFor();
         } catch (InterruptedException | IOException ignored) {
-            System.out.println(ignored);
-        }
-    }
 
-    private static void saveCurrentState(){
+    private void saveCurrentState(){
         ObjectMapper save=new ObjectMapper();
         try{
             save.writeValue(new File("storage.txt"),save.writeValueAsString(PointSystem.currentPlayer));
-        }catch (JsonProcessingException ex){
+        }
+
+        catch (JsonProcessingException ex){
             ex.printStackTrace();
-        }catch (IOException e){
+        }
+        catch (IOException e){
             e.printStackTrace();
         }
     }
