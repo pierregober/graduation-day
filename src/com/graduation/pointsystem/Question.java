@@ -15,8 +15,8 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 public class Question {
-    public static QuestionDetail currentQuestion = null;
-    public static Map<Character,String> currentAnswer = null;
+    private static QuestionDetail currentQuestion = null;
+    private static Map<Character,String> currentAnswer = null;
     public static int cheatCounter = 0;
     public static final Map<String, Integer> categories =
             Map.of("maths", 19, "history", 23, "geography", 22, "sports", 21, "general knowledge", 9
