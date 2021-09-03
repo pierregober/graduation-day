@@ -89,4 +89,13 @@ public class Player {
     public List<String> getInventory() {
         return inventory;
     }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "{" +
+                " name= " + getName() +
+                " , health= " + health +
+                " , credit= " + getCredit() +
+                '}';
+    }
 }
