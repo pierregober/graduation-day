@@ -91,8 +91,8 @@ public class Prompter {
                 System.out.println(GameClient.getPlayer().getGrade().toString());
                 System.out.println(readMap.convertedMap());
                 String subjectList = "Subjects Token: ";
-                for (String subject : Player.getSubjectTaken()){
-                    subjectList += subject+ "; ";
+                for (String subject : Player.getSubjectTaken()) {
+                    subjectList += subject + "; ";
                 }
                 System.out.println(subjectList);
                 System.out.println(" ");
@@ -100,7 +100,7 @@ public class Prompter {
                 //give player a helpful message
 
                 //display the current question to remind the user to answer it
-                if (Question.getCurrentQuestion().getQuestion() != null) {
+                if (Question.getCurrentQuestion() != null) {
                     System.out.println(Jsoup.parse(Question.getCurrentQuestion().getQuestion()).text());
                     for (Map.Entry<Character, String> options : Question.getCurrentAnswer().entrySet()) {
                         System.out.println(options.getKey() + ") " + options.getValue());
@@ -112,21 +112,10 @@ public class Prompter {
                                 "GO [north, south, east, west, up, down]\n" +
                                 "GET/USE [item]\n" +
                                 "Look");
-                if (Question.getCurrentQuestion().getQuestion() != null) {
-                    System.out.println(Jsoup.parse(Question.getCurrentQuestion().getQuestion()).text());
-                    for (Map.Entry<Character, String> options : Question.getCurrentAnswer().entrySet()) {
-                        System.out.println(options.getKey() + ") " + options.getValue());
-                    }
-                }
                 //blank line
                 System.out.println();
                 //quit the game by inputting Q/q
             } else if (response.matches("q")) {
-                System.out.println("Do you want to save before exiting? (yes/no)");
-                response = scanner.nextLine().trim().toLowerCase();
-                if(response.matches("yes|y")){
-                    saveCurrentState();
-                }
                 System.exit(0);
 
             } else if (response.matches("cheat")) {
@@ -170,7 +159,7 @@ public class Prompter {
         }
     }
 
-    public static void clearScreen(){
+    public static void clearScreen() {
         String os = System.getProperty("os.name").toLowerCase();
         ProcessBuilder process = (os.contains("windows")) ?
                 new ProcessBuilder("cmd", "/c", "cls") :
@@ -178,20 +167,21 @@ public class Prompter {
         try {
             process.inheritIO().start().waitFor();
         } catch (InterruptedException | IOException ignored) {
-
-    private void saveCurrentState(){
-        ObjectMapper save=new ObjectMapper();
-        try{
-            save.writeValue(new File("storage.txt"),save.writeValueAsString(PointSystem.currentPlayer));
         }
+    }
 
-        catch (JsonProcessingException ex){
+    private void saveCurrentState() {
+        ObjectMapper save = new ObjectMapper();
+        try {
+            save.writeValue(new File("storage.txt"), save.writeValueAsString(PointSystem.currentPlayer));
+        } catch (JsonProcessingException ex) {
             ex.printStackTrace();
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
+}
+
 
     /**
      * <p>
@@ -219,28 +209,3 @@ public class Prompter {
      * @param retryText  error message displayed when input string does not match regex pattern.
      * @return the line of text that was input, as a string.
      */
-    public String prompt(String promptText, String pattern, String retryText) {
-        String response = null;
-        boolean validResponse = false;
-
-        while (!validResponse) {
-            System.out.print(promptText);
-            response = scanner.nextLine();
-            if (response.matches("help")) {
-                System.out.println("helps on the way");
-                break;
-            }
-
-
-            //check user input if it match pattern
-            validResponse = response.matches(pattern);
-            if (!validResponse) {
-                System.out.println(retryText);
-            } else {
-                break;
-            }
-        }
-        return response;
-    }
-
-}

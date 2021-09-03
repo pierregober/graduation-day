@@ -80,6 +80,7 @@ public class GameClient {
                 System.out.println(filteredData);
             }
         }catch(IOException e){
+
             System.out.println(e);
         }
     }
