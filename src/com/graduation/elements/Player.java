@@ -20,6 +20,20 @@ public class Player {
         return subjectTaken;
     }
 
+    public int getTotalSubject() {
+        return totalSubject;
+    }
+
+    public void setTotalSubject(int totalSubject) {
+        this.totalSubject = totalSubject;
+    }
+
+    private int totalSubject = 0;
+
+    public static List<String> getSubjectTaken() {
+        return subjectTaken;
+    }
+
     public static void setSubjectTaken(List<String> newSubjectTaken) {
         subjectTaken = newSubjectTaken;
     }
@@ -33,13 +47,6 @@ public class Player {
         this.inventory = inventory;
     }
 
-    public String answerQuestion(Prompter prompter){
-        String answer = prompter.prompt(
-                "Answer with A,B,C, or D \n",
-                "[A-D]|[a-d]",
-                "A,B,C or D ONLY");
-        return answer;
-    }
 
     public void setCredit(double credit) {
         this.credit = credit;
@@ -85,5 +92,12 @@ public class Player {
         return inventory;
     }
 
-
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "{" +
+                " name= " + getName() +
+                " , health= " + health +
+                " , credit= " + getCredit() +
+                '}';
+    }
 }

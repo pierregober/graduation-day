@@ -12,7 +12,7 @@ public class QuestionTest {
 
     @Test
     public void testGenerateQuestions() {
-        assertEquals(-1,new Question(new Prompter(new Scanner(System.in))).generateQuestions("", Grade.FRESHMAN));
+        assertEquals(-1,new Question().generateQuestions("", Grade.FRESHMAN));
 
     }
 }

@@ -142,11 +142,16 @@ public class GameClient {
 
     //Initialize the player as a FRESHMAN aka first level
     public Player setPlayer() {
-        String userName = prompter.prompt("Please enter your name below \n");
-        return new Player(userName, 0, 100, Grade.FRESHMAN, "Computers");
+        String userName = prompter.prompt("Please enter your name below \n", "this is a trashCAN to put player in");
+        return new Player(userName, 0, 10, Grade.FRESHMAN, "Computers");
     }
 
     public static Player getPlayer() {
         return player;
     }
+
+    public static Prompter getPrompter() {
+        return prompter;
+    }
+
 }
