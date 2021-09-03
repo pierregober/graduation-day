@@ -29,7 +29,7 @@ public class readMap {
 
         if (Player.getGrade() == Grade.FRESHMAN) {
             map = importTXT("Banner/map-" + GameClient.getPlayer().getGrade().toString() + ".txt");
-            mapCode.replace(GameClient.getPlayer().getLocation(), "☺");
+            mapCode.replace(GameClient.getPlayer().getLocation(), "**");
 
             newMap = String.format(map, mapCode.get("Gym"), mapCode.get("Geography"),
                     mapCode.get("Player"), mapCode.get("Hallway"), mapCode.get("Credit"),
@@ -39,7 +39,7 @@ public class readMap {
         }
         else if (Player.getGrade() == Grade.SOPHOMORE){
             map = importTXT("Banner/map-" + GameClient.getPlayer().getGrade().toString() + ".txt");
-            mapCode.replace(GameClient.getPlayer().getLocation(), "☺");
+            mapCode.replace(GameClient.getPlayer().getLocation(), "**");
             newMap = String.format(map, mapCode.get("Gym"), mapCode.get("Geography"),
                     mapCode.get("Player"), mapCode.get("History"),mapCode.get("Hallway"),
                     mapCode.get("Credit"), mapCode.get("Cafeteria"), mapCode.get("Maths"),
@@ -47,7 +47,7 @@ public class readMap {
         }
         else if (Player.getGrade() == Grade.JUNIOR){
             map = importTXT("Banner/map-" + GameClient.getPlayer().getGrade().toString() + ".txt");
-            mapCode.replace(GameClient.getPlayer().getLocation(), "☺");
+            mapCode.replace(GameClient.getPlayer().getLocation(), "**");
             newMap = String.format(map, mapCode.get("Computers"), mapCode.get("Player"),
                     mapCode.get("Hallway"),mapCode.get("Gym"), mapCode.get("Credit"),
                     mapCode.get("Cafeteria"), mapCode.get("Maths"), mapCode.get("Geography"),
@@ -55,7 +55,7 @@ public class readMap {
         }
         else if (Player.getGrade() == Grade.SENIOR){
             map = importTXT("Banner/map-" + GameClient.getPlayer().getGrade().toString() + ".txt");
-            mapCode.replace(GameClient.getPlayer().getLocation(), "☺");
+            mapCode.replace(GameClient.getPlayer().getLocation(), "**");
             newMap = String.format(map, mapCode.get("Computers"), mapCode.get("Player"),
                     mapCode.get("History"),mapCode.get("Gym"), mapCode.get("Credit"),
                     mapCode.get("Hallway"), mapCode.get("Geography"), mapCode.get("Cafeteria"),

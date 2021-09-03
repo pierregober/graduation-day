@@ -1,11 +1,15 @@
 package com.graduation.utils;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.graduation.client.GameClient;
 import com.graduation.elements.Player;
 import com.graduation.pointsystem.PointSystem;
 import com.graduation.pointsystem.Question;
 import org.jsoup.Jsoup;
+import org.w3c.dom.ls.LSOutput;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 import java.util.Random;
@@ -135,8 +139,6 @@ public class Prompter {
                 return response;
             }
         }
-
-
     }
 
     private void hackClass() {
@@ -156,6 +158,30 @@ public class Prompter {
 
         }
     }
+
+    public static void clearScreen() {
+        String os = System.getProperty("os.name").toLowerCase();
+        ProcessBuilder process = (os.contains("windows")) ?
+                new ProcessBuilder("cmd", "/c", "cls") :
+                new ProcessBuilder("clear");
+        try {
+            process.inheritIO().start().waitFor();
+        } catch (InterruptedException | IOException ignored) {
+        }
+    }
+
+    private void saveCurrentState() {
+        ObjectMapper save = new ObjectMapper();
+        try {
+            save.writeValue(new File("storage.txt"), save.writeValueAsString(PointSystem.currentPlayer));
+        } catch (JsonProcessingException ex) {
+            ex.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
 
     /**
      * <p>
@@ -183,43 +209,3 @@ public class Prompter {
      * @param retryText  error message displayed when input string does not match regex pattern.
      * @return the line of text that was input, as a string.
      */
-    public String prompt(String promptText, String pattern, String retryText) {
-        String response = null;
-        boolean validResponse = false;
-
-        while (!validResponse) {
-            System.out.print(promptText);
-            response = scanner.nextLine();
-            if (response.matches("help")) {
-                System.out.println("helps on the way");
-                break;
-            }
-
-
-            //check user input if it match pattern
-            validResponse = response.matches(pattern);
-            if (!validResponse) {
-                System.out.println(retryText);
-            } else {
-                break;
-            }
-        }
-        return response;
-    }
-
-    public static void clearScreen() {
-        try {
-            String os = System.getProperty("os.name").toLowerCase();
-            ProcessBuilder process = (os.contains("windows")) ?
-                    new ProcessBuilder("cmd", "/c", "cls") :
-                    new ProcessBuilder("clear");
-            try {
-                process.inheritIO().start().waitFor();
-            } catch (InterruptedException ignored) {
-            }
-        } catch (IOException exception) {
-
-        }
-    }
-
-}
