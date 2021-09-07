@@ -63,6 +63,9 @@ public class Question {
         if (type.isBlank()) {
             return -1;
         } else {
+            Prompter.clearScreen();
+            System.out.println(GameClient.getPlayer());
+            System.out.println(readMap.convertedMap());
             List<QuestionDetail> samples = null;
             try {
                 samples = getQuestions(type, level);
@@ -118,9 +121,7 @@ public class Question {
                 }
                 counter = counter - cheatCounter;
 //                System.out.println();
-                Prompter.clearScreen();
-                System.out.println(GameClient.getPlayer());
-                System.out.println(readMap.convertedMap());
+
             }
             return counter;
         }

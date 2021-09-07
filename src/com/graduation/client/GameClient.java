@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.graduation.actions.GameAction;
 import com.graduation.actions.GameCombat;
-import com.graduation.actions.SourceData;
 import com.graduation.elements.Bully;
 import com.graduation.elements.Player;
 import com.graduation.pointsystem.PointSystem;
@@ -12,6 +11,8 @@ import com.graduation.utils.Grade;
 import com.graduation.utils.Prompter;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 
 public class GameClient {
@@ -73,7 +74,7 @@ public class GameClient {
 
     public static void getLevelDetails(String key){
         try{
-            data = mapper.readTree(SourceData.asString("rooms.json"));
+            data = mapper.readTree(Files.readAllBytes(Paths.get("Banner/rooms.json")));
             prevRoom = getLastRoom(data, Player.getLocation(), Player.getGrade());
             JsonNode filteredData = getDetails(data, Player.getLocation(), Player.getGrade(), key);
             if(key.equals("item")){
@@ -123,7 +124,7 @@ public class GameClient {
     public static String getFirstLocation(){
         try{
             //Step 1: Read our JSON file
-            data = mapper.readTree(SourceData.asString("rooms.json"));
+            data = mapper.readTree(Files.readAllBytes(Paths.get("Banner/rooms.json")));
             //Step 2: Access to my level
             String node = String.valueOf(data.get(String.valueOf(Player.getGrade())));
             //Step 3: Spilt to get my location string
@@ -139,7 +140,7 @@ public class GameClient {
 
     //Initialize the bully
     public Bully setBully() {
-        String bullyName = prompter.prompt("Please enter bully name below \n");
+        String bullyName = prompter.prompt("Please enter bully name below \n", "this is a hole to put bully in");
         return new Bully(bullyName, 100, true);
     }
 

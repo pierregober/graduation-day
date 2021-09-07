@@ -3,10 +3,14 @@ package com.graduation.actions;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.graduation.client.GameClient;
 import com.graduation.elements.Bully;
 import com.graduation.elements.Player;
+import com.graduation.utils.Prompter;
+import com.graduation.utils.readMap;
 
-import java.util.List;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class GameCombat {
@@ -16,6 +20,9 @@ public class GameCombat {
     private static JsonNode data;
 
     public static void initializeCombatScene() {
+        Prompter.clearScreen();
+        System.out.println(GameClient.getPlayer());
+        System.out.println(readMap.convertedMap());
         System.out.println("*******************************");
         System.out.println(Bully.getName() + " has spotted you!");
         fight();
@@ -32,6 +39,9 @@ public class GameCombat {
             Bully.setPresence(false);
 
         }else{
+            Prompter.clearScreen();
+            System.out.println(GameClient.getPlayer());
+            System.out.println(readMap.convertedMap());
             System.out.println("*******************************");
             System.out.println("Health Points: " + Player.getHealth());
             System.out.println("Bully's health " + Bully.getHealth());
@@ -127,10 +137,10 @@ public class GameCombat {
 
     private static void getItemDesc(String item) {
         try {
-            data = mapper.readTree(SourceData.asString("items.json"));
+            data = mapper.readTree(Files.readAllBytes(Paths.get("Banner/items.json")));
             JsonNode filteredData = data.get(String.valueOf(item));
             System.out.println(filteredData.asText());
-        } catch (NullPointerException | JsonProcessingException e) {
+        } catch (Exception e) {
             System.out.println(e);
         }
     }
