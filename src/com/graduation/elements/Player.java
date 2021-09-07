@@ -6,28 +6,36 @@ import com.graduation.utils.Prompter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 public class Player {
     private static Grade grade;
-    private String name;
+    private static String name;
     private static double credit;
     private static String location;
-    private int health;
-    private static List<String> inventory = new ArrayList<>(Arrays.asList("notebook"));
+    private static int health;
+    private static List<String> inventory = new ArrayList<>();
+    private static List<String> subjectTaken = new ArrayList<>();
 
-    public List<String> getSubjectTaken() {
+    public int getTotalSubject() {
+        return totalSubject;
+    }
+
+    public void setTotalSubject(int totalSubject) {
+        this.totalSubject = totalSubject;
+    }
+
+    private int totalSubject = 0;
+
+    public static List<String> getSubjectTaken() {
         return subjectTaken;
     }
 
-    public void setSubjectTaken(List<String> subjectTaken) {
-        this.subjectTaken = subjectTaken;
+    public static void setSubjectTaken(List<String> newSubjectTaken) {
+        subjectTaken = newSubjectTaken;
     }
 
-    private List<String> subjectTaken=new ArrayList<>();
-
     public Player(String name, int credit, int health, Grade grade, String location){
-            this.name = name;
+        this.name = name;
         this.credit = credit;
         this.health = health;
         this.grade = grade;
@@ -35,13 +43,6 @@ public class Player {
         this.inventory = inventory;
     }
 
-    public String answerQuestion(Prompter prompter){
-        String answer = prompter.prompt(
-                "Answer with A,B,C, or D \n",
-                "[A-D]|[a-d]",
-                "A,B,C or D ONLY");
-        return answer;
-    }
 
     public void setCredit(double credit) {
         this.credit = credit;
@@ -59,11 +60,11 @@ public class Player {
         this.location = location;
     }
 
-    public void setHealth(int health) {
-        this.health = health;
+    public static int setHealth(int health) {
+        return Player.health = health;
     }
 
-    public int getHealth() {
+    public static int getHealth() {
         return health;
     }
 
@@ -79,11 +80,20 @@ public class Player {
         return credit;
     }
 
-    public String getName() {
+    public static String getName() {
         return name;
     }
 
-    public List<String> getInventory() {
+    public static List<String> getInventory() {
         return inventory;
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "{" +
+                " name= " + getName() +
+                " , health= " + health +
+                " , credit= " + getCredit() +
+                '}';
     }
 }

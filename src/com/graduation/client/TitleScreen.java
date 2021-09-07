@@ -15,7 +15,7 @@ class TitleScreen {
     String credits = "This game was produced by Hongyi Qu, Pierre Gober, Stephen Yeboah\n" +
             " Jauric Flowers.\n";
 
-    String help = "You must answer a series of questions to collect badges.\n" +
+    String help = "You must answer a series of questions to get a passing grade.\n" +
             "You need 4 badges in order to graduate high school. Also,\n" +
             "watch out for the bully and collect hidden items.\n" +
             "Actions:\n" +
@@ -23,10 +23,6 @@ class TitleScreen {
             "GO [north, south, east, west, up, down]\n" +
             "\n" +
             "GET [item]\n" +
-            "\n" +
-            "USE [item]\n" +
-            "\n" +
-            "LOOK\n" +
             "\n" +
             "INV/INVENTORY";
 
