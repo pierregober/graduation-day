@@ -107,6 +107,7 @@ public class PointSystem {
             player_total_grade = 0;
             //Step 4: Toggle the bully
             Bully.setPresence(true);
+            Bully.setHealth(100);
         }
     }
 }
