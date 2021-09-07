@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="39ac1c05-d2ed-44c0-b898-a10157df4461" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Graduation_Day-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Graduation_Day-1.0.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/graduation/actions/GameAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/actions/GameAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/graduation/actions/GameCombat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/actions/GameCombat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/graduation/actions/SourceData.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/graduation/pointsystem/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/pointsystem/Question.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

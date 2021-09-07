@@ -3,6 +3,7 @@ package com.graduation.actions;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.graduation.client.GameClient;
 import com.graduation.elements.Bully;
 import com.graduation.elements.Player;
 import com.graduation.utils.Prompter;
@@ -20,6 +21,7 @@ public class GameCombat {
 
     public static void initializeCombatScene() {
         Prompter.clearScreen();
+        System.out.println(GameClient.getPlayer());
         System.out.println(readMap.convertedMap());
         System.out.println("*******************************");
         System.out.println(Bully.getName() + " has spotted you!");
@@ -38,6 +40,7 @@ public class GameCombat {
 
         }else{
             Prompter.clearScreen();
+            System.out.println(GameClient.getPlayer());
             System.out.println(readMap.convertedMap());
             System.out.println("*******************************");
             System.out.println("Health Points: " + Player.getHealth());
