@@ -94,6 +94,7 @@ public class Player {
                 " name= " + getName() +
                 " , health= " + health +
                 " , credit= " + getCredit() +
+                ", grade= " + getGrade().name().toLowerCase() +
                 '}';
     }
 }
