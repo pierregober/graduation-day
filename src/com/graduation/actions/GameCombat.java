@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.graduation.elements.Bully;
 import com.graduation.elements.Player;
+import com.graduation.utils.Prompter;
+import com.graduation.utils.readMap;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -17,6 +19,8 @@ public class GameCombat {
     private static JsonNode data;
 
     public static void initializeCombatScene() {
+        Prompter.clearScreen();
+        System.out.println(readMap.convertedMap());
         System.out.println("*******************************");
         System.out.println(Bully.getName() + " has spotted you!");
         fight();
@@ -33,6 +37,8 @@ public class GameCombat {
             Bully.setPresence(false);
 
         }else{
+            Prompter.clearScreen();
+            System.out.println(readMap.convertedMap());
             System.out.println("*******************************");
             System.out.println("Health Points: " + Player.getHealth());
             System.out.println("Bully's health " + Bully.getHealth());

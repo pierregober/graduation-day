@@ -11,7 +11,6 @@ public class GameAction {
 
     public static void getAction() {
         Prompter.clearScreen();
-        System.out.println(GameClient.getPlayer());
         System.out.println(readMap.convertedMap());
         String move = GameClient.getPrompter().prompt("Enter a move: ");
         String[] moveArray = move.toLowerCase().split(" ");
