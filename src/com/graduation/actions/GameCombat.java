@@ -93,9 +93,9 @@ public class GameCombat {
                             if((Math.random() * 100) > 10){
                                 //Step 2a: Print the item desc
                                 getItemDesc(moveArray[1]);
-                                //***Bully dies***
+                                    //***Bully defeated*
                                 Bully.setHealth(0);
-                                //Toggle the bullly presence var!!! ----------------------------------
+                                //Toggle the bully presence var
                                 Bully.setPresence(false);
                                 //Get the next action
                                 GameAction.getAction();
