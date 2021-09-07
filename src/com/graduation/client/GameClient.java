@@ -141,7 +141,7 @@ public class GameClient {
 
     //Initialize the bully
     public Bully setBully() {
-        String bullyName = prompter.prompt("Please enter bully name below \n");
+        String bullyName = prompter.prompt("Please enter bully name below \n", "this is a hole to put bully in");
         return new Bully(bullyName, 100, true);
     }
 
