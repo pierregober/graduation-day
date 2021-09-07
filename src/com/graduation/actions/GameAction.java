@@ -30,7 +30,7 @@ public class GameAction {
                 GameClient.getLevelDetails("item");
                 break;
             default:
-                System.out.println("You entered a an invalid move.");
+                System.out.println("You entered a an invalid move. Type \"H\" for the instructions");
                 getAction();
                 break;
         }
