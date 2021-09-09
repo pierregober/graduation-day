@@ -72,24 +72,23 @@ class TitleScreen {
         System.out.println();
         System.out.println();
 
-        System.out.println("*************************************************************");
-        System.out.println("*********************** INSTRUCTIONS ************************");
-        System.out.println("*************************************************************\n");
-        System.out.println("        The next four years of your life will be the most exciting times of your life.");
-        System.out.println("        Your first task is to answer as many questions correctly as you can.");
-        System.out.println("        You need a 2.0 to graduate.");
+        System.out.println("*****************************************************************************************");
+        System.out.println("************************************ INSTRUCTIONS ***************************************");
+        System.out.println("*                                                                                       *");
+        System.out.println("*        The next four years of your life will be the most exciting times of your life. *      ******************");
+        System.out.println("*        1. Your first task is to answer as many questions correctly as you can.        *      *    COMMANDS:   *");
+        System.out.println("*        2. You need at least 2.0 GPA to pass each class and graduate.                  *      *    go east     *");
+        System.out.println("*        3. Go around each classroom and answer the questions.                          *      *    go west     *");
+        System.out.println("*        4. If you fail a class, you will retake it until you pass.                     *      *    go south    *");
+        System.out.println("*        5. You may be rewarded with special items. Also, avoid the bathroom.           *      *    go north    *");
+        System.out.println("*        6. At any point in the game, you can press 'S', 'H', or 'Q.' :                 *      *    run         *");
+        System.out.println("*                'S' ---> will give the players status.                                 *      *    fight       *");
+        System.out.println("*                'H' ---> will give helpful tips.                                       *      *    cheat       *");
+        System.out.println("*                'Q' ---> Will force the game to quit.                                  *      ******************");
+        System.out.println("*                                                                                       *");
+        System.out.println("*****************************************************************************************\n");
 
 
         }
-
-
-//    public static String readTXT(String name) {
-//        try {
-//            banner = Files.readString(Path.of("Banner/" + name + ".txt"));
-//        } catch (IOException e) {
-//
-//        }
-//        return banner;
-//    }
 
 }
