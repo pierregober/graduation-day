@@ -2,8 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b0e304ac-c8c7-41e9-807c-1e4be86d37e3" name="Default Changelist" comment="Merge branch 'dev' of https://github.com/pierregober/graduation-day into hongyiDev&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;Graduation_Day-1.0.jar">
+      <change afterPath="$PROJECT_DIR$/lib/hamcrest-core-1.3.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/graduation/utils/ConsoleColor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Graduation_Day-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Graduation_Day-1.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graduation-day.iml" beforeDir="false" afterPath="$PROJECT_DIR$/graduation-day.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/graduation-day/items.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/graduation/client/GameClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/client/GameClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/graduation/pointsystem/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/pointsystem/Question.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/graduation/utils/Prompter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/utils/Prompter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/com/graduation/pointsystem/QuestionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/graduation/pointsystem/QuestionTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,16 +46,27 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/jackson-core-2.13.0-rc1.jar" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/hamcrest-core-1.3.jar" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\AmazonSDE\Practical Applications\graduation-day\src" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\StudentWork\Capstone\Graduation\graduation-day\lib" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.graduation.pointsystem" />
     </key>
   </component>
   <component name="RunManager" selected="Application.GraduationDayApplicationClient">
@@ -78,9 +96,60 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="QuestionTest.getCurrentQuestion" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="graduation-day" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.graduation.pointsystem.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.graduation.pointsystem" />
+      <option name="MAIN_CLASS_NAME" value="com.graduation.pointsystem.QuestionTest" />
+      <option name="METHOD_NAME" value="getCurrentQuestion" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="QuestionTest.testAbc" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="graduation-day" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.graduation.pointsystem.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.graduation.pointsystem" />
+      <option name="MAIN_CLASS_NAME" value="com.graduation.pointsystem.QuestionTest" />
+      <option name="METHOD_NAME" value="testAbc" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="QuestionTest.testGenerateQuestions" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="graduation-day" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.graduation.pointsystem.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.graduation.pointsystem" />
+      <option name="MAIN_CLASS_NAME" value="com.graduation.pointsystem.QuestionTest" />
+      <option name="METHOD_NAME" value="testGenerateQuestions" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.GraduationDayApplicationClient" />
+        <item itemvalue="JUnit.QuestionTest.getCurrentQuestion" />
+        <item itemvalue="JUnit.QuestionTest.testAbc" />
+        <item itemvalue="JUnit.QuestionTest.testGenerateQuestions" />
         <item itemvalue="Application.PointSystem" />
       </list>
     </recent_temporary>
@@ -121,5 +190,15 @@
     <MESSAGE value="Merge branch 'dev' of https://github.com/pierregober/graduation-day into gameStats&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;graduation-day.iml&#10;#&#9;src/com/graduation/actions/GameAction.java&#10;#&#9;src/com/graduation/client/GameClient.java&#10;#&#9;src/com/graduation/elements/Player.java" />
     <MESSAGE value="Merge branch 'dev' of https://github.com/pierregober/graduation-day into hongyiDev&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;Graduation_Day-1.0.jar" />
     <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'dev' of https://github.com/pierregober/graduation-day into hongyiDev&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;Graduation_Day-1.0.jar" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ClassNotFoundException" package="java.lang" />
+          <option name="timeStamp" value="5" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
