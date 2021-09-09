@@ -142,12 +142,14 @@ public class GameClient {
 
     //Initialize the bully
     public Bully setBully() {
+
         return new Bully("bully", 100, true);
+
     }
 
     //Initialize the player as a FRESHMAN aka first level
     public Player setPlayer() {
-        String userName = prompter.prompt("Please enter your name below \n", "this is a trashCAN to put player in");
+        String userName = prompter.prompt("Please enter your name below: \n");
         return new Player(userName, 0, 100, Grade.FRESHMAN, "Computers");
     }
 

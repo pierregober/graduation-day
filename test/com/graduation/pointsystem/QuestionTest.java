@@ -14,9 +14,7 @@ public class QuestionTest {
 
     @Test
     public void testGenerateQuestions() {
-        assertEquals(-1,new Question().generateQuestions("", Grade.FRESHMAN));
-
-    }
+        assertEquals(-1, new Question().generateQuestions("", Grade.FRESHMAN));
 
 
     @Test
@@ -27,4 +25,5 @@ public class QuestionTest {
 
 
     }
+
 }
