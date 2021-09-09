@@ -13,9 +13,17 @@ public class GameAction {
         Prompter.clearScreen();
         System.out.println(GameClient.getPlayer());
         System.out.println(readMap.convertedMap());
-        String move = GameClient.getPrompter().prompt("Enter a move: ");
+
+        System.out.println("GO " + GameClient.getValidDirections());
+        String move = GameClient.getPrompter().prompt("Enter a move from above options: \n ");
         String[] moveArray = move.toLowerCase().split(" ");
-        
+
+        // validate userInput for valid command length
+        while (moveArray.length != 2) {
+            move = GameClient.getPrompter().prompt("Enter a move from above options: \n ");
+            moveArray = move.toLowerCase().split(" ");
+        }
+
         switch (moveArray[0]) {
             case "go":
                 if (moveArray[1].equals("north") || moveArray[1].equals("south") || moveArray[1].equals("east") || moveArray[1].equals("west")) {
