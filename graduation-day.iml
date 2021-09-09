@@ -14,7 +14,9 @@
     <orderEntry type="library" name="graduation-day" level="project" />
     <orderEntry type="library" name="Graduation_Day-1.0" level="project" />
     <orderEntry type="library" name="lib" level="project" />
+
     <orderEntry type="module-library">
+
       <library>
         <CLASSES>
           <root url="jar://$MODULE_DIR$/lib/jackson-annotations-2.13.0-rc1.jar!/" />
@@ -23,7 +25,9 @@
         <SOURCES />
       </library>
     </orderEntry>
+
     <orderEntry type="module-library">
+
       <library>
         <CLASSES>
           <root url="jar://$MODULE_DIR$/lib/jackson-core-2.13.0-rc1.jar!/" />
@@ -32,7 +36,9 @@
         <SOURCES />
       </library>
     </orderEntry>
+
     <orderEntry type="module-library">
+
       <library>
         <CLASSES>
           <root url="jar://$MODULE_DIR$/lib/jackson-databind-2.13.0-rc1.jar!/" />
@@ -41,7 +47,9 @@
         <SOURCES />
       </library>
     </orderEntry>
+
     <orderEntry type="module-library">
+
       <library>
         <CLASSES>
           <root url="jar://$MODULE_DIR$/lib/jsoup-1.11.2.jar!/" />
@@ -50,7 +58,9 @@
         <SOURCES />
       </library>
     </orderEntry>
+
     <orderEntry type="module-library">
+
       <library>
         <CLASSES>
           <root url="jar://$MODULE_DIR$/lib/junit-4.13.jar!/" />
@@ -59,6 +69,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+
     <orderEntry type="module-library">
       <library>
         <CLASSES>
@@ -75,5 +86,6 @@
         <jarDirectory url="file://$MODULE_DIR$" recursive="false" />
       </library>
     </orderEntry>
+
   </component>
 </module>
