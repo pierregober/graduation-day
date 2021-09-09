@@ -3,14 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="b0e304ac-c8c7-41e9-807c-1e4be86d37e3" name="Default Changelist" comment="Merge branch 'dev' of https://github.com/pierregober/graduation-day into hongyiDev&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;Graduation_Day-1.0.jar">
 
+
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Graduation_Day-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Graduation_Day-1.0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.sh" beforeDir="false" afterPath="$PROJECT_DIR$/build.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Banner/Instructions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Banner/Instructions.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/graduation-day.iml" beforeDir="false" afterPath="$PROJECT_DIR$/graduation-day.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/run.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/graduation/client/GraduationDayApplicationClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/client/GraduationDayApplicationClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/graduation/client/TitleScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/client/TitleScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/graduation/actions/GameCombat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/actions/GameCombat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/graduation/client/GameClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/graduation/client/GameClient.java" afterDir="false" />
+
       <change beforePath="$PROJECT_DIR$/storage.txt" beforeDir="false" afterPath="$PROJECT_DIR$/storage.txt" afterDir="false" />
 
     </list>
@@ -50,11 +51,12 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
 
+
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/ascii-render-api-2.2.0.jar" />
 
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.proportion" value="0.175" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
   </component>
@@ -99,7 +101,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+
     <configuration name="QuestionTest.getCurrentQuestion" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+
       <module name="graduation-day" />
       <extension name="coverage">
         <pattern>
@@ -109,6 +113,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.graduation.pointsystem" />
       <option name="MAIN_CLASS_NAME" value="com.graduation.pointsystem.QuestionTest" />
+
       <option name="METHOD_NAME" value="getCurrentQuestion" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -142,6 +147,7 @@
       <option name="PACKAGE_NAME" value="com.graduation.pointsystem" />
       <option name="MAIN_CLASS_NAME" value="com.graduation.pointsystem.QuestionTest" />
       <option name="METHOD_NAME" value="testGenerateQuestions" />
+
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -150,9 +156,11 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.GraduationDayApplicationClient" />
+
         <item itemvalue="JUnit.QuestionTest.getCurrentQuestion" />
         <item itemvalue="JUnit.QuestionTest.testAbc" />
         <item itemvalue="JUnit.QuestionTest.testGenerateQuestions" />
+
         <item itemvalue="Application.PointSystem" />
       </list>
     </recent_temporary>
@@ -194,6 +202,7 @@
     <MESSAGE value="Merge branch 'dev' of https://github.com/pierregober/graduation-day into hongyiDev&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;Graduation_Day-1.0.jar" />
     <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'dev' of https://github.com/pierregober/graduation-day into hongyiDev&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;Graduation_Day-1.0.jar" />
   </component>
+
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
