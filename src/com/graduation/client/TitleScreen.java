@@ -1,5 +1,13 @@
 package com.graduation.client;
 
+import com.indvd00m.ascii.render.Render;
+import com.indvd00m.ascii.render.api.ICanvas;
+import com.indvd00m.ascii.render.api.IContextBuilder;
+import com.indvd00m.ascii.render.api.IRender;
+import com.indvd00m.ascii.render.elements.PseudoText;
+
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -49,19 +57,39 @@ class TitleScreen {
 
 
     //Displays title and instructions
-    public static void displayInstructions() {
-        System.out.println(TitleScreen.readTXT("Welcome_Grad_Day"));
-        System.out.println(TitleScreen.readTXT("Instructions"));
+    public static void displayInstructions()  {
+//        System.out.println(TitleScreen.readTXT("Welcome_Grad_Day"));
+//        System.out.println(TitleScreen.readTXT("Instructions"));
 
-    }
+        //Use ascii-render to display welcome to graduation day!
+        IRender render3 = new Render();
+        IContextBuilder builder3 = render3.newBuilder();
+        builder3.width(140).height(10);
+        builder3.element(new PseudoText("WELCOME TO GRADUATION DAY!", false));
+        ICanvas canvas3 = render3.render(builder3.build());
+        String s3 = canvas3.getText();
+        System.out.println(s3);
+        System.out.println();
+        System.out.println();
 
-    public static String readTXT(String name) {
-        try {
-            banner = Files.readString(Path.of("Banner/" + name + ".txt"));
-        } catch (IOException e) {
+        System.out.println("*************************************************************");
+        System.out.println("*********************** INSTRUCTIONS ************************");
+        System.out.println("*************************************************************\n");
+        System.out.println("        The next four years of your life will be the most exciting times of your life.");
+        System.out.println("        Your first task is to answer as many questions correctly as you can.");
+        System.out.println("        You need a 2.0 to graduate.");
+
 
         }
-        return banner;
-    }
+
+
+//    public static String readTXT(String name) {
+//        try {
+//            banner = Files.readString(Path.of("Banner/" + name + ".txt"));
+//        } catch (IOException e) {
+//
+//        }
+//        return banner;
+//    }
 
 }
