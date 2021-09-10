@@ -3,6 +3,7 @@ package com.graduation.actions;
 import com.graduation.client.GameClient;
 import com.graduation.utils.Prompter;
 import com.graduation.utils.readMap;
+import jdk.swing.interop.SwingInterOpUtils;
 
 import java.util.Scanner;
 
@@ -13,9 +14,22 @@ public class GameAction {
         Prompter.clearScreen();
         System.out.println(GameClient.getPlayer());
         System.out.println(readMap.convertedMap());
-        String move = GameClient.getPrompter().prompt("Enter a move: ");
+
+        System.out.println("GO " + GameClient.getValidDirections());
+        System.out.println("GET " + "[item]");
+        System.out.println("USE " + "[item]");
+        System.out.println("LOOK");
+        System.out.println("H (for help)");
+
+        String move = GameClient.getPrompter().prompt("Enter a move from above options: \n ");
         String[] moveArray = move.toLowerCase().split(" ");
-        
+
+//         validate userInput for valid command length
+        while (moveArray.length != 2) {
+            move = GameClient.getPrompter().prompt("Enter a move from above options: \n ");
+            moveArray = move.toLowerCase().split(" ");
+        }
+
         switch (moveArray[0]) {
             case "go":
                 if (moveArray[1].equals("north") || moveArray[1].equals("south") || moveArray[1].equals("east") || moveArray[1].equals("west")) {
