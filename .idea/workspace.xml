@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-
     <list default="true" id="7080183c-4405-4304-92eb-04a40bb5b467" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/test/com/graduation/reader/ReaderTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
-
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -32,7 +39,7 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.ReaderTest.testFileReaderMatcherForArraySamesys">
     <configuration name="GraduationDayApplicationClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.graduation.client.GraduationDayApplicationClient" />
       <module name="graduation-day" />
@@ -46,8 +53,76 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ReaderTest.testFileReader" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="graduation-day" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.graduation.reader.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.graduation.reader" />
+      <option name="MAIN_CLASS_NAME" value="com.graduation.reader.ReaderTest" />
+      <option name="METHOD_NAME" value="testFileReader" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ReaderTest.testFileReaderArraListSize" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="graduation-day" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.graduation.reader.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.graduation.reader" />
+      <option name="MAIN_CLASS_NAME" value="com.graduation.reader.ReaderTest" />
+      <option name="METHOD_NAME" value="testFileReaderArraListSize" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ReaderTest.testFileReaderIsEmptyArrayList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="graduation-day" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.graduation.reader.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.graduation.reader" />
+      <option name="MAIN_CLASS_NAME" value="com.graduation.reader.ReaderTest" />
+      <option name="METHOD_NAME" value="testFileReaderIsEmptyArrayList" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ReaderTest.testFileReaderMatcherForArraySamesys" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="graduation-day" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.graduation.reader.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.graduation.reader" />
+      <option name="MAIN_CLASS_NAME" value="com.graduation.reader.ReaderTest" />
+      <option name="METHOD_NAME" value="testFileReaderMatcherForArraySamesys" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ReaderTest.testFileReaderMatcherForArraySamesys" />
+        <item itemvalue="JUnit.ReaderTest.testFileReaderIsEmptyArrayList" />
+        <item itemvalue="JUnit.ReaderTest.testFileReaderArraListSize" />
+        <item itemvalue="JUnit.ReaderTest.testFileReader" />
         <item itemvalue="Application.GraduationDayApplicationClient" />
       </list>
     </recent_temporary>
@@ -64,6 +139,15 @@
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
