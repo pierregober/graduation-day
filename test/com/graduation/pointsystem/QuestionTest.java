@@ -12,18 +12,18 @@ import static org.junit.Assert.*;
 
 public class QuestionTest {
 
-    @Test
-    public void testGenerateQuestions() {
-        assertEquals(-1, new Question().generateQuestions("", Grade.FRESHMAN));
-
-
-    @Test
-    public void testGenerateFight() throws Exception {
-        TextFileReader tfr = new TextFileReader();
-        ArrayList<String> x = tfr.readFightFile();
-        System.out.println(x.get(27) + " " + "this is test");
-
-
-    }
+//    @Test
+//    public void testGenerateQuestions() {
+//        assertEquals(-1, new Question().generateQuestions("", Grade.FRESHMAN));
+//
+//
+////    @Test
+////    public void testGenerateFight() throws Exception {
+////        TextFileReader tfr = new TextFileReader();
+////        ArrayList<String> x = tfr.readFightFile();
+////        System.out.println(x.get(27) + " " + "this is test");
+////
+////
+////    }
 
 }

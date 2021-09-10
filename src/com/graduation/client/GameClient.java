@@ -84,7 +84,7 @@ public class GameClient {
             JsonNode filteredData = getDetails(data, Player.getLocation(), Player.getGrade(), key);
             if (key.equals("item")) {
                 //If the room does have an item check if player already has it!
-                if (player.getInventory() != null || player.getInventory().contains(filteredData.asText())) {
+                if (player.getInventory().contains(filteredData.asText())) {
                     //View to tell the user that they grabbed the room item already
                     System.out.println(ConsoleColor.RED + "There are no items to grab from this room. " + ConsoleColor.RESET);
                     continueJourney(false);

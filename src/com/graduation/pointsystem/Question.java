@@ -119,7 +119,7 @@ public class Question {
                     counter += 1;
                 } else {
                     System.out.println(ConsoleColor.RED + "Wrong : The correct answer is " + sample.getCorrect_answer()
-                    + ConsoleColor.RESET + "\n");
+                            + ConsoleColor.RESET + "\n");
                 }
                 counter = counter - cheatCounter;
 //                System.out.println();
