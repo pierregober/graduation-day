@@ -2,6 +2,10 @@
 .idea/
 out
 
+# intelliJ files
+.idea/
+*.iml
+
 
 # Compiled class file
 *.class
