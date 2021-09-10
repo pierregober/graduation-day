@@ -46,10 +46,10 @@ class TitleScreen {
 
     //Displays title and instructions
     public static void displayInstructions()  {
+
         System.out.println(TitleScreen.readTXT("Welcome_Grad_Day"));
 
         System.out.println(TitleScreen.readTXT("Instructions"));
-
 
         }
 
