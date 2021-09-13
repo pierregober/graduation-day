@@ -40,7 +40,7 @@ public class Question {
 
     //public static boolean isHacked = false;
 
-    private List<QuestionDetail> getQuestions(String type, Grade grade) throws JsonProcessingException, ExecutionException, InterruptedException {
+    public List<QuestionDetail> getQuestions(String type, Grade grade) throws JsonProcessingException, ExecutionException, InterruptedException {
         //testing level
         //System.out.println("level=" + difficulties.get(grade));
         //make a client object
@@ -122,7 +122,6 @@ public class Question {
                             + ConsoleColor.RESET + "\n");
                 }
                 counter = counter - cheatCounter;
-//                System.out.println();
 
             }
             return counter;
