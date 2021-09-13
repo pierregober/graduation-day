@@ -1,5 +1,6 @@
 package com.graduation.client;
 
+import com.graduation.utils.ConsoleColor;
 import com.indvd00m.ascii.render.Render;
 import com.indvd00m.ascii.render.api.ICanvas;
 import com.indvd00m.ascii.render.api.IContextBuilder;
@@ -47,7 +48,7 @@ class TitleScreen {
     //Displays title and instructions
     public static void displayInstructions()  {
 
-        System.out.println(TitleScreen.readTXT("Welcome_Grad_Day"));
+        System.out.println(ConsoleColor.GREEN + TitleScreen.readTXT("Welcome_Grad_Day") + ConsoleColor.RESET);
 
         System.out.println(TitleScreen.readTXT("Instructions"));
 

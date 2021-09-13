@@ -48,10 +48,11 @@ public class GameClient {
     public static void nextLocation(String location) {
         //Grab the previous and read the location according to direction within it's JSON properties
         try {
-
             String nextLoc = prevRoom.get(location).textValue();
             player.setLocation(nextLoc);
+            System.out.println("You are now in " + ConsoleColor.GREEN + nextLoc + ConsoleColor.RESET);
             getLevelDetails("desc");
+            displayRoomInventory();
 
             //Determine if it's a subject room
             if (!notSubject.contains(nextLoc.toLowerCase())) {
@@ -75,6 +76,15 @@ public class GameClient {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static JsonNode displayRoomInventory() {
+        JsonNode roomInventory = null;
+        if (isValidKey(data, Player.getLocation(), Player.getGrade(), "item")) {
+            roomInventory = getDetails(data, Player.getLocation(), Player.getGrade(), "item");
+            System.out.println("Room Inventory :" + roomInventory);
+        }
+        return roomInventory;
     }
 
     public static void getLevelDetails(String key) {
@@ -144,8 +154,8 @@ public class GameClient {
     }
 
     // Method to check if valid direction at a given level and room
-    private static boolean isValidDirection(JsonNode node, String location, Grade grade, String direction) {
-        return node.get(String.valueOf(grade)).get(location).has(direction);
+    private static boolean isValidKey(JsonNode node, String location, Grade grade, String key) {
+        return node.get(String.valueOf(grade)).get(location).has(key);
     }
 
     // Return valid directions at a given level and room
@@ -153,7 +163,7 @@ public class GameClient {
         List<String> directions = new ArrayList<>(Arrays.asList("north", "east", "south", "west"));
         List<String> validDirections = new ArrayList<>();
         for (String direction : directions) {
-            if (isValidDirection(data, Player.getLocation(), Player.getGrade(), direction)) {
+            if (isValidKey(data, Player.getLocation(), Player.getGrade(), direction)) {
                 validDirections.add(direction);
             }
         }
