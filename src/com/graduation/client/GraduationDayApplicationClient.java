@@ -6,6 +6,7 @@ import com.graduation.utils.Prompter;
 
 public class GraduationDayApplicationClient {
     public static void main(String[] args) {
+        // display landing screen
             TitleScreen.displayInstructions();
 
         Prompter prompter = new Prompter(new Scanner(System.in));
