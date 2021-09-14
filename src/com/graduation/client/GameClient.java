@@ -41,12 +41,7 @@ public class GameClient {
             continueJourney(false);
         } else {
             //Step 2b -- Call method to initialize the question sequence
-            try {
-                PointSystem.teacherQuestions(Player.getLocation().toLowerCase(), Player.getGrade(), player);
-            } catch (InterruptedException e) {
-                //e.printStackTrace();
-                System.out.println(e.getMessage());
-            }
+            PointSystem.teacherQuestions(Player.getLocation().toLowerCase(), Player.getGrade(), player);
         }
     }
 
@@ -79,8 +74,7 @@ public class GameClient {
             System.out.println("You can't go that direction! Quick Try a different cardinal direction please");
             GameAction.getAction();
         } catch (Exception e) {
-            //e.printStackTrace();
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -125,12 +119,7 @@ public class GameClient {
         //Have a conditional that switch when it's a new level
         if (val) {
             getLevelDetails("desc");
-            try {
-                PointSystem.teacherQuestions(Player.getLocation().toLowerCase(), Player.getGrade(), player);
-            } catch (InterruptedException e) {
-                //e.printStackTrace();
-                System.out.println(e.getMessage());
-            }
+            PointSystem.teacherQuestions(Player.getLocation().toLowerCase(), Player.getGrade(), player);
         } else {
             //System.out.println("Whats your next move?");
             GameAction.getAction();
