@@ -11,6 +11,8 @@ import com.graduation.utils.ConsoleColor;
 import com.graduation.utils.Grade;
 import com.graduation.utils.Prompter;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -30,7 +32,7 @@ public class GameClient {
         this.prompter = prompter;
     }
 
-    public void initialize() {
+    public void initialize() throws UnsupportedAudioFileException, LineUnavailableException, IOException, InterruptedException {
         player = setPlayer();
         bully = setBully();
         //Step 1a -- Generate the location info from the json
@@ -111,11 +113,17 @@ public class GameClient {
             }
         } catch (IOException e) {
             System.out.println(e);
+        } catch (UnsupportedAudioFileException e) {
+            e.printStackTrace();
+        } catch (LineUnavailableException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
     //Method to initialize the action to move
-    public static void continueJourney(boolean val) {
+    public static void continueJourney(boolean val) throws UnsupportedAudioFileException, LineUnavailableException, IOException, InterruptedException {
         //Have a conditional that switch when it's a new level
         if (val) {
             getLevelDetails("desc");
