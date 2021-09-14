@@ -10,6 +10,7 @@ import com.graduation.pointsystem.PointSystem;
 import com.graduation.utils.ConsoleColor;
 import com.graduation.utils.Grade;
 import com.graduation.utils.Prompter;
+import com.graduation.utils.Sound;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
@@ -26,6 +27,7 @@ public class GameClient {
     private static JsonNode data;
     private static JsonNode prevRoom;
     private static final List<String> notSubject = new ArrayList<>(Arrays.asList("gym", "cafeteria", "hallway"));
+    private Sound sound = new Sound();
 
 
     public GameClient(Prompter prompter) {
@@ -33,6 +35,7 @@ public class GameClient {
     }
 
     public void initialize() throws UnsupportedAudioFileException, LineUnavailableException, IOException, InterruptedException {
+        sound.playSoundClip("Sounds/southPark.wav");
         player = setPlayer();
         bully = setBully();
         //Step 1a -- Generate the location info from the json
