@@ -19,31 +19,6 @@ import java.util.Scanner;
 class TitleScreen {
     //Fields
     private static String banner;
-    Scanner titleObj = new Scanner(System.in);
-    String keystroke = titleObj.nextLine().toLowerCase();
-
-
-    String help = TitleScreen.readTXT("help");
-
-
-    public void inputOptions(String keystroke) {
-        //We will use this later during the game as an option to bring
-        System.out.println("Type 'Q' to quit the game." +
-                "Type 'Z' to look at the credits. Type 'H' to look at the help tutorial");
-        switch (keystroke) {
-            case "q":
-                System.exit(0);
-                break;
-            case "h":
-                System.out.println(help);
-                break;
-            default:
-                System.out.println("Invalid input");
-                break;
-        }
-//        System.out.println(keystroke);
-    }
-
 
     //Displays title and instructions
     public static void displayInstructions()  {

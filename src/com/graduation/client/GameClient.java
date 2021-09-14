@@ -121,7 +121,6 @@ public class GameClient {
             getLevelDetails("desc");
             PointSystem.teacherQuestions(Player.getLocation().toLowerCase(), Player.getGrade(), player);
         } else {
-            System.out.println("Whats your next move?");
             GameAction.getAction();
         }
     }
