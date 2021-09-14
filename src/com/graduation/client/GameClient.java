@@ -132,6 +132,7 @@ public class GameClient {
                 System.out.println(e.getMessage());
             }
         } else {
+            //System.out.println("Whats your next move?");
             GameAction.getAction();
         }
     }
