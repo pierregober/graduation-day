@@ -63,14 +63,14 @@ public class PointSystem {
                     player.getSubjectTaken().add(subject);
                     //set the player's GPA
                     player.setCredit(pointSystem.getCumulativeScore(score, player.getSubjectTaken().size()));
-                    System.out.println("Your current GPA is: " + player.getCredit()); //this display the GPA like 3.2
+                    //System.out.println("Your current GPA is: " + player.getCredit()); //this display the GPA like 3.2
                     //determine if the player has meet the criteria to change its level
                     //from freshman->sophomore->junior->senior
                     //based on a gpa greater than or equal to 2.0 and having taken all the core
                     //subjects i.e. maths,computers,history and geography
                     //reset the taken subject list
                     changePlayerGrade(player);
-                    System.out.println("Grade now: " + player.getGrade()); //No needs to display this
+                    //System.out.println("Grade now: " + player.getGrade()); //No needs to display this
                 }
             }
 
@@ -80,7 +80,7 @@ public class PointSystem {
         }
 
         //it will sleep for 3 sec
-        Thread.sleep(3000);
+        //Thread.sleep(3000);
 
         GameClient.continueJourney(isNewLevel);
         //see the class list
