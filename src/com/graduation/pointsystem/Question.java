@@ -17,6 +17,7 @@ import java.net.http.HttpResponse;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
+import java.util.stream.Collectors;
 
 public class Question {
     public static final Map<String, Integer> categories =
@@ -89,15 +90,22 @@ public class Question {
                 //randomize the possible answers
                 Collections.shuffle(answers);
                 char option = 'A';
+
+                // sorting True or False answers to display in consistent order
+                if (currentQuestion.getType().equalsIgnoreCase("boolean")) {
+                    Collections.sort(answers, Collections.reverseOrder());
+                }
+
                 for (String possible_answer : answers) {
-                    //stripping the answer of any html tags
                     possible_answers.put(option++, Jsoup.parse(possible_answer).text());
                 }
                 //assign the current set of answers to the class variable currentAnswer
                 currentAnswer = possible_answers;
+
                 for (Map.Entry<Character, String> options : possible_answers.entrySet()) {
                     System.out.println(options.getKey() + ") " + options.getValue());
                 }
+
                 //get user response
                 String userChoice = GameClient.getPrompter().prompt(":> ").trim().toUpperCase();
                 if (userChoice.matches("QUIT")) {
