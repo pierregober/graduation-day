@@ -36,7 +36,7 @@ public class PointSystem {
         return Double.parseDouble(new DecimalFormat("#.##").format(player_total_grade / (double) numberOfSubjects));
     }
 
-    public static void teacherQuestions(String subject, Grade level, Player player) {
+    public static void teacherQuestions(String subject, Grade level, Player player) throws InterruptedException {
         currentPlayer=player;
         if (!player.getSubjectTaken().contains(subject)) {
             Question questions = new Question();
@@ -63,14 +63,14 @@ public class PointSystem {
                     player.getSubjectTaken().add(subject);
                     //set the player's GPA
                     player.setCredit(pointSystem.getCumulativeScore(score, player.getSubjectTaken().size()));
-                    System.out.println(player.getCredit());
+                    System.out.println("Your current GPA is: " + player.getCredit()); //this display the GPA like 3.2
                     //determine if the player has meet the criteria to change its level
                     //from freshman->sophomore->junior->senior
                     //based on a gpa greater than or equal to 2.0 and having taken all the core
                     //subjects i.e. maths,computers,history and geography
                     //reset the taken subject list
                     changePlayerGrade(player);
-                    System.out.println("Grade now: " + player.getGrade());
+                    System.out.println("Grade now: " + player.getGrade()); //No needs to display this
                 }
             }
 
@@ -78,6 +78,10 @@ public class PointSystem {
             System.out.println("You have already passed " + subject);
             //GameClient.continueJourney(isNewLevel);
         }
+
+        //it will sleep for 2 sec
+        Thread.sleep(5000);
+
         GameClient.continueJourney(isNewLevel);
         //see the class list
         // System.out.println(Arrays.toString(player.getSubjectTaken().toArray(new String[0])));

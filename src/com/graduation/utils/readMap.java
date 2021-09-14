@@ -29,7 +29,7 @@ public class readMap {
 
         //String character = "\u00A0 o \n<|>\n_^_";
         String character_me= ConsoleColor.YELLOW_BOLD + "ME" +ConsoleColor.RESET;
-        System.out.println(GameClient.getFirstLocation());
+        //System.out.println(GameClient.getFirstLocation());
         if (Player.getGrade() == Grade.FRESHMAN) {
             map = importTXT("Banner/map-" + GameClient.getPlayer().getGrade().toString() + ".txt");
             mapCode.replace(GameClient.getPlayer().getLocation(), character_me);
