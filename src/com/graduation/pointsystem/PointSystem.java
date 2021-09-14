@@ -79,8 +79,8 @@ public class PointSystem {
             //GameClient.continueJourney(isNewLevel);
         }
 
-        //it will sleep for 2 sec
-        Thread.sleep(5000);
+        //it will sleep for 3 sec
+        Thread.sleep(3000);
 
         GameClient.continueJourney(isNewLevel);
         //see the class list
