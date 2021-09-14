@@ -58,13 +58,17 @@ public class Question {
         return lists;
     }
 
-    public int generateQuestions(String type, Grade level) {
+    public int generateQuestions(String type, Grade level) throws InterruptedException {
         if (type.isBlank()) {
             return -1;
         } else {
             Prompter.clearScreen();
             System.out.println(GameClient.getPlayer());
+            // Pause the execution for 3 sec
+            Thread.sleep(3000);
             System.out.println(readMap.convertedMap());
+            // Pause the execution for 2 sec
+            Thread.sleep(2000);
             List<QuestionDetail> samples = null;
             try {
                 samples = getQuestions(type, level);
