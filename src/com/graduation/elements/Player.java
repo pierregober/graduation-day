@@ -1,5 +1,6 @@
 package com.graduation.elements;
 
+import com.graduation.pointsystem.PointSystem;
 import com.graduation.utils.Grade;
 import com.graduation.utils.Prompter;
 
@@ -90,10 +91,12 @@ public class Player {
 
     @Override
     public String toString() {
-        return getClass().getSimpleName() + "{" +
-                " name= " + getName() +
-                " , health= " + health +
-                " , credit= " + getCredit() +
-                '}';
+//        return getClass().getSimpleName() + "{" +
+//                " name= " + getName() +
+//                " , health= " + health +
+//                " , credit= " + getCredit() +
+//                '}';
+        return "\nCurrent status: [ Player name: " + getName() + ", Health: " + getHealth() +
+                                               ", GPA: " + getCredit() + ", Level: " + getGrade() + " ]\n" ;
     }
 }
