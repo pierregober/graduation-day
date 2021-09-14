@@ -3,12 +3,11 @@ package com.graduation.pointsystem;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.graduation.client.GameClient;
-import com.graduation.utils.ConsoleColor;
-import com.graduation.utils.Grade;
-import com.graduation.utils.Prompter;
-import com.graduation.utils.readMap;
+import com.graduation.utils.*;
 import org.jsoup.Jsoup;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -58,7 +57,9 @@ public class Question {
         return lists;
     }
 
-    public int generateQuestions(String type, Grade level) throws InterruptedException {
+
+    public int generateQuestions(String type, Grade level) throws InterruptedException, UnsupportedAudioFileException, LineUnavailableException, IOException {
+        Sound questionSound = new Sound();
         if (type.isBlank()) {
             return -1;
         } else {
@@ -127,9 +128,11 @@ public class Question {
                 }
                 chosen = userChoice.charAt(0);
                 if (possible_answers.get(chosen).compareTo(Jsoup.parse(sample.getCorrect_answer()).text()) == 0) {
+                    questionSound.playSoundClip("Sounds/cheer.wav");
                     System.out.println(ConsoleColor.GREEN + "Correct. Nice Work!!!" + ConsoleColor.RESET + "\n");
                     counter += 1;
                 } else {
+                    questionSound.playSoundClip("Sounds/boohiss.wav");
                     System.out.println(ConsoleColor.RED + "Wrong : The correct answer is " + sample.getCorrect_answer()
                             + ConsoleColor.RESET + "\n");
                 }

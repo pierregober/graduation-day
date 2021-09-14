@@ -6,6 +6,9 @@ import com.graduation.elements.Player;
 import com.graduation.utils.Grade;
 import com.graduation.utils.Prompter;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -36,7 +39,9 @@ public class PointSystem {
         return Double.parseDouble(new DecimalFormat("#.##").format(player_total_grade / (double) numberOfSubjects));
     }
 
-    public static void teacherQuestions(String subject, Grade level, Player player) throws InterruptedException {
+
+    public static void teacherQuestions(String subject, Grade level, Player player) throws InterruptedException, UnsupportedAudioFileException, LineUnavailableException, IOException {
+
         currentPlayer=player;
         if (!player.getSubjectTaken().contains(subject)) {
             Question questions = new Question();
