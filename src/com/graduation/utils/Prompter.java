@@ -96,15 +96,30 @@ public class Prompter {
                 }
                 System.out.println(subjectList);
                 System.out.println(" ");
-                return response;
+                //blank line
+                //give player a helpful message
 
+                //display the current question to remind the user to answer it
+                if (Question.getCurrentQuestion() != null) {
+                    System.out.println(Jsoup.parse(Question.getCurrentQuestion().getQuestion()).text());
+                    for (Map.Entry<Character, String> options : Question.getCurrentAnswer().entrySet()) {
+                        System.out.println(options.getKey() + ") " + options.getValue());
+                    }
+                }
             } else if (response.matches("h")) {
                 System.out.println(
-                        ConsoleColor.YELLOW_BOLD + "Use the following actions:\n" + ConsoleColor.RESET +
-                                "HACK (to bypass the class)\n" +
-                                "S (to view status)\n" +
-                                "Q (to quit the game)");
-                return response;
+                        "Use the following actions:" +
+                                "GO [north, south, east, west, up, down]\n" +
+                                "GET/USE [item]\n" +
+                                "Look");
+                if (Question.getCurrentQuestion().getQuestion() != null) {
+                    System.out.println(Jsoup.parse(Question.getCurrentQuestion().getQuestion()).text());
+                    for (Map.Entry<Character, String> options : Question.getCurrentAnswer().entrySet()) {
+                        System.out.println(options.getKey() + ") " + options.getValue());
+                    }
+                }
+                //blank line
+                System.out.println();
                 //quit the game by inputting Q/q
             } else if (response.matches("q")) {
                 System.out.println("Do you want to save before exiting? (yes/no)");
