@@ -35,7 +35,7 @@ public class GameClient {
     }
 
     public void initialize() throws UnsupportedAudioFileException, LineUnavailableException, IOException, InterruptedException {
-        sound.playSoundClip("Sounds/southPark.wav");
+        sound.playSoundClip("Sounds/southpark1.wav");
         player = setPlayer();
         bully = setBully();
         //Step 1a -- Generate the location info from the json
@@ -183,9 +183,7 @@ public class GameClient {
 
     //Initialize the bully
     public Bully setBully() {
-
         return new Bully("bully", 100, true);
-
     }
 
     //Initialize the player as a FRESHMAN aka first level
