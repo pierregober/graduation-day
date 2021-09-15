@@ -3,13 +3,14 @@ package com.graduation.pointsystem;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.graduation.client.GameClient;
-import com.graduation.utils.ConsoleColor;
-import com.graduation.utils.Grade;
-import com.graduation.utils.Prompter;
-import com.graduation.utils.readMap;
+import com.graduation.utils.*;
 import org.jsoup.Jsoup;
 
+
 // import jdk.nashorn.internal.runtime.regexp.JoniRegExp;
+
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 import java.io.IOException;
 import java.net.URI;
@@ -19,6 +20,7 @@ import java.net.http.HttpResponse;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
+import java.util.stream.Collectors;
 
 public class Question {
     public static final Map<String, Integer> categories = Map.of("maths", 19, "history", 23, "geography", 22, "sports",
@@ -59,11 +61,14 @@ public class Question {
         return lists;
     }
 
-    public int generateQuestions(String type, Grade level) {
+
+    public int generateQuestions(String type, Grade level) throws InterruptedException, UnsupportedAudioFileException, LineUnavailableException, IOException {
+        Sound questionSound = new Sound();
         if (type.isBlank()) {
             return -1;
         } else {
             Prompter.clearScreen();
+
 
             System.out.println(readMap.convertedMap());
             System.out.println(ConsoleColor.GREEN_BOLD
@@ -72,6 +77,14 @@ public class Question {
             System.out.println(
                     "******************************************************************************************* "
                             + ConsoleColor.RESET);
+
+            System.out.println(GameClient.getPlayer());
+            // Pause the execution for 3 sec
+            Thread.sleep(3000);
+            System.out.println(readMap.convertedMap());
+            // Pause the execution for 2 sec
+            Thread.sleep(2000);
+
             List<QuestionDetail> samples = null;
             try {
                 samples = getQuestions(type, level);
@@ -94,15 +107,23 @@ public class Question {
                 // randomize the possible answers
                 Collections.shuffle(answers);
                 char option = 'A';
+
+                // sorting True or False answers to display in consistent order
+                if (currentQuestion.getType().equalsIgnoreCase("boolean")) {
+                    Collections.sort(answers, Collections.reverseOrder());
+                }
+
                 for (String possible_answer : answers) {
                     // stripping the answer of any html tags
                     possible_answers.put(option++, Jsoup.parse(possible_answer).text());
                 }
                 // assign the current set of answers to the class variable currentAnswer
                 currentAnswer = possible_answers;
+
                 for (Map.Entry<Character, String> options : possible_answers.entrySet()) {
                     System.out.println(options.getKey() + ") " + options.getValue());
                 }
+
                 // get user response
                 String userChoice = GameClient.getPrompter().prompt(":> ").trim().toUpperCase();
                 if (userChoice.matches("QUIT")) {
@@ -122,9 +143,11 @@ public class Question {
                 }
                 chosen = userChoice.charAt(0);
                 if (possible_answers.get(chosen).compareTo(Jsoup.parse(sample.getCorrect_answer()).text()) == 0) {
+                    questionSound.playSoundClip("Sounds/cheer.wav");
                     System.out.println(ConsoleColor.GREEN + "Correct. Nice Work!!!" + ConsoleColor.RESET + "\n");
                     counter += 1;
                 } else {
+                    questionSound.playSoundClip("Sounds/boohiss.wav");
                     System.out.println(ConsoleColor.RED + "Wrong : The correct answer is " + sample.getCorrect_answer()
                             + ConsoleColor.RESET + "\n");
                 }

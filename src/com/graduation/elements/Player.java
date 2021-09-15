@@ -1,5 +1,6 @@
 package com.graduation.elements;
 
+import com.graduation.pointsystem.PointSystem;
 import com.graduation.utils.Grade;
 import com.graduation.utils.Prompter;
 
@@ -89,7 +90,9 @@ public class Player {
 
     @Override
     public String toString() {
+
         return "************    Student's Name: " + getName() + " | Student HP: " + health + " | Student's GPA "
                 + getCredit() + "    **************";
+
     }
 }

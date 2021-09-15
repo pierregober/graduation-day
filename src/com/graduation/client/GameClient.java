@@ -10,7 +10,10 @@ import com.graduation.pointsystem.PointSystem;
 import com.graduation.utils.ConsoleColor;
 import com.graduation.utils.Grade;
 import com.graduation.utils.Prompter;
+import com.graduation.utils.Sound;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -24,12 +27,14 @@ public class GameClient {
     private static JsonNode data;
     private static JsonNode prevRoom;
     private static final List<String> notSubject = new ArrayList<>(Arrays.asList("gym", "cafeteria", "hallway"));
+    private Sound sound = new Sound();
 
     public GameClient(Prompter prompter) {
         this.prompter = prompter;
     }
 
-    public void initialize() {
+    public void initialize() throws UnsupportedAudioFileException, LineUnavailableException, IOException, InterruptedException {
+        sound.playSoundClip("Sounds/southPark.wav");
         player = setPlayer();
         bully = setBully();
         // Step 1a -- Generate the location info from the json
@@ -113,17 +118,25 @@ public class GameClient {
             }
         } catch (IOException e) {
             System.out.println(e);
+        } catch (UnsupportedAudioFileException e) {
+            e.printStackTrace();
+        } catch (LineUnavailableException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
-    // Method to initialize the action to move
-    public static void continueJourney(boolean val) {
-        // Have a conditional that switch when it's a new level
+
+    //Method to initialize the action to move
+    public static void continueJourney(boolean val) throws UnsupportedAudioFileException, LineUnavailableException, IOException, InterruptedException {
+        //Have a conditional that switch when it's a new level
+
         if (val) {
             getLevelDetails("desc");
             PointSystem.teacherQuestions(Player.getLocation().toLowerCase(), Player.getGrade(), player);
         } else {
-            System.out.println("Whats your next move?");
+            //System.out.println("Whats your next move?");
             GameAction.getAction();
         }
     }

@@ -6,6 +6,9 @@ import com.graduation.elements.Player;
 import com.graduation.utils.Grade;
 import com.graduation.utils.Prompter;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,8 +40,12 @@ public class PointSystem {
         return Double.parseDouble(new DecimalFormat("#.##").format(player_total_grade / (double) numberOfSubjects));
     }
 
-    public static void teacherQuestions(String subject, Grade level, Player player) {
-        currentPlayer = player;
+
+
+    public static void teacherQuestions(String subject, Grade level, Player player) throws InterruptedException, UnsupportedAudioFileException, LineUnavailableException, IOException {
+
+        currentPlayer=player;
+
         if (!player.getSubjectTaken().contains(subject)) {
             Question questions = new Question();
             if (player.getSubjectTaken().size() == 0) {
@@ -63,6 +70,7 @@ public class PointSystem {
                     player.getSubjectTaken().add(subject);
                     // set the player's GPA
                     player.setCredit(pointSystem.getCumulativeScore(score, player.getSubjectTaken().size()));
+
                     System.out.println(player.getCredit());
                     // determine if the player has meet the criteria to change its level
                     // from freshman->sophomore->junior->senior
@@ -71,6 +79,7 @@ public class PointSystem {
                     // reset the taken subject list
                     changePlayerGrade(player);
                     System.out.println("Grade now: " + Player.getGrade());
+
                 }
             }
 
@@ -78,6 +87,10 @@ public class PointSystem {
             System.out.println("You have already passed " + subject);
             // GameClient.continueJourney(isNewLevel);
         }
+
+        //it will sleep for 3 sec
+        //Thread.sleep(3000);
+
         GameClient.continueJourney(isNewLevel);
         // see the class list
         // System.out.println(Arrays.toString(player.getSubjectTaken().toArray(new
