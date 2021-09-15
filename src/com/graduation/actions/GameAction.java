@@ -26,6 +26,7 @@ public class GameAction {
             moveArray = move.toLowerCase().split(" ");
         }
 
+
         switch (moveArray[0]) {
             case "go":
                 if (GameClient.getValidDirections().contains(moveArray[1])) {
@@ -55,7 +56,5 @@ public class GameAction {
             System.out.println("GET " + "item");
         }
         System.out.println("H (for help)");
-//        System.out.println("USE " + "[item]");
-//        System.out.println("LOOK");
     }
 }

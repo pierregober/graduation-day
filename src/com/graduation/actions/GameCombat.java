@@ -78,7 +78,7 @@ public class GameCombat {
                         System.out.println(fL.get(12));
                         GameAction.getAction();
                     } else {
-                        // Massive damage if caught tryign to run
+                        // Massive damage if caught trying to run
                         int rightHook = Player.getHealth() - 50;
                         Player.setHealth(rightHook);
                         System.out.println(fL.get(13));

@@ -118,6 +118,9 @@ public class Question {
                     System.out.println(options.getKey() + ") " + options.getValue());
                 }
 
+                // calling speech class to read question
+                TextToSpeech.speak(Jsoup.parse(sample.getQuestion()).text());
+
                 // get user response
                 String userChoice = GameClient.getPrompter().prompt(":> ").trim().toUpperCase();
                 if (userChoice.matches("QUIT")) {
@@ -139,11 +142,13 @@ public class Question {
                 if (possible_answers.get(chosen).compareTo(Jsoup.parse(sample.getCorrect_answer()).text()) == 0) {
                     questionSound.playSoundClip("Sounds/cheer.wav");
                     System.out.println(ConsoleColor.GREEN + "Correct. Nice Work!!!" + ConsoleColor.RESET + "\n");
+                    Thread.sleep(3500);
                     counter += 1;
                 } else {
                     questionSound.playSoundClip("Sounds/boohiss.wav");
                     System.out.println(ConsoleColor.RED + "Wrong : The correct answer is " + sample.getCorrect_answer()
                             + ConsoleColor.RESET + "\n");
+                    Thread.sleep(3500);
                 }
                 counter = counter - cheatCounter;
 
