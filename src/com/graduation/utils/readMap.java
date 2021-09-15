@@ -34,9 +34,9 @@ public class readMap {
                 + " || GRADE LEVEL: " + GameClient.getPlayer().getGrade() + "  **"
                 + "\n                        ***********************************************" + ConsoleColor.RESET);
 
-        //String character = "\u00A0 o \n<|>\n_^_";
-        String character_me= ConsoleColor.YELLOW_BOLD + "ME" +ConsoleColor.RESET;
-        //System.out.println(GameClient.getFirstLocation());
+        // String character = "\u00A0 o \n<|>\n_^_";
+
+        // System.out.println(GameClient.getFirstLocation());
 
         if (Player.getGrade() == Grade.FRESHMAN) {
             map = importTXT("Banner/map-" + GameClient.getPlayer().getGrade().toString() + ".txt");

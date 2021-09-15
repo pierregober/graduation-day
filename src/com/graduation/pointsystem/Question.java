@@ -6,7 +6,6 @@ import com.graduation.client.GameClient;
 import com.graduation.utils.*;
 import org.jsoup.Jsoup;
 
-
 // import jdk.nashorn.internal.runtime.regexp.JoniRegExp;
 
 import javax.sound.sampled.LineUnavailableException;
@@ -61,14 +60,13 @@ public class Question {
         return lists;
     }
 
-
-    public int generateQuestions(String type, Grade level) throws InterruptedException, UnsupportedAudioFileException, LineUnavailableException, IOException {
+    public int generateQuestions(String type, Grade level)
+            throws InterruptedException, UnsupportedAudioFileException, LineUnavailableException, IOException {
         Sound questionSound = new Sound();
         if (type.isBlank()) {
             return -1;
         } else {
             Prompter.clearScreen();
-
 
             System.out.println(readMap.convertedMap());
             System.out.println(ConsoleColor.GREEN_BOLD
@@ -78,12 +76,8 @@ public class Question {
                     "******************************************************************************************* "
                             + ConsoleColor.RESET);
 
-            System.out.println(GameClient.getPlayer());
             // Pause the execution for 3 sec
             Thread.sleep(3000);
-            System.out.println(readMap.convertedMap());
-            // Pause the execution for 2 sec
-            Thread.sleep(2000);
 
             List<QuestionDetail> samples = null;
             try {
