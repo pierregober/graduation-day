@@ -29,7 +29,6 @@ public class GameClient {
     private static final List<String> notSubject = new ArrayList<>(Arrays.asList("gym", "cafeteria", "hallway"));
     private Sound sound = new Sound();
 
-
     public GameClient(Prompter prompter) {
         this.prompter = prompter;
     }
@@ -38,20 +37,22 @@ public class GameClient {
         sound.playSoundClip("Sounds/southpark1.wav");
         player = setPlayer();
         bully = setBully();
-        //Step 1a -- Generate the location info from the json
+        // Step 1a -- Generate the location info from the json
         getLevelDetails("desc");
 
-        //Step 2a -- Some conditional seeing if its is a subject
-        if (Player.getLocation().equals("cafeteria") || Player.getLocation().equals("gym") || Player.getLocation().equals("hallway")) {
+        // Step 2a -- Some conditional seeing if its is a subject
+        if (Player.getLocation().equals("cafeteria") || Player.getLocation().equals("gym")
+                || Player.getLocation().equals("hallway")) {
             continueJourney(false);
         } else {
-            //Step 2b -- Call method to initialize the question sequence
+            // Step 2b -- Call method to initialize the question sequence
             PointSystem.teacherQuestions(Player.getLocation().toLowerCase(), Player.getGrade(), player);
         }
     }
 
     public static void nextLocation(String location) {
-        //Grab the previous and read the location according to direction within it's JSON properties
+        // Grab the previous and read the location according to direction within it's
+        // JSON properties
         try {
             String nextLoc = prevRoom.get(location).textValue();
             player.setLocation(nextLoc);
@@ -59,22 +60,22 @@ public class GameClient {
             getLevelDetails("desc");
             displayRoomInventory();
 
-            //Determine if it's a subject room
+            // Determine if it's a subject room
             if (!notSubject.contains(nextLoc.toLowerCase())) {
                 PointSystem.teacherQuestions(Player.getLocation().toLowerCase(), Player.getGrade(), player);
             } else {
-                //Step 1: random number generator to see if a bully will engage in combat
+                // Step 1: random number generator to see if a bully will engage in combat
                 int combat = (int) (Math.random() * 100);
-                //You have a 50% chance of a bully not being there.
+                // You have a 50% chance of a bully not being there.
                 if (combat >= 50) {
-                    System.out.println("Uh oh... " + bully.getName() + " is here. And they spot you. Engaging in combat ");
-                    //Engage in combat
+                    System.out.println("Uh oh...  bully is here. And they spot you. Engaging in combat ");
+                    // Engage in combat
                     GameCombat.initializeCombatScene();
                 } else {
                     continueJourney(false);
                 }
             }
-            //Catch if the direction is null
+            // Catch if the direction is null
         } catch (NullPointerException e) {
             System.out.println("You can't go that direction! Quick Try a different cardinal direction please");
             GameAction.getAction();
@@ -98,13 +99,14 @@ public class GameClient {
             prevRoom = getLastRoom(data, Player.getLocation(), Player.getGrade());
             JsonNode filteredData = getDetails(data, Player.getLocation(), Player.getGrade(), key);
             if (key.equals("item")) {
-                //If the room does have an item check if player already has it!
+                // If the room does have an item check if player already has it!
                 if (player.getInventory().contains(filteredData.asText())) {
-                    //View to tell the user that they grabbed the room item already
-                    System.out.println(ConsoleColor.RED + "There are no items to grab from this room. " + ConsoleColor.RESET);
+                    // View to tell the user that they grabbed the room item already
+                    System.out.println(
+                            ConsoleColor.RED + "There are no items to grab from this room. " + ConsoleColor.RESET);
                     continueJourney(false);
                 } else {
-                    //Method to add the item to the player's bookbag
+                    // Method to add the item to the player's bookbag
                     List<String> items = player.getInventory();
                     items.add(filteredData.textValue());
                     System.out.println(ConsoleColor.GREEN + "Successfully added " + filteredData + " to your backpack!"
@@ -125,9 +127,11 @@ public class GameClient {
         }
     }
 
+
     //Method to initialize the action to move
     public static void continueJourney(boolean val) throws UnsupportedAudioFileException, LineUnavailableException, IOException, InterruptedException {
         //Have a conditional that switch when it's a new level
+
         if (val) {
             getLevelDetails("desc");
             PointSystem.teacherQuestions(Player.getLocation().toLowerCase(), Player.getGrade(), player);
@@ -137,30 +141,31 @@ public class GameClient {
         }
     }
 
-    //Gets the description of the current room
+    // Gets the description of the current room
     private static JsonNode getDetails(JsonNode node, String location, Grade grade, String key) {
         return node.get(String.valueOf(grade)).get(location).get(key);
     }
 
-    //Assigns value to the prevRoom. Assists with keeping track of the location of player
+    // Assigns value to the prevRoom. Assists with keeping track of the location of
+    // player
     private static JsonNode getLastRoom(JsonNode node, String location, Grade grade) {
         return node.get(String.valueOf(grade)).get(location);
     }
 
     public static String getFirstLocation() {
         try {
-            //Step 1: Read our JSON file
+            // Step 1: Read our JSON file
             data = mapper.readTree(Files.readAllBytes(Paths.get("Banner/rooms.json")));
-            //Step 2: Access to my level
+            // Step 2: Access to my level
             String node = String.valueOf(data.get(String.valueOf(Player.getGrade())));
-            //Step 3: Spilt to get my location string
+            // Step 3: Spilt to get my location string
             String strNew = node.replace("{\"", "");
             String[] arrOfStr = strNew.split("\"", 2);
-            //Step 4: Send back the first part which is the init location for the level
+            // Step 4: Send back the first part which is the init location for the level
             return arrOfStr[0];
         } catch (IOException e) {
             System.out.println("Something went wrong: " + e);
-            return "Computers"; //default value
+            return "Computers"; // default value
         }
     }
 
@@ -181,18 +186,19 @@ public class GameClient {
         return validDirections;
     }
 
-    //Initialize the bully
+    // Initialize the bully
     public Bully setBully() {
         return new Bully("bully", 100, true);
     }
 
-    //Initialize the player as a FRESHMAN aka first level
+    // Initialize the player as a FRESHMAN aka first level
     public Player setPlayer() {
         String userName = prompter.prompt("Please enter your name below: \n");
         return new Player(userName, 0, 100, Grade.FRESHMAN, "Computers");
     }
 
     public static Player getPlayer() {
+
         return player;
     }
 
