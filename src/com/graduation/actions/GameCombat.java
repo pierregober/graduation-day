@@ -10,7 +10,7 @@ import com.graduation.utils.Prompter;
 import com.graduation.utils.TextFileReader;
 import com.graduation.utils.readMap;
 
-import jdk.javadoc.internal.doclets.formats.html.SourceToHTMLConverter;
+// import jdk.javadoc.internal.doclets.formats.html.SourceToHTMLConverter;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -88,19 +88,19 @@ public class GameCombat {
                     // Step 1: RNG for number with just your fists && Negate the points from the
                     // Bully's health-- allows for a one hit kill
                     System.out.println(fL.get(30));
-                    Thread.sleep(5000);
+                    Thread.sleep(3000);
                     int kick = (int) (Math.random() * 100);
                     Bully.setHealth(Bully.getHealth() - kick);
                     // Step 2: Conditional dialogue
                     if (kick > 80) {
                         System.out.println(fL.get(14) + " " + kick + " damage!!");
-                        Thread.sleep(5000);
+                        Thread.sleep(3000);
                     } else if (kick > 50) {
                         System.out.println(fL.get(15) + " " + kick + " to the bully!!");
-                        Thread.sleep(5000);
+                        Thread.sleep(3000);
                     } else {
                         System.out.println(fL.get(16) + " " + kick + " to the bully!!");
-                        Thread.sleep(5000);
+                        Thread.sleep(3000);
                     }
                     // Step 3: Recursion if needed
                     if (Bully.getHealth() <= 0) {

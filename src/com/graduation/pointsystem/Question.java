@@ -9,6 +9,8 @@ import com.graduation.utils.Prompter;
 import com.graduation.utils.readMap;
 import org.jsoup.Jsoup;
 
+// import jdk.nashorn.internal.runtime.regexp.JoniRegExp;
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -62,8 +64,14 @@ public class Question {
             return -1;
         } else {
             Prompter.clearScreen();
-            System.out.println(GameClient.getPlayer());
+
             System.out.println(readMap.convertedMap());
+            System.out.println(ConsoleColor.GREEN_BOLD
+                    + "*******************************************************************************************");
+            System.out.println(GameClient.getPlayer());
+            System.out.println(
+                    "******************************************************************************************* "
+                            + ConsoleColor.RESET);
             List<QuestionDetail> samples = null;
             try {
                 samples = getQuestions(type, level);
