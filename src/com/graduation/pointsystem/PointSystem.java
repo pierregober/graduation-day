@@ -3,6 +3,7 @@ package com.graduation.pointsystem;
 import com.graduation.client.GameClient;
 import com.graduation.elements.Bully;
 import com.graduation.elements.Player;
+import com.graduation.utils.ConsoleColor;
 import com.graduation.utils.Grade;
 import com.graduation.utils.Prompter;
 
@@ -41,14 +42,14 @@ public class PointSystem {
     }
 
 
-
     public static void teacherQuestions(String subject, Grade level, Player player) throws InterruptedException, UnsupportedAudioFileException, LineUnavailableException, IOException {
 
-        currentPlayer=player;
+        currentPlayer = player;
 
         if (!player.getSubjectTaken().contains(subject)) {
             Question questions = new Question();
             if (player.getSubjectTaken().size() == 0) {
+                //TODO Validate if below should be set to true
                 isNewLevel = false;
             }
             PointSystem pointSystem = new PointSystem();
@@ -61,8 +62,8 @@ public class PointSystem {
                     GameClient.continueJourney(isNewLevel);
                 } else {
                     while (pointSystem.getScore(score) < 2) {
-                        System.out.println("Your score of " + pointSystem.getScore(score)
-                                + " is less than 2.0, you need to take " + subject + " again");
+                        System.out.println(ConsoleColor.RED + "\n\n    Your score of " + pointSystem.getScore(score)
+                                + " is less than 2.0, you need to take " + subject + " again" + ConsoleColor.RESET);
                         System.out.println();
                         score = questions.generateQuestions(subject, level);
                     }

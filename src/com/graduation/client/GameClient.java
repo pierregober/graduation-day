@@ -34,18 +34,24 @@ public class GameClient {
     }
 
     public void initialize() throws UnsupportedAudioFileException, LineUnavailableException, IOException, InterruptedException {
+        // play game start sound
         sound.playSoundClip("Sounds/southpark1.wav");
+        // create player and bully instance
         player = setPlayer();
         bully = setBully();
-        // Step 1a -- Generate the location info from the json
+
+        // clear screen
+        Prompter.clearScreen();
+
+        // Generate the location info from the json
         getLevelDetails("desc");
 
-        // Step 2a -- Some conditional seeing if its is a subject
+        // Some conditional seeing if its is a subject
         if (Player.getLocation().equals("cafeteria") || Player.getLocation().equals("gym")
                 || Player.getLocation().equals("hallway")) {
             continueJourney(false);
         } else {
-            // Step 2b -- Call method to initialize the question sequence
+            // Call method to initialize the question sequence
             PointSystem.teacherQuestions(Player.getLocation().toLowerCase(), Player.getGrade(), player);
         }
     }
@@ -106,7 +112,7 @@ public class GameClient {
                             ConsoleColor.RED + "There are no items to grab from this room. " + ConsoleColor.RESET);
                     continueJourney(false);
                 } else {
-                    // Method to add the item to the player's bookbag
+                    // Method to add the item to the player's backpack
                     List<String> items = player.getInventory();
                     items.add(filteredData.textValue());
                     System.out.println(ConsoleColor.GREEN + "Successfully added " + filteredData + " to your backpack!"
@@ -114,7 +120,7 @@ public class GameClient {
                     continueJourney(false);
                 }
             } else {
-                System.out.println(ConsoleColor.GREEN + filteredData + ConsoleColor.RESET);
+                System.out.println("\n\n            " + ConsoleColor.GREEN + filteredData + ConsoleColor.RESET);
             }
         } catch (IOException e) {
             System.out.println(e);

@@ -28,7 +28,7 @@ public class readMap {
         // String character = "\u00A0 o \n<|>\n_^_";
         String character_me = ConsoleColor.YELLOW_BOLD + "ME" + ConsoleColor.RESET;
 
-        System.out.println("\n\n\n\n\n\n" + ConsoleColor.GREEN
+        System.out.println("\n\n" + ConsoleColor.GREEN
                 + "                        *********************************************** \n "
                 + "                       **" + " ROOM: " + GameClient.getFirstLocation().toUpperCase()
                 + " || GRADE LEVEL: " + GameClient.getPlayer().getGrade() + "  **"
