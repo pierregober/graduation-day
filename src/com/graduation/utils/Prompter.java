@@ -81,7 +81,7 @@ public class Prompter {
         return response;
     }
 
-    public String prompt(String promptText) {
+    public String prompt(String promptText) throws Exception {
         String response;
         while (true) {
             System.out.print(ConsoleColor.YELLOW_BOLD + promptText + ConsoleColor.RESET);

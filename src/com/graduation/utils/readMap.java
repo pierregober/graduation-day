@@ -12,7 +12,7 @@ public class readMap {
 
     private static String map;
 
-    public static String convertedMap() {
+    public static String convertedMap() throws Exception {
         String newMap = null;
         HashMap<String, String> mapCode = new HashMap<>();
         mapCode.put("Gym", "  ");
@@ -29,12 +29,12 @@ public class readMap {
         String c = "\uD83D\uDE00";
 
         String character_me = ConsoleColor.YELLOW_BOLD + c + ConsoleColor.RESET;
-
+        TextFileReader tfr = new TextFileReader();
         System.out.println("\n\n" + ConsoleColor.GREEN
-                + "                        *********************************************** \n "
-                + "                       **" + " ROOM: " + GameClient.getFirstLocation().toUpperCase()
-                + " || GRADE LEVEL: " + GameClient.getPlayer().getGrade() + "  **"
-                + "\n                        ***********************************************" + ConsoleColor.RESET);
+                + "                        "+tfr.readDashBoard().get(0)+ "\n "
+                + "                       "+tfr.readDashBoard().get(1) + " "+ tfr.readDashBoard().get(2) + " " + GameClient.getFirstLocation().toUpperCase()
+                + " "+tfr.readDashBoard().get(3) +" " + GameClient.getPlayer().getGrade() + tfr.readDashBoard().get(1)
+                + "\n                        "+ tfr.readDashBoard().get(0) + ConsoleColor.RESET);
 
         // String character = "\u00A0 o \n<|>\n_^_";
 

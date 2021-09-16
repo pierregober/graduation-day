@@ -61,7 +61,7 @@ public class Question {
     }
 
     public int generateQuestions(String type, Grade level)
-            throws InterruptedException, UnsupportedAudioFileException, LineUnavailableException, IOException {
+            throws Exception {
         Sound questionSound = new Sound();
         if (type.isBlank()) {
             return -1;
@@ -119,7 +119,7 @@ public class Question {
                 }
 
                 // calling speech class to read question
-                TextToSpeech.speak(Jsoup.parse(sample.getQuestion()).text());
+                TextToSpeech.speak(Jsoup.parse("                      "+sample.getQuestion()).text());
 
                 // get user response
                 String userChoice = GameClient.getPrompter().prompt(":> ").trim().toUpperCase();

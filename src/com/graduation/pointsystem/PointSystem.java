@@ -42,7 +42,7 @@ public class PointSystem {
     }
 
 
-    public static void teacherQuestions(String subject, Grade level, Player player) throws InterruptedException, UnsupportedAudioFileException, LineUnavailableException, IOException {
+    public static void teacherQuestions(String subject, Grade level, Player player) throws Exception {
 
         currentPlayer = player;
 
