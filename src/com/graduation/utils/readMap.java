@@ -30,7 +30,7 @@ public class readMap {
 
         String character_me = ConsoleColor.YELLOW_BOLD + c + ConsoleColor.RESET;
 
-        System.out.println("\n\n\n\n\n\n" + ConsoleColor.GREEN
+        System.out.println("\n\n" + ConsoleColor.GREEN
                 + "                        *********************************************** \n "
                 + "                       **" + " ROOM: " + GameClient.getFirstLocation().toUpperCase()
                 + " || GRADE LEVEL: " + GameClient.getPlayer().getGrade() + "  **"

@@ -66,7 +66,7 @@ public class Question {
         if (type.isBlank()) {
             return -1;
         } else {
-            Prompter.clearScreen();
+//            Prompter.clearScreen();
 
             System.out.println(readMap.convertedMap());
             System.out.println(ConsoleColor.GREEN_BOLD
@@ -153,6 +153,7 @@ public class Question {
                 counter = counter - cheatCounter;
 
             }
+            Prompter.clearScreen();
             return counter;
         }
     }
