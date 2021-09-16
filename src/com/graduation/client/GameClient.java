@@ -33,7 +33,7 @@ public class GameClient {
         this.prompter = prompter;
     }
 
-    public void initialize() throws UnsupportedAudioFileException, LineUnavailableException, IOException, InterruptedException {
+    public void initialize() throws Exception {
         // play game start sound
         sound.playSoundClip("Sounds/southpark1.wav");
         // create player and bully instance
@@ -56,7 +56,7 @@ public class GameClient {
         }
     }
 
-    public static void nextLocation(String location) {
+    public static void nextLocation(String location) throws Exception {
         // Grab the previous and read the location according to direction within it's
         // JSON properties
         try {
@@ -130,12 +130,14 @@ public class GameClient {
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
 
     //Method to initialize the action to move
-    public static void continueJourney(boolean val) throws UnsupportedAudioFileException, LineUnavailableException, IOException, InterruptedException {
+    public static void continueJourney(boolean val) throws Exception {
         //Have a conditional that switch when it's a new level
 
         if (val) {
@@ -198,7 +200,7 @@ public class GameClient {
     }
 
     // Initialize the player as a FRESHMAN aka first level
-    public Player setPlayer() {
+    public Player setPlayer() throws Exception {
         String userName = prompter.prompt("Please enter your name below: \n");
         return new Player(userName, 0, 100, Grade.FRESHMAN, "Computers");
     }

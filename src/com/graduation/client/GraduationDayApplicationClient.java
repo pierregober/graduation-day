@@ -10,7 +10,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class GraduationDayApplicationClient {
-    public static void main(String[] args) throws UnsupportedAudioFileException, LineUnavailableException, IOException, InterruptedException {
+    public static void main(String[] args) throws Exception {
         // display landing screen
         TitleScreen.displayInstructions();
 

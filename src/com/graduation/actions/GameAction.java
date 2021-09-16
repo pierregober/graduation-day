@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class GameAction {
     private static Scanner action = new Scanner(System.in);
 
-    public static void getAction() {
+    public static void getAction() throws Exception {
         Prompter.clearScreen();
         System.out.println(GameClient.getPlayer());
         System.out.println(readMap.convertedMap());
