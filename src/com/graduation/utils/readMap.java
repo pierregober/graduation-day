@@ -26,7 +26,9 @@ public class readMap {
         mapCode.put("Computers", "  ");
 
         // String character = "\u00A0 o \n<|>\n_^_";
-        String character_me = ConsoleColor.YELLOW_BOLD + "ME" + ConsoleColor.RESET;
+        String c = "\uD83D\uDE00";
+
+        String character_me = ConsoleColor.YELLOW_BOLD + c + ConsoleColor.RESET;
 
         System.out.println("\n\n\n\n\n\n" + ConsoleColor.GREEN
                 + "                        *********************************************** \n "
