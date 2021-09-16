@@ -120,6 +120,7 @@ public class GameClient {
                     continueJourney(false);
                 }
             } else {
+
                 System.out.println("\n\n            " + ConsoleColor.GREEN + filteredData + ConsoleColor.RESET);
             }
         } catch (IOException e) {
