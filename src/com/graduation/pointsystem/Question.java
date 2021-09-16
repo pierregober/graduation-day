@@ -70,10 +70,10 @@ public class Question {
 
             System.out.println(readMap.convertedMap());
             System.out.println(ConsoleColor.GREEN_BOLD
-                    + "*******************************************************************************************");
-            System.out.println(GameClient.getPlayer());
+                    + "                                   *******************************************************************************************");
+                System.out.println("                                   "+GameClient.getPlayer());
             System.out.println(
-                    "******************************************************************************************* "
+                    "                                   ******************************************************************************************* "
                             + ConsoleColor.RESET);
 
             // Pause the execution for 3 sec
