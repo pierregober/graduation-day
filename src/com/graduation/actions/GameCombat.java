@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.graduation.client.GameClient;
 import com.graduation.elements.Bully;
 import com.graduation.elements.Player;
+import com.graduation.utils.ConsoleColor;
 import com.graduation.utils.Prompter;
 import com.graduation.utils.TextFileReader;
 import com.graduation.utils.readMap;
@@ -59,15 +60,17 @@ public class GameCombat {
             System.out.println(fL.get(4) + " " + Player.getHealth());
             System.out.println(fL.get(5) + " " + Bully.getHealth());
             System.out.println(fL.get(6));
-            System.out.println(fL.get(7));
-            System.out.println(fL.get(8));
+
             System.out.println(Player.getName() + " " + fL.get(9));
             for (String item : Player.getInventory()) {
                 System.out.println(item);
             }
             System.out.println(fL.get(10));
 
-            System.out.println(fL.get(11));
+            System.out.println(fL.get(7));
+            System.out.println(fL.get(8));
+
+            System.out.println(ConsoleColor.YELLOW + fL.get(11) + ConsoleColor.RESET);
             String move = action.nextLine();
             String[] moveArray = move.toLowerCase().split(" ");
 

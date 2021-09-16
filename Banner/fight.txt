@@ -1,15 +1,15 @@
-*******************************iyguuyguygv
+*******************************
  has spotted you!
 The Bully stole a report card! You must take a
 *******************************
 Health Points:
 Bully's health
 *******************************
-Commands: \nRUN\nUSE [item]\nFIGHT
+Commands: RUN USE [item] OR FIGHT
 *******************************
 's bookbag items:
 *******************************
-Enter move:
+Enter a move from above options:
 You were able to run away successfully!! You left the Bully int he dust. He got snagged by the Principal
 You didn't get so lucky.. Bully hit you with a right hook to the jaw.
 You kicked him in the right spot! You inflicted
