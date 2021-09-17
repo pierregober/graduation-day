@@ -36,7 +36,6 @@ public class PointSystem {
     }
 
     public double getCumulativeScore(int eachScore, int numberOfSubjects) {
-        // System.out.println("Counter = " + numberOfSubjects);
         player_total_grade += (getScore(eachScore));
         return Double.parseDouble(new DecimalFormat("#.##").format(player_total_grade / (double) numberOfSubjects));
     }
@@ -46,6 +45,7 @@ public class PointSystem {
 
         currentPlayer = player;
 
+        // check if a subject already passed and continue loading questions accordingly
         if (!player.getSubjectTaken().contains(subject)) {
             Question questions = new Question();
             if (player.getSubjectTaken().size() == 0) {
@@ -53,12 +53,14 @@ public class PointSystem {
                 isNewLevel = false;
             }
             PointSystem pointSystem = new PointSystem();
+            // initialize classroom score before starting question
             int score = 0;
             if (!notSubject.contains(subject.toLowerCase())) {
                 score = questions.generateQuestions(subject, level);
-                if (score == -1) {
-                    System.out.println(subject + " is a required field");
-                } else if (score == 0) {
+//                if (score == -1) {
+//                    System.out.println(subject + " is a required field");
+//                } else
+                if (score == 0) {
                     GameClient.continueJourney(isNewLevel);
                 } else {
                     while (pointSystem.getScore(score) < 2) {

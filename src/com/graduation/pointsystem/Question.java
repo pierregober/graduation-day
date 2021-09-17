@@ -63,99 +63,96 @@ public class Question {
     public int generateQuestions(String type, Grade level)
             throws Exception {
         Sound questionSound = new Sound();
-        if (type.isBlank()) {
-            return -1;
-        } else {
-//            Prompter.clearScreen();
 
-            System.out.println(readMap.convertedMap());
-            System.out.println(ConsoleColor.GREEN_BOLD
-                    + "                                   *******************************************************************************************");
-                System.out.println("                                   "+GameClient.getPlayer());
-            System.out.println(
-                    "                                   ******************************************************************************************* "
-                            + ConsoleColor.RESET);
+        System.out.println(readMap.convertedMap());
+        System.out.println(ConsoleColor.GREEN_BOLD
+                + "                                   *******************************************************************************************");
+        System.out.println("                                   " + GameClient.getPlayer());
+        System.out.println(
+                "                                   ******************************************************************************************* "
+                        + ConsoleColor.RESET);
 
-            // Pause the execution for 3 sec
-            Thread.sleep(3000);
+        // Pause the execution for 3 sec
+        Thread.sleep(3000);
 
-            List<QuestionDetail> samples = null;
-            try {
-                samples = getQuestions(type, level);
-            } catch (ExecutionException | JsonProcessingException | InterruptedException ex) {
-                ex.printStackTrace();
+        List<QuestionDetail> samples = null;
+        try {
+            samples = getQuestions(type, level);
+        } catch (ExecutionException | JsonProcessingException | InterruptedException ex) {
+            ex.printStackTrace();
+        }
+        int counter = 0;
+        // loop through the questions
+        for (QuestionDetail sample : samples) {
+            // assign the current question to currentQuestion class variable
+            currentQuestion = sample;
+            cheatCounter = 0;
+            Map<Character, String> possible_answers = new LinkedHashMap<>();
+            System.out.println(ConsoleColor.YELLOW + Jsoup.parse(sample.getQuestion()).text() + ConsoleColor.RESET);
+            List<String> answers = new ArrayList<>();
+            answers.add(sample.getCorrect_answer());
+            for (Object incorrect : sample.getIncorrect_answers()) {
+                answers.add(incorrect.toString());
             }
-            int counter = 0;
-            // loop through the questions
-            for (QuestionDetail sample : samples) {
-                // assign the current question to currentQuestion class variable
-                currentQuestion = sample;
-                cheatCounter = 0;
-                Map<Character, String> possible_answers = new LinkedHashMap<>();
-                System.out.println(ConsoleColor.YELLOW + Jsoup.parse(sample.getQuestion()).text() + ConsoleColor.RESET);
-                List<String> answers = new ArrayList<>();
-                answers.add(sample.getCorrect_answer());
-                for (Object incorrect : sample.getIncorrect_answers()) {
-                    answers.add(incorrect.toString());
-                }
-                // randomize the possible answers
-                Collections.shuffle(answers);
-                char option = 'A';
+            // randomize the possible answers
+            Collections.shuffle(answers);
+            char option = 'A';
 
-                // sorting True or False answers to display in consistent order
-                if (currentQuestion.getType().equalsIgnoreCase("boolean")) {
-                    Collections.sort(answers, Collections.reverseOrder());
-                }
+            // sorting True or False answers to display in consistent order
+            if (currentQuestion.getType().equalsIgnoreCase("boolean")) {
+                Collections.sort(answers, Collections.reverseOrder());
+            }
 
-                for (String possible_answer : answers) {
-                    // stripping the answer of any html tags
-                    possible_answers.put(option++, Jsoup.parse(possible_answer).text());
-                }
-                // assign the current set of answers to the class variable currentAnswer
-                currentAnswer = possible_answers;
+            for (String possible_answer : answers) {
+                // stripping the answer of any html tags
+                possible_answers.put(option++, Jsoup.parse(possible_answer).text());
+            }
+            // assign the current set of answers to the class variable currentAnswer
+            currentAnswer = possible_answers;
 
-                for (Map.Entry<Character, String> options : possible_answers.entrySet()) {
-                    System.out.println(options.getKey() + ") " + options.getValue());
-                }
+            for (Map.Entry<Character, String> options : possible_answers.entrySet()) {
+                System.out.println(options.getKey() + ") " + options.getValue());
+            }
 
-                // calling speech class to read question
-                TextToSpeech.speak(Jsoup.parse("                      "+sample.getQuestion()).text());
+            // calling speech class to read question
+            TextToSpeech.speak(Jsoup.parse(sample.getQuestion()).text());
 
-                // get user response
-                String userChoice = GameClient.getPrompter().prompt(":> ").trim().toUpperCase();
+            // get user response
+            String userChoice = GameClient.getPrompter().prompt(":> ").trim().toUpperCase();
+            if (userChoice.matches("QUIT")) {
+                return 0;
+            }
+
+            char chosen = ' ';
+            // while user response does not meet certain criteria, keep asking
+            while (userChoice.compareTo("") == 0
+                    || !possible_answers.keySet().contains(userChoice.toUpperCase().charAt(0))) {
+                System.out.println("You can choose from these options: "
+                        + Arrays.toString(possible_answers.keySet().toArray(new Character[0])));
+                userChoice = GameClient.getPrompter().prompt(":> ").trim().toUpperCase();
                 if (userChoice.matches("QUIT")) {
                     return 0;
                 }
-
-                char chosen = ' ';
-                // while user response does not meet certain criteria, keep asking
-                while (userChoice.compareTo("") == 0
-                        || !possible_answers.keySet().contains(userChoice.toUpperCase().charAt(0))) {
-                    System.out.println("You can choose from these options: "
-                            + Arrays.toString(possible_answers.keySet().toArray(new Character[0])));
-                    userChoice = GameClient.getPrompter().prompt(":> ").trim().toUpperCase();
-                    if (userChoice.matches("QUIT")) {
-                        return 0;
-                    }
-                }
-                chosen = userChoice.charAt(0);
-                if (possible_answers.get(chosen).compareTo(Jsoup.parse(sample.getCorrect_answer()).text()) == 0) {
-                    questionSound.playSoundClip("Sounds/cheer.wav");
-                    System.out.println(ConsoleColor.GREEN + "Correct. Nice Work!!!" + ConsoleColor.RESET + "\n");
-                    Thread.sleep(3500);
-                    counter += 1;
-                } else {
-                    questionSound.playSoundClip("Sounds/boohiss.wav");
-                    System.out.println(ConsoleColor.RED + "Wrong : The correct answer is " + sample.getCorrect_answer()
-                            + ConsoleColor.RESET + "\n");
-                    Thread.sleep(3500);
-                }
-                counter = counter - cheatCounter;
-
             }
-            Prompter.clearScreen();
-            return counter;
+            chosen = userChoice.charAt(0);
+            if (possible_answers.get(chosen).compareTo(Jsoup.parse(sample.getCorrect_answer()).text()) == 0) {
+                questionSound.playSoundClip("Sounds/cheer.wav");
+                System.out.println(ConsoleColor.GREEN + "Correct. Nice Work!!!" + ConsoleColor.RESET
+                        + "\nYour score: " + counter + "/5.\n");
+                counter += 1;
+                Thread.sleep(3500);
+            } else {
+                questionSound.playSoundClip("Sounds/boohiss.wav");
+                System.out.println(ConsoleColor.RED + "Wrong : The correct answer is " + sample.getCorrect_answer()
+                        + "." + ConsoleColor.RESET + "\nYour score: " + counter + "/5.\n");
+                Thread.sleep(3500);
+            }
+            counter = counter - cheatCounter;
+
         }
+        Prompter.clearScreen();
+        return counter;
     }
+
 
 }
