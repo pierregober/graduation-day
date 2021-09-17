@@ -76,15 +76,15 @@ public class Prompter {
      * @return the line of text that was input, as a string.
      */
     public String prompt(String promptText, String init) {
-        System.out.print(promptText);
+        System.out.print(ConsoleColor.YELLOW_BOLD + promptText + ConsoleColor.RESET);
         String response = scanner.nextLine();
         return response;
     }
 
-    public String prompt(String promptText) {
+    public String prompt(String promptText) throws Exception {
         String response;
         while (true) {
-            System.out.print(promptText);
+            System.out.print(ConsoleColor.YELLOW_BOLD + promptText + ConsoleColor.RESET);
             response = scanner.nextLine().toLowerCase();
             if (response.matches("s")) {
                 //add function to show player status
@@ -96,35 +96,20 @@ public class Prompter {
                 }
                 System.out.println(subjectList);
                 System.out.println(" ");
-                //blank line
-                //give player a helpful message
+                return response;
 
-                //display the current question to remind the user to answer it
-                if (Question.getCurrentQuestion() != null) {
-                    System.out.println(Jsoup.parse(Question.getCurrentQuestion().getQuestion()).text());
-                    for (Map.Entry<Character, String> options : Question.getCurrentAnswer().entrySet()) {
-                        System.out.println(options.getKey() + ") " + options.getValue());
-                    }
-                }
             } else if (response.matches("h")) {
                 System.out.println(
-                        "Use the following actions:" +
-                                "GO [north, south, east, west, up, down]\n" +
-                                "GET/USE [item]\n" +
-                                "Look");
-                if (Question.getCurrentQuestion().getQuestion() != null) {
-                    System.out.println(Jsoup.parse(Question.getCurrentQuestion().getQuestion()).text());
-                    for (Map.Entry<Character, String> options : Question.getCurrentAnswer().entrySet()) {
-                        System.out.println(options.getKey() + ") " + options.getValue());
-                    }
-                }
-                //blank line
-                System.out.println();
+                        ConsoleColor.YELLOW_BOLD + "Use the following actions:\n" + ConsoleColor.RESET +
+                                "HACK (to bypass the class)\n" +
+                                "S (to view status)\n" +
+                                "Q (to quit the game)");
+                return response;
                 //quit the game by inputting Q/q
             } else if (response.matches("q")) {
                 System.out.println("Do you want to save before exiting? (yes/no)");
                 response = scanner.nextLine().trim().toLowerCase();
-                if(response.matches("yes|y")){
+                if (response.matches("yes|y")) {
                     saveCurrentState();
                 }
                 System.exit(0);
@@ -182,43 +167,43 @@ public class Prompter {
         }
     }
 
-            private void saveCurrentState(){
-                ObjectMapper save = new ObjectMapper();
-                try {
-                    save.writeValue(new File("storage.txt"), save.writeValueAsString(PointSystem.currentPlayer));
-                } catch (JsonProcessingException ex) {
-                    ex.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+    private void saveCurrentState() {
+        ObjectMapper save = new ObjectMapper();
+        try {
+            save.writeValue(new File("storage.txt"), save.writeValueAsString(PointSystem.currentPlayer));
+        } catch (JsonProcessingException ex) {
+            ex.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-            /**
-             * <p>
-             * Prompts for input, validates it against the regex pattern provided, and returns
-             * the line of text entered, as a string.  If the input does not match the pattern,
-             * the error message text is displayed, and then the prompt text is displayed again.
-             * The input is validated against the regex pattern via {@code String.matches()}.
-             * </p>
-             *
-             * <p>
-             * The prompt text and error message text are output verbatim, exactly as provided.
-             * To add a blank line or two between the user input line, the error message line,
-             * and the follow-on user prompt, just include {@code "\n"} in the {@code retryText} value,
-             * as appropriate.  For example:
-             * </p>
-             *
-             * <pre>
-             * <code>
-             *     prompter.prompt("Please enter your age: ", "\\d+", "\nThat is not a valid age!\n");
-             * </code>
-             * </pre>
-             *
-             * @param promptText prompt message.
-             * @param pattern    regex pattern, used to validate the input string.
-             * @param retryText  error message displayed when input string does not match regex pattern.
-             * @return the line of text that was input, as a string.
-             */
+    /**
+     * <p>
+     * Prompts for input, validates it against the regex pattern provided, and returns
+     * the line of text entered, as a string.  If the input does not match the pattern,
+     * the error message text is displayed, and then the prompt text is displayed again.
+     * The input is validated against the regex pattern via {@code String.matches()}.
+     * </p>
+     *
+     * <p>
+     * The prompt text and error message text are output verbatim, exactly as provided.
+     * To add a blank line or two between the user input line, the error message line,
+     * and the follow-on user prompt, just include {@code "\n"} in the {@code retryText} value,
+     * as appropriate.  For example:
+     * </p>
+     *
+     * <pre>
+     * <code>
+     *     prompter.prompt("Please enter your age: ", "\\d+", "\nThat is not a valid age!\n");
+     * </code>
+     * </pre>
+     *
+     * @param promptText prompt message.
+     * @param pattern    regex pattern, used to validate the input string.
+     * @param retryText  error message displayed when input string does not match regex pattern.
+     * @return the line of text that was input, as a string.
+     */
 
 
 }

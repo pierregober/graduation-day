@@ -6,129 +6,153 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.graduation.client.GameClient;
 import com.graduation.elements.Bully;
 import com.graduation.elements.Player;
+import com.graduation.utils.ConsoleColor;
 import com.graduation.utils.Prompter;
+import com.graduation.utils.TextFileReader;
 import com.graduation.utils.readMap;
+
+//import jdk.javadoc.internal.doclets.formats.html.SourceToHTMLConverter;
+
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GameCombat {
     private static Scanner action = new Scanner(System.in);
     private static final ObjectMapper mapper = new ObjectMapper();
-    private static int bullyHitPoints = (int)(Math.random() * 25);
+    private static int bullyHitPoints = (int) (Math.random() * 25);
     private static JsonNode data;
 
-    public static void initializeCombatScene() {
+    public GameCombat() {
+    }
+
+    public static void initializeCombatScene() throws Exception {
+
+        TextFileReader tfr = new TextFileReader();
+        ArrayList<String> fL = tfr.readFightFile();
         Prompter.clearScreen();
         System.out.println(GameClient.getPlayer());
         System.out.println(readMap.convertedMap());
-        System.out.println("*******************************");
+        System.out.println(fL.get(0));
         System.out.println(Bully.getName() + " has spotted you!");
         fight();
     }
 
-    public static void fight() {
+    public static void fight() throws Exception {
+        TextFileReader tfr = new TextFileReader();
+        ArrayList<String> fL = tfr.readFightFile();
         if (Player.getHealth() <= 0) {
-            //Step 1: You get a report card stolen
-            String reportCard = Player.getSubjectTaken().remove(0);             //remove first entry, store the string for later
-            Player.setSubjectTaken(Player.getSubjectTaken());                         //pass back the List to the method
-            //Step 2: Dialogue for the user
-            System.out.println("The Bully stole a report card! You must take a " + reportCard + " again.");
-            //Step 3: Remove the bully for this level
+            // Step 1: You get a report card stolen
+            String reportCard = Player.getSubjectTaken().remove(0); // remove first entry, store the string for later
+            Player.setSubjectTaken(Player.getSubjectTaken()); // pass back the List to the method
+            // Step 2: Dialogue for the user
+            System.out.println(fL.get(2) + " " + reportCard + " again.");
+            // Step 3: Remove the bully for this level
             Bully.setPresence(false);
 
-        }else{
+        } else {
             Prompter.clearScreen();
             System.out.println(GameClient.getPlayer());
             System.out.println(readMap.convertedMap());
-            System.out.println("*******************************");
-            System.out.println("Health Points: " + Player.getHealth());
-            System.out.println("Bully's health " + Bully.getHealth());
-            System.out.println("*******************************");
-            System.out.println("Commands: \nRUN\nUSE [item]\nFIGHT");
-            System.out.println("*******************************");
-            System.out.println(Player.getName() + "'s bookbag items:");
+            System.out.println(fL.get(3));
+            System.out.println(fL.get(4) + " " + Player.getHealth());
+            System.out.println(fL.get(5) + " " + Bully.getHealth());
+            System.out.println(fL.get(6));
+
+            System.out.println(Player.getName() + " " + fL.get(9));
             for (String item : Player.getInventory()) {
                 System.out.println(item);
             }
-            System.out.println("*******************************");
+            System.out.println(fL.get(10));
 
-            System.out.println("Enter move: ");
+            System.out.println(fL.get(7));
+            System.out.println(fL.get(8));
+
+            System.out.println(ConsoleColor.YELLOW + fL.get(11) + ConsoleColor.RESET);
             String move = action.nextLine();
             String[] moveArray = move.toLowerCase().split(" ");
 
             switch (moveArray[0]) {
                 case "run":
-                    //Step 1: RNG to find out if you can run successfully -- you have a 12% chance
-                    if((int)(Math.random() * 100) >= 12){
-                        System.out.println("You were able to run away successfully!! You left the Bully int he dust. He got snagged by the Principal");
+                    // Step 1: RNG to find out if you can run successfully -- you have a 12% chance
+                    if ((int) (Math.random() * 100) >= 12) {
+                        System.out.println(fL.get(12));
                         GameAction.getAction();
-                    }else{
-                        //Massive damage if caught tryign to run
-                        int rightHook = Player.getHealth() - 50 ;
+                    } else {
+                        // Massive damage if caught trying to run
+                        int rightHook = Player.getHealth() - 50;
                         Player.setHealth(rightHook);
-                        System.out.println("You didn't get so lucky.. Bully hit you with a right hook to the jaw.");
+                        System.out.println(fL.get(13));
                         fight();
                     }
                     break;
                 case "fight":
-                    //Step 1: RNG for number with just your fists && Negate the points from the Bully's health-- allows for a one hit kill
-                    int kick = (int)(Math.random() * 100);
+                    // Step 1: RNG for number with just your fists && Negate the points from the
+                    // Bully's health-- allows for a one hit kill
+                    System.out.println(fL.get(30));
+                    Thread.sleep(3000);
+                    int kick = (int) (Math.random() * 100);
                     Bully.setHealth(Bully.getHealth() - kick);
-                    //Step 2: Conditional dialogue
-                    if(kick > 80) {
-                        System.out.println("You kicked him in the right spot! You inflicted " + kick + " damage!!");
-                    }else if(kick > 50){
-                        System.out.println("That kick really hurt the Bully! You inflicted " + kick + " to the bully!!");
-                    }else {
-                        System.out.println("Wow that didn't them hurt much... You inflicted " + kick + " to the bully!!");
+                    // Step 2: Conditional dialogue
+                    if (kick > 80) {
+                        System.out.println(fL.get(14) + " " + kick + " damage!!");
+                        Thread.sleep(3000);
+                    } else if (kick > 50) {
+                        System.out.println(fL.get(15) + " " + kick + " to the bully!!");
+                        Thread.sleep(3000);
+                    } else {
+                        System.out.println(fL.get(16) + " " + kick + " to the bully!!");
+                        Thread.sleep(3000);
                     }
-                    //Step 3: Recursion if needed
-                    if(Bully.getHealth() <= 0){
-                        System.out.println("You defeated " + Bully.getName() + " Hip hip Hooray!! Bully says he'll get you next year.");
+                    // Step 3: Recursion if needed
+                    if (Bully.getHealth() <= 0) {
+                        System.out.println(fL.get(17) + Bully.getName() + " " + fL.get(18));
+                        Thread.sleep(3000);
                         GameAction.getAction();
-                    }else{
-                        //Bully's turn;
+                    } else {
+                        // Bully's turn;
                         bullyAttack();
                         fight();
                     }
                     break;
                 case "use":
-                    try{
+                    try {
                         if (Player.getInventory().contains(moveArray[1])) {
-                            //Step 1: remove the item
+                            // Step 1: remove the item
                             Player.getInventory().remove(moveArray[1]);
-                            //Step 2: RNG for result -- 90% of a good ending, 10% chance the item has no effect
-                            if((Math.random() * 100) > 10){
-                                //Step 2a: Print the item desc
+                            // Step 2: RNG for result -- 90% of a good ending, 10% chance the item has no
+                            // effect
+                            if ((Math.random() * 100) > 10) {
+                                // Step 2a: Print the item desc
                                 getItemDesc(moveArray[1]);
-                                    //***Bully defeated*
+                                // ***Bully defeated*
                                 Bully.setHealth(0);
-                                //Toggle the bully presence var
+                                // Toggle the bully presence var
                                 Bully.setPresence(false);
-                                //Get the next action
+                                // Get the next action
                                 GameAction.getAction();
-                            }else{
-                                //Step 2b: Bully was unaffected by the item
-                                System.out.println(Bully.getName() + " was unaffected by " + moveArray[1]);
+                            } else {
+                                // Step 2b: Bully was unaffected by the item
+                                System.out.println(Bully.getName() + " " + fL.get(19) + " " + moveArray[1]);
                             }
-                            //Step 4: Snap to the Bully response if still health points left
-                            if(Bully.getHealth() > 0){
+                            // Step 4: Snap to the Bully response if still health points left
+                            if (Bully.getHealth() > 0) {
                                 System.out.println("Hit3");
                                 bullyAttack();
                             }
                         } else {
-                            System.out.println("You don't have a " + moveArray[1] + " in your book bag");
+                            System.out.println(fL.get(20) + " " + moveArray[1] + " " + fL.get(21));
                             fight();
                         }
-                    }catch(ArrayIndexOutOfBoundsException e){
-                        System.out.println("That item is not in your book bag!");
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        System.out.println(fL.get(22));
                         fight();
                     }
                     break;
                 default:
-                    System.out.println("You entered an invalid move. Type \"H\" for the instructions");
+                    System.out.println(fL.get(23));
                     fight();
                     break;
             }
@@ -145,17 +169,19 @@ public class GameCombat {
         }
     }
 
-    public static void bullyAttack(){
-        //Step 1: Set the player health minus the bully strike
-        int punch = Player.getHealth() - bullyHitPoints ;
+    public static void bullyAttack() throws Exception {
+        TextFileReader tfr = new TextFileReader();
+        ArrayList<String> fL = tfr.readFightFile();
+        // Step 1: Set the player health minus the bully strike
+        int punch = Player.getHealth() - bullyHitPoints;
         Player.setHealth(punch);
-        //Step 2: Conditional dialogue
-        if(bullyHitPoints > 50) {
-            System.out.println("Massive damaged! Bully inflicted " + bullyHitPoints + " to you!!");
-        }else if(bullyHitPoints > 25){
-            System.out.println("That punch hurt! Bully inflicted " + bullyHitPoints + " to you!!");
-        }else{
-            System.out.println("Wow that didn't hurt much... Bully inflicted " + bullyHitPoints + " to you!!");
+        // Step 2: Conditional dialogue
+        if (bullyHitPoints > 50) {
+            System.out.println(fL.get(24) + " " + bullyHitPoints + " " + fL.get(25));
+        } else if (bullyHitPoints > 25) {
+            System.out.println(fL.get(26) + " " + bullyHitPoints + " " + fL.get(27));
+        } else {
+            System.out.println(fL.get(28) + " " + bullyHitPoints + " " + fL.get(29));
         }
     }
 }

@@ -1,17 +1,17 @@
 package com.graduation.client;
 
+import java.io.IOException;
 import java.util.Scanner;
+
 import com.graduation.utils.Prompter;
+import com.graduation.utils.Sound;
+
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class GraduationDayApplicationClient {
-    public static void main(String[] args) {
-        System.out.println("\nGRADUATION DAY");
-        System.out.println( "Team Members:\n" +
-                " Hongyi Qu\n" +
-                " Jauric Flowers\n" +
-                " Pierre Gober\n" +
-                " Stephen Yeboah\n\n");
-
+    public static void main(String[] args) throws Exception {
+        // display landing screen
         TitleScreen.displayInstructions();
 
         Prompter prompter = new Prompter(new Scanner(System.in));
