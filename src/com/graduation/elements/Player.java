@@ -1,5 +1,6 @@
 package com.graduation.elements;
 
+import com.graduation.pointsystem.PointSystem;
 import com.graduation.utils.Grade;
 import com.graduation.utils.Prompter;
 
@@ -34,7 +35,7 @@ public class Player {
         subjectTaken = newSubjectTaken;
     }
 
-    public Player(String name, int credit, int health, Grade grade, String location){
+    public Player(String name, int credit, int health, Grade grade, String location) {
         this.name = name;
         this.credit = credit;
         this.health = health;
@@ -42,7 +43,6 @@ public class Player {
         this.location = location;
         this.inventory = inventory;
     }
-
 
     public void setCredit(double credit) {
         this.credit = credit;
@@ -90,10 +90,9 @@ public class Player {
 
     @Override
     public String toString() {
-        return getClass().getSimpleName() + "{" +
-                " name= " + getName() +
-                " , health= " + health +
-                " , credit= " + getCredit() +
-                '}';
+
+        return "************    Student's Name: " + getName() + " | Student HP: " + health + " | Student's GPA "
+                + getCredit() + "    **************";
+
     }
 }

@@ -5,6 +5,7 @@
       "desc": "You are in a computer room, something tells you that you rather not be here. Also you get the feeling you are being watched. To the north is a Math class "
     },
     "Maths": {
+      "south": "Computers",
       "east": "Cafeteria",
       "desc": "Mrs.Peterson's Maths class... omg I'm in trouble"
     },
@@ -36,7 +37,7 @@
       "item": "Dodgeball"
     }
   },
-  "SOPHOMORE":{
+  "SOPHOMORE": {
     "Computers": {
       "north": "Maths",
       "desc": "You are in a computer room, something tells you that you rather not be here. Also you get the feeling you are being watched. To the north is a Math class "
@@ -78,7 +79,7 @@
       "item": "Dodgeball"
     }
   },
-  "JUNIOR":{
+  "JUNIOR": {
     "Geography": {
       "east": "History",
       "desc": "Just a regular Geo class.... or is it... You get a tap on the shoulder... it's Mrs.Beaverwich"
@@ -109,7 +110,6 @@
       "north": "Maths",
       "desc": "A pile of books sits in a corner... You see see the substitute teacher Mr.Korenick. He's heading toward you wanting to ask some questions"
     },
-
     "Gym": {
       "north": "Computers",
       "west": "Hallway",
@@ -117,7 +117,7 @@
       "item": "Dodgeball"
     }
   },
-  "SENIOR":{
+  "SENIOR": {
     "Maths": {
       "north": "Cafeteria",
       "desc": "Mrs.Peterson's Maths class... omg I'm in trouble"

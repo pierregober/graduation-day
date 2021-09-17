@@ -42,6 +42,7 @@ import java.util.Scanner;
  */
 public class Prompter {
     private Scanner scanner;
+    static float volume;
 
     /**
      * Creates a {@code Scanner}-based prompter object, that delegates to the {@code Scanner}
@@ -81,7 +82,12 @@ public class Prompter {
         return response;
     }
 
-    public String prompt(String promptText) {
+
+    public String prompt(String promptText) throws Exception {
+
+        float max_v = 1.0f;
+        float min_v = 0.0f;
+
         String response;
         while (true) {
             System.out.print(ConsoleColor.YELLOW_BOLD + promptText + ConsoleColor.RESET);
@@ -96,30 +102,15 @@ public class Prompter {
                 }
                 System.out.println(subjectList);
                 System.out.println(" ");
-                //blank line
-                //give player a helpful message
+                return response;
 
-                //display the current question to remind the user to answer it
-                if (Question.getCurrentQuestion() != null) {
-                    System.out.println(Jsoup.parse(Question.getCurrentQuestion().getQuestion()).text());
-                    for (Map.Entry<Character, String> options : Question.getCurrentAnswer().entrySet()) {
-                        System.out.println(options.getKey() + ") " + options.getValue());
-                    }
-                }
             } else if (response.matches("h")) {
                 System.out.println(
-                        "Use the following actions:" +
-                                "GO [north, south, east, west, up, down]\n" +
-                                "GET/USE [item]\n" +
-                                "Look");
-                if (Question.getCurrentQuestion().getQuestion() != null) {
-                    System.out.println(Jsoup.parse(Question.getCurrentQuestion().getQuestion()).text());
-                    for (Map.Entry<Character, String> options : Question.getCurrentAnswer().entrySet()) {
-                        System.out.println(options.getKey() + ") " + options.getValue());
-                    }
-                }
-                //blank line
-                System.out.println();
+                        ConsoleColor.YELLOW_BOLD + "Use the following actions:\n" + ConsoleColor.RESET +
+                                "HACK (to bypass the class)\n" +
+                                "S (to view status)\n" +
+                                "Q (to quit the game)");
+                return response;
                 //quit the game by inputting Q/q
             } else if (response.matches("q")) {
                 System.out.println("Do you want to save before exiting? (yes/no)");
@@ -139,7 +130,33 @@ public class Prompter {
                     System.out.println(Question.getCurrentQuestion().getCorrect_answer());
                 }
                 //hacking a room
-            } else if (response.matches("hack")) {
+            }else if(response.matches("volume up")) {
+
+                if (Global.getVolume() < max_v) {
+                    Global.setVolume(Global.getVolume() + .1f);
+                    float display_v =  Global.getVolume() * 100;
+                    System.out.println("Volume set to " + display_v);
+                } else {
+                    System.out.println("You are the loudest possible");
+                }
+            }
+            else if(response.matches("volume down")) {
+
+                if (Global.getVolume() > min_v) {
+                    Global.setVolume(Global.getVolume() - .1f);
+                    float display_v = (Global.getVolume() * 100);
+                    System.out.println("Volume set to " + display_v);
+                } else {
+                    System.out.println("You are the quietest possible");
+            }
+            }else if(response.matches("volume mute")) {
+                Global.setMute(true);
+                System.out.println("Muted everything");
+            }
+            else if(response.matches("volume unmute")) {
+                Global.setMute(false);
+                System.out.println("Unmuted everything");
+            }else if (response.matches("hack")) {
                 //get the current room
                 hackClass();
                 return "quit";

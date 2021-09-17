@@ -5,6 +5,7 @@ out
 # intelliJ files
 .idea/
 *.iml
+.vscode/
 
 
 # Compiled class file
@@ -34,5 +35,6 @@ graduation-day.iml
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 .idea/workspace.xml
+.vscode/
 
 

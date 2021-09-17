@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class GameAction {
     private static Scanner action = new Scanner(System.in);
 
-    public static void getAction() {
+    public static void getAction() throws Exception {
         Prompter.clearScreen();
         System.out.println(GameClient.getPlayer());
         System.out.println(readMap.convertedMap());
@@ -25,6 +25,7 @@ public class GameAction {
             move = GameClient.getPrompter().prompt("Enter a move from above options: \n ");
             moveArray = move.toLowerCase().split(" ");
         }
+
 
         switch (moveArray[0]) {
             case "go":
@@ -55,7 +56,5 @@ public class GameAction {
             System.out.println("GET " + "item");
         }
         System.out.println("H (for help)");
-//        System.out.println("USE " + "[item]");
-//        System.out.println("LOOK");
     }
 }
