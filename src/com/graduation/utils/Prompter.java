@@ -42,6 +42,7 @@ import java.util.Scanner;
  */
 public class Prompter {
     private Scanner scanner;
+    static float volume;
 
     /**
      * Creates a {@code Scanner}-based prompter object, that delegates to the {@code Scanner}
@@ -81,7 +82,12 @@ public class Prompter {
         return response;
     }
 
+
     public String prompt(String promptText) throws Exception {
+
+        float max_v = 1.0f;
+        float min_v = 0.0f;
+
         String response;
         while (true) {
             System.out.print(ConsoleColor.YELLOW_BOLD + promptText + ConsoleColor.RESET);
@@ -124,7 +130,33 @@ public class Prompter {
                     System.out.println(Question.getCurrentQuestion().getCorrect_answer());
                 }
                 //hacking a room
-            } else if (response.matches("hack")) {
+            }else if(response.matches("volume up")) {
+
+                if (Global.getVolume() < max_v) {
+                    Global.setVolume(Global.getVolume() + .1f);
+                    float display_v =  Global.getVolume() * 100;
+                    System.out.println("Volume set to " + display_v);
+                } else {
+                    System.out.println("You are the loudest possible");
+                }
+            }
+            else if(response.matches("volume down")) {
+
+                if (Global.getVolume() > min_v) {
+                    Global.setVolume(Global.getVolume() - .1f);
+                    float display_v = (Global.getVolume() * 100);
+                    System.out.println("Volume set to " + display_v);
+                } else {
+                    System.out.println("You are the quietest possible");
+            }
+            }else if(response.matches("volume mute")) {
+                Global.setMute(true);
+                System.out.println("Muted everything");
+            }
+            else if(response.matches("volume unmute")) {
+                Global.setMute(false);
+                System.out.println("Unmuted everything");
+            }else if (response.matches("hack")) {
                 //get the current room
                 hackClass();
                 return "quit";

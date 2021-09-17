@@ -9,6 +9,7 @@ import com.graduation.elements.Player;
 import com.graduation.pointsystem.PointSystem;
 import com.graduation.utils.ConsoleColor;
 import com.graduation.utils.Grade;
+import com.graduation.utils.KeyPressed;
 import com.graduation.utils.Prompter;
 import com.graduation.utils.Sound;
 
@@ -27,7 +28,11 @@ public class GameClient {
     private static JsonNode data;
     private static JsonNode prevRoom;
     private static final List<String> notSubject = new ArrayList<>(Arrays.asList("gym", "cafeteria", "hallway"));
+
+
     private Sound sound = new Sound();
+
+
 
     public GameClient(Prompter prompter) {
         this.prompter = prompter;
@@ -44,6 +49,8 @@ public class GameClient {
         Prompter.clearScreen();
 
         // Generate the location info from the json
+
+        //Step 1a -- Generate the location info from the json
         getLevelDetails("desc");
 
         // Some conditional seeing if its is a subject
