@@ -28,6 +28,7 @@ public class GameClient {
     private static JsonNode data;
     private static JsonNode prevRoom;
     private static final List<String> notSubject = new ArrayList<>(Arrays.asList("gym", "cafeteria", "hallway"));
+    public static List<String> items;
 
 
     private Sound sound = new Sound();
@@ -120,7 +121,7 @@ public class GameClient {
                     continueJourney(false);
                 } else {
                     // Method to add the item to the player's backpack
-                    List<String> items = player.getInventory();
+                    items = player.getInventory();
                     items.add(filteredData.textValue());
                     System.out.println(ConsoleColor.GREEN + "Successfully added " + filteredData + " to your backpack!"
                             + ConsoleColor.RESET);
