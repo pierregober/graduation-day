@@ -6,7 +6,6 @@ import com.graduation.client.GameClient;
 import com.graduation.utils.*;
 import org.jsoup.Jsoup;
 
-// import jdk.nashorn.internal.runtime.regexp.JoniRegExp;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
@@ -38,12 +37,9 @@ public class Question {
         return currentAnswer;
     }
 
-    // public static boolean isHacked = false;
 
     public List<QuestionDetail> getQuestions(String type, Grade grade)
             throws JsonProcessingException, ExecutionException, InterruptedException {
-        // testing level
-        // System.out.println("level=" + difficulties.get(grade));
         // make a client object
         HttpClient client = HttpClient.newHttpClient();
         // create a request object
@@ -120,7 +116,7 @@ public class Question {
             // get user response
             String userChoice = GameClient.getPrompter().prompt(":> ").trim().toUpperCase();
             if (userChoice.matches("QUIT")) {
-                return 0;
+                return -1;
             }
 
             char chosen = ' ';
@@ -131,15 +127,15 @@ public class Question {
                         + Arrays.toString(possible_answers.keySet().toArray(new Character[0])));
                 userChoice = GameClient.getPrompter().prompt(":> ").trim().toUpperCase();
                 if (userChoice.matches("QUIT")) {
-                    return 0;
+                    return -1;
                 }
             }
             chosen = userChoice.charAt(0);
             if (possible_answers.get(chosen).compareTo(Jsoup.parse(sample.getCorrect_answer()).text()) == 0) {
                 questionSound.playSoundClip("Sounds/cheer.wav");
+                counter += 1;
                 System.out.println(ConsoleColor.GREEN + "Correct. Nice Work!!!" + ConsoleColor.RESET
                         + "\nYour score: " + counter + "/5.\n");
-                counter += 1;
                 Thread.sleep(3500);
             } else {
                 questionSound.playSoundClip("Sounds/boohiss.wav");
