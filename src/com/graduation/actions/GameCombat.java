@@ -35,6 +35,12 @@ public class GameCombat {
         Prompter.clearScreen();
         System.out.println(GameClient.getPlayer());
         System.out.println(readMap.convertedMap());
+        System.out.println(ConsoleColor.GREEN_BOLD
+                + "                                   *******************************************************************************************");
+        System.out.println("                                   " + GameClient.getPlayer());
+        System.out.println(
+                "                                   ******************************************************************************************* "
+                        + ConsoleColor.RESET);
         System.out.println(fL.get(0));
         System.out.println(Bully.getName() + " has spotted you!");
         fight();
@@ -54,7 +60,6 @@ public class GameCombat {
 
         } else {
             Prompter.clearScreen();
-            System.out.println(GameClient.getPlayer());
             System.out.println(readMap.convertedMap());
             System.out.println(fL.get(3));
             System.out.println(fL.get(4) + " " + Player.getHealth());

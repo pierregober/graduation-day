@@ -32,7 +32,8 @@ public class readMap {
         TextFileReader tfr = new TextFileReader();
         System.out.println("\n\n" + ConsoleColor.GREEN
                 + "                                                        "+tfr.readDashBoard().get(0)+ "\n "
-                + "                                                       "+tfr.readDashBoard().get(1) + " "+ tfr.readDashBoard().get(2) + " " + GameClient.getFirstLocation().toUpperCase()
+                + "                                                       "+tfr.readDashBoard().get(1) + " "
+                + tfr.readDashBoard().get(2) + " " + GameClient.getPlayer().getLocation().toUpperCase()
                 + "  "+tfr.readDashBoard().get(3) +" " + GameClient.getPlayer().getGrade() + tfr.readDashBoard().get(1)
                 + "\n                                                        "+ tfr.readDashBoard().get(0) + ConsoleColor.RESET);
 

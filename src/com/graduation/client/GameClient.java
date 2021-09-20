@@ -48,14 +48,11 @@ public class GameClient {
         // clear screen
         Prompter.clearScreen();
 
-        // Generate the location info from the json
-
         //Step 1a -- Generate the location info from the json
         getLevelDetails("desc");
 
         // Some conditional seeing if its is a subject
-        if (Player.getLocation().equals("cafeteria") || Player.getLocation().equals("gym")
-                || Player.getLocation().equals("hallway")) {
+        if (notSubject.contains(Player.getLocation())) {
             continueJourney(false);
         } else {
             // Call method to initialize the question sequence
@@ -101,7 +98,7 @@ public class GameClient {
         JsonNode roomInventory = null;
         if (isValidKey(data, Player.getLocation(), Player.getGrade(), "item")) {
             roomInventory = getDetails(data, Player.getLocation(), Player.getGrade(), "item");
-            System.out.println("Room Inventory :" + roomInventory);
+            System.out.println("Room Inventory :" + ConsoleColor.GREEN + roomInventory + ConsoleColor.RESET + "\n");
         }
         return roomInventory;
     }
@@ -184,7 +181,7 @@ public class GameClient {
     }
 
     // Method to check if valid direction at a given level and room
-    private static boolean isValidKey(JsonNode node, String location, Grade grade, String key) {
+    static boolean isValidKey(JsonNode node, String location, Grade grade, String key) {
         return node.get(String.valueOf(grade)).get(location).has(key);
     }
 
