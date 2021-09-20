@@ -63,14 +63,15 @@ public class PointSystem {
                     while (pointSystem.getScore(score) < 2) {
                         classFailCount++;
                         if (classFailCount == 3) {
-                            System.out.println(ConsoleColor.RED_BOLD + "\n \n You have failed this class 3 times and hence " +
-                                    "lost the game. You will need to re-apply for the school and re-start the game."
-                                    + ConsoleColor.RESET);
+                            System.out.println(ConsoleColor.RED_BOLD + "\n\n            You have failed this class 3 "
+                                    + "times and hence lost the game. You will need to re-apply for the school and "
+                                    + "re-start the game." + ConsoleColor.RESET);
                             Thread.sleep(5000);
                             System.exit(0);
                         }
-                        System.out.println(ConsoleColor.RED + "\n\n    Your GPA of " + pointSystem.getScore(score)
-                                + " is less than 2.0, you need to take " + subject + " again" + ConsoleColor.RESET);
+                        System.out.println(ConsoleColor.RED + "\n\n                                               "
+                                + "Your GPA of " + pointSystem.getScore(score) + " is less than 2.0, you need to take " + subject + " again."
+                                + ConsoleColor.RESET);
                         System.out.println();
                         score = questions.generateQuestions(subject, level);
                     }
@@ -104,7 +105,7 @@ public class PointSystem {
         if (player.getSubjectTaken().containsAll(core) && player.getCredit() >= 2.0) {
             Prompter.clearScreen();
             // display a congratulation message on moving to the next grade
-            System.out.println(ConsoleColor.GREEN + "                             CONGRATULATIONS!!!!, you've passed "
+            System.out.println(ConsoleColor.GREEN + "\n\n            CONGRATULATIONS!!!!, you've passed "
                     + player.getGrade() + " level." + ConsoleColor.RESET);
             isNewLevel = true;
             switch (player.getGrade()) {
@@ -118,8 +119,8 @@ public class PointSystem {
                     player.setGrade(Grade.SENIOR);
                     break;
                 case SENIOR:
-                    System.out.println(ConsoleColor.GREEN + "You have successfully graduated. " +
-                            "\nYour GRADUATION DAY IS FINALLY HERE. GOOD LUCK with your future endeavors."
+                    System.out.println(ConsoleColor.GREEN + "\n\n            You have successfully graduated. " +
+                            "\n            Your GRADUATION DAY IS FINALLY HERE. GOOD LUCK with your future endeavors."
                             + ConsoleColor.RESET);
                     System.exit(0);
             }
