@@ -158,6 +158,21 @@ public class Prompter {
                 //get the current room
                 hackClass();
                 return "quit";
+            } else if (response.matches("show items")) {
+                try {
+                    if (GameClient.items.size() == 0) {
+
+                    }
+                }catch (NullPointerException ex) {
+                    System.out.println(ConsoleColor.RED +"You do not have items in your inventories" + ConsoleColor.RESET);
+                }
+                try {
+                    if (GameClient.items.size() >= 1) {
+                        System.out.println(ConsoleColor.GREEN + "Current items : " + GameClient.items + ConsoleColor.RESET);
+                    }
+                } catch (NullPointerException ex) {
+                    ex.getMessage();
+                }
             } else if (response.matches("quit")) {
                 //get the current room
                 return "quit";
