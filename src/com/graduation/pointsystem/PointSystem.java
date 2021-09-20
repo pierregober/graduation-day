@@ -102,8 +102,10 @@ public class PointSystem {
     public static void changePlayerGrade(Player player) {
         // Step 1: Determine if we can go to the next grade level
         if (player.getSubjectTaken().containsAll(core) && player.getCredit() >= 2.0) {
+            Prompter.clearScreen();
             // display a congratulation message on moving to the next grade
-            System.out.println("congratulations, you've passed " + player.getGrade());
+            System.out.println(ConsoleColor.GREEN + "                             CONGRATULATIONS!!!!, you've passed "
+                    + player.getGrade() + " level." + ConsoleColor.RESET);
             isNewLevel = true;
             switch (player.getGrade()) {
                 case FRESHMAN:
@@ -114,7 +116,14 @@ public class PointSystem {
                     break;
                 case JUNIOR:
                     player.setGrade(Grade.SENIOR);
+                    break;
+                case SENIOR:
+                    System.out.println(ConsoleColor.GREEN + "You have successfully graduated. " +
+                            "\nYour GRADUATION DAY IS FINALLY HERE. GOOD LUCK with your future endeavors."
+                            + ConsoleColor.RESET);
+                    System.exit(0);
             }
+
             // Step 2: Clear the subjects that we passed from the player
             player.getSubjectTaken().clear();
             // Step 3: Get the first location of the next level
