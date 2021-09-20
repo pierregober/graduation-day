@@ -33,7 +33,6 @@ public class GameClient {
     private Sound sound = new Sound();
 
 
-
     public GameClient(Prompter prompter) {
         this.prompter = prompter;
     }
@@ -69,7 +68,7 @@ public class GameClient {
         try {
             String nextLoc = prevRoom.get(location).textValue();
             player.setLocation(nextLoc);
-            System.out.println("You are now in " + ConsoleColor.GREEN + nextLoc + ConsoleColor.RESET);
+            Prompter.clearScreen();
             getLevelDetails("desc");
             displayRoomInventory();
 
@@ -147,12 +146,10 @@ public class GameClient {
     //Method to initialize the action to move
     public static void continueJourney(boolean val) throws Exception {
         //Have a conditional that switch when it's a new level
-
         if (val) {
             getLevelDetails("desc");
             PointSystem.teacherQuestions(Player.getLocation().toLowerCase(), Player.getGrade(), player);
         } else {
-            //System.out.println("Whats your next move?");
             GameAction.getAction();
         }
     }
@@ -207,9 +204,13 @@ public class GameClient {
         return new Bully("bully", 100, true);
     }
 
-    // Initialize the player as a FRESHMAN aka first level
+    // Initialize the player as a FRESHMAN aka first level with user provided name input
     public Player setPlayer() throws Exception {
-        String userName = prompter.prompt("Please enter your name below: \n");
+        String userName = prompter.prompt("Please enter your name below: \n:> ");
+        // Validate user name is not blank or is not in the list of reserved command keywords
+        while (userName.isBlank() || prompter.getCommands().contains(userName)) {
+            userName = prompter.prompt("Please enter your name below: \n:> ");
+        }
         return new Player(userName, 0, 100, Grade.FRESHMAN, "Computers");
     }
 

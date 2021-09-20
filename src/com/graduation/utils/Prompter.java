@@ -11,9 +11,7 @@ import org.w3c.dom.ls.LSOutput;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Map;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * <p>
@@ -43,6 +41,8 @@ import java.util.Scanner;
 public class Prompter {
     private Scanner scanner;
     static float volume;
+    private ArrayList<String> commands = new ArrayList<>(Arrays.asList("s", "h", "q", "cheat", "volume up",
+            "volume down", "volume mute", "volume unmute", "hack", "quit"));
 
     /**
      * Creates a {@code Scanner}-based prompter object, that delegates to the {@code Scanner}
@@ -130,17 +130,16 @@ public class Prompter {
                     System.out.println(Question.getCurrentQuestion().getCorrect_answer());
                 }
                 //hacking a room
-            }else if(response.matches("volume up")) {
+            } else if (response.matches("volume up")) {
 
                 if (Global.getVolume() < max_v) {
                     Global.setVolume(Global.getVolume() + .1f);
-                    float display_v =  Global.getVolume() * 100;
+                    float display_v = Global.getVolume() * 100;
                     System.out.println("Volume set to " + display_v);
                 } else {
                     System.out.println("You are the loudest possible");
                 }
-            }
-            else if(response.matches("volume down")) {
+            } else if (response.matches("volume down")) {
 
                 if (Global.getVolume() > min_v) {
                     Global.setVolume(Global.getVolume() - .1f);
@@ -148,15 +147,14 @@ public class Prompter {
                     System.out.println("Volume set to " + display_v);
                 } else {
                     System.out.println("You are the quietest possible");
-            }
-            }else if(response.matches("volume mute")) {
+                }
+            } else if (response.matches("volume mute")) {
                 Global.setMute(true);
                 System.out.println("Muted everything");
-            }
-            else if(response.matches("volume unmute")) {
+            } else if (response.matches("volume unmute")) {
                 Global.setMute(false);
                 System.out.println("Unmuted everything");
-            }else if (response.matches("hack")) {
+            } else if (response.matches("hack")) {
                 //get the current room
                 hackClass();
                 return "quit";
@@ -185,6 +183,11 @@ public class Prompter {
 
 
         }
+    }
+
+    // getters for commands list
+    public ArrayList<String> getCommands() {
+        return commands;
     }
 
     public static void clearScreen() {

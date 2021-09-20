@@ -9,7 +9,6 @@ import jdk.swing.interop.SwingInterOpUtils;
 import java.util.Scanner;
 
 public class GameAction {
-    private static Scanner action = new Scanner(System.in);
 
     public static void getAction() throws Exception {
         Prompter.clearScreen();

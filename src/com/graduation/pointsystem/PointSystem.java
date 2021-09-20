@@ -49,22 +49,27 @@ public class PointSystem {
         if (!player.getSubjectTaken().contains(subject)) {
             Question questions = new Question();
             if (player.getSubjectTaken().size() == 0) {
-                //TODO Validate if below should be set to true
                 isNewLevel = false;
             }
             PointSystem pointSystem = new PointSystem();
-            // initialize classroom score before starting question
+            // initialize classroom score and class fail counter before starting question
             int score = 0;
+            int classFailCount = 0;
             if (!notSubject.contains(subject.toLowerCase())) {
                 score = questions.generateQuestions(subject, level);
-//                if (score == -1) {
-//                    System.out.println(subject + " is a required field");
-//                } else
-                if (score == 0) {
+                if (score == -1) {
                     GameClient.continueJourney(isNewLevel);
                 } else {
                     while (pointSystem.getScore(score) < 2) {
-                        System.out.println(ConsoleColor.RED + "\n\n    Your score of " + pointSystem.getScore(score)
+                        classFailCount++;
+                        if (classFailCount == 3) {
+                            System.out.println(ConsoleColor.RED_BOLD + "\n \n You have failed this class 3 times and hence " +
+                                    "lost the game. You will need to re-apply for the school and re-start the game."
+                                    + ConsoleColor.RESET);
+                            Thread.sleep(5000);
+                            System.exit(0);
+                        }
+                        System.out.println(ConsoleColor.RED + "\n\n    Your GPA of " + pointSystem.getScore(score)
                                 + " is less than 2.0, you need to take " + subject + " again" + ConsoleColor.RESET);
                         System.out.println();
                         score = questions.generateQuestions(subject, level);
@@ -91,13 +96,7 @@ public class PointSystem {
             // GameClient.continueJourney(isNewLevel);
         }
 
-        //it will sleep for 3 sec
-        //Thread.sleep(3000);
-
         GameClient.continueJourney(isNewLevel);
-        // see the class list
-        // System.out.println(Arrays.toString(player.getSubjectTaken().toArray(new
-        // String[0])));
     }
 
     public static void changePlayerGrade(Player player) {
