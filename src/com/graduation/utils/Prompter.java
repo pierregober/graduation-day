@@ -160,7 +160,19 @@ public class Prompter {
                 //get the current room
                 hackClass();
                 return "quit";
-            } else if (response.matches("show items")) {
+            }else if(response.matches("give apple")){
+                //
+                if(Player.getInventory().contains("Apple")){
+
+                    hackClass();
+                    System.out.println("you gave teacher a apple she will let you pass with 2.4 \n  Teacher: 'Awwe your so sweet you get to pass my class' ");
+                }
+                else{
+                    System.out.println("You do not have an apple to give to teacher.");
+                }
+                return "quit";
+            }
+            else if (response.matches("show items")) {
                 try {
                     if (GameClient.items.size() == 0) {
 
@@ -184,7 +196,7 @@ public class Prompter {
         }
     }
 
-    private void hackClass() {
+    private void hackClass() throws Exception {
         String currentLocation = PointSystem.currentPlayer.getLocation().toLowerCase();
         //check if the current room is not a non-subject room
         if (!PointSystem.getNotSubject().contains(currentLocation)) {

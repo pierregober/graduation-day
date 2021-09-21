@@ -12,7 +12,7 @@
     "Cafeteria": {
       "west": "Maths",
       "east": "History",
-      "item": "Red Bull",
+      "item": "Apple",
       "desc": "Looks like there has been a food fight in the cafeteria.... You see something tasty on the ground"
     },
     "History": {
