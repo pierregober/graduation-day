@@ -14,18 +14,15 @@ import java.text.DecimalFormat;
 import java.util.*;
 
 public class PointSystem {
-    public static List<String> getNotSubject() {
-        return notSubject;
-    }
 
-    private static List<String> notSubject = new ArrayList<>(Arrays.asList("gym", "cafeteria", "hallway"));
+    private static final List<String> notSubject = new ArrayList<>(Arrays.asList("gym", "cafeteria", "hallway"));
     private static final int GRADE = 4;
     private static double player_total_grade = 0;
     private static final List<String> core = new ArrayList<>(
             Arrays.asList("maths", "computers", "geography", "history"));
     private static boolean isNewLevel = false;
     public static Player currentPlayer = null;
-    private boolean validator = false;
+
 
     private double getScore(int correct) {
         double current_class = 0;
@@ -38,13 +35,16 @@ public class PointSystem {
         return Double.parseDouble(new DecimalFormat("#.##").format(player_total_grade / (double) numberOfSubjects));
     }
 
-    public static String randomSubject(){
-        String [] arrElectives = {"art","politics","vehicles","mythology"};
+    public static String randomSubject() {
+        String[] arrElectives = {"art", "politics", "vehicles", "mythology"};
         Random rand = new Random();
         int randInt = rand.nextInt(4);
         return arrElectives[randInt];
     }
 
+    public static List<String> getNotSubject() {
+        return notSubject;
+    }
 
     public static void teacherQuestions(String subject, Grade level, Player player) throws Exception {
 
@@ -59,18 +59,11 @@ public class PointSystem {
             PointSystem pointSystem = new PointSystem();
             // initialize classroom score and class fail counter before starting question
             int score = 0;
-
-            int score1 = 0;
-
-
             int classFailCount = 0;
 
             if (!notSubject.contains(subject.toLowerCase())) {
                 score = questions.generateQuestions(subject, level);
-//                GameClient.continueJourney(isNewLevel);
-
                 if (score == -1) {
-
                     GameClient.continueJourney(isNewLevel);
                 } else {
                     while (pointSystem.getScore(score) < 2) {
@@ -83,7 +76,7 @@ public class PointSystem {
                             System.exit(0);
                         }
                         System.out.println(ConsoleColor.RED + "\n\n                                               "
-                                + "Your GPA of " + pointSystem.getScore(score) + " is less than 2.0, you need to take " + subject + " again."
+                                + "Your class GPA of " + pointSystem.getScore(score) + " is less than 2.0, you need to take " + subject + " again."
                                 + ConsoleColor.RESET);
                         System.out.println();
                         score = questions.generateQuestions(subject, level);
@@ -101,20 +94,17 @@ public class PointSystem {
                     // reset the taken subject list
                     changePlayerGrade(player);
                     System.out.println("Grade now: " + Player.getGrade());
-
                 }
             }
-
         } else {
             System.out.println("You have already passed " + subject);
-            // GameClient.continueJourney(isNewLevel);
         }
-
         GameClient.continueJourney(isNewLevel);
     }
+
     public static void promptElectives() throws Exception {
         boolean run = true;
-        while (run == true) {
+        while (run) {
             System.out.println("please choose an elective from the following Mythology, Art, Vehicles, Politics");
             String userChoice = GameClient.getPrompter().prompt(":> ").trim().toUpperCase();
             Question questions = new Question();
@@ -142,42 +132,41 @@ public class PointSystem {
     public static void changePlayerGrade(Player player) throws Exception {
         // Step 1: Determine if we can go to the next grade level and it asks the elective
 
-
-            if (player.getSubjectTaken().containsAll(core) && player.getCredit() >= 2.0) {
-                Prompter.clearScreen();
-                promptElectives();
-                Prompter.clearScreen();
-                // display a congratulation message on moving to the next grade
-                System.out.println(ConsoleColor.GREEN + "\n\n            CONGRATULATIONS!!!!, you've passed "
-                        + player.getGrade() + " level." + ConsoleColor.RESET);
-                isNewLevel = true;
-                switch (player.getGrade()) {
-                    case FRESHMAN:
-                        player.setGrade(Grade.SOPHOMORE);
-                        break;
-                    case SOPHOMORE:
-                        player.setGrade(Grade.JUNIOR);
-                        break;
-                    case JUNIOR:
-                        player.setGrade(Grade.SENIOR);
-                        break;
-                    case SENIOR:
-                        System.out.println(ConsoleColor.GREEN + "\n\n            You have successfully graduated. " +
-                                "\n            Your GRADUATION DAY IS FINALLY HERE. GOOD LUCK with your future endeavors."
-                                + ConsoleColor.RESET);
-                        System.exit(0);
-                }
-
-                // Step 2: Clear the subjects that we passed from the player
-                player.getSubjectTaken().clear();
-                // Step 3: Get the first location of the next level
-                player.setLocation(GameClient.getFirstLocation());
-                // reset the GPA for the new level to zero
-                player_total_grade = 0;
-                // Step 4: Toggle the bully
-                Bully.setPresence(true);
-                Bully.setHealth(100);
+        if (player.getSubjectTaken().containsAll(core) && player.getCredit() >= 2.0) {
+            Prompter.clearScreen();
+            promptElectives();
+            Prompter.clearScreen();
+            // display a congratulation message on moving to the next grade
+            System.out.println(ConsoleColor.GREEN + "\n\n            CONGRATULATIONS!!!!, you've passed "
+                    + player.getGrade() + " level." + ConsoleColor.RESET);
+            isNewLevel = true;
+            switch (player.getGrade()) {
+                case FRESHMAN:
+                    player.setGrade(Grade.SOPHOMORE);
+                    break;
+                case SOPHOMORE:
+                    player.setGrade(Grade.JUNIOR);
+                    break;
+                case JUNIOR:
+                    player.setGrade(Grade.SENIOR);
+                    break;
+                case SENIOR:
+                    System.out.println(ConsoleColor.GREEN + "\n\n            You have successfully graduated. " +
+                            "\n            Your GRADUATION DAY IS FINALLY HERE. GOOD LUCK with your future endeavors."
+                            + ConsoleColor.RESET);
+                    System.exit(0);
             }
+
+            // Step 2: Clear the subjects that we passed from the player
+            player.getSubjectTaken().clear();
+            // Step 3: Get the first location of the next level
+            player.setLocation(GameClient.getFirstLocation());
+            // reset the GPA for the new level to zero
+            player.setCredit(0.0);
+            // Step 4: Toggle the bully
+            Bully.setPresence(true);
+            Bully.setHealth(100);
+        }
 
     }
 }
