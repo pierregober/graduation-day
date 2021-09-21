@@ -2,6 +2,7 @@ package com.graduation.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.graduation.actions.GameCombat;
 import com.graduation.client.GameClient;
 import com.graduation.elements.Player;
 import com.graduation.pointsystem.PointSystem;
@@ -163,8 +164,8 @@ public class Prompter {
                     if (GameClient.items.size() == 0) {
 
                     }
-                }catch (NullPointerException ex) {
-                    System.out.println(ConsoleColor.RED +"You do not have items in your inventories" + ConsoleColor.RESET);
+                } catch (NullPointerException ex) {
+                    System.out.println(ConsoleColor.RED + "You do not have items in your inventories" + ConsoleColor.RESET);
                 }
                 try {
                     if (GameClient.items.size() >= 1) {
@@ -173,6 +174,7 @@ public class Prompter {
                 } catch (NullPointerException ex) {
                     ex.getMessage();
                 }
+
             } else if (response.matches("quit")) {
                 //get the current room
                 return "quit";

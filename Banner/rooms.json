@@ -12,7 +12,7 @@
     "Cafeteria": {
       "west": "Maths",
       "east": "History",
-      "item": "Red Bull",
+      "item": "Apple",
       "desc": "Looks like there has been a food fight in the cafeteria.... You see something tasty on the ground"
     },
     "History": {
@@ -23,7 +23,7 @@
     "Hallway": {
       "south": "History",
       "north": "Geography",
-      "item": "$100 bill",
+      "item": "Red Bull",
       "desc": "Empty hallway with flicking lights... you saw someone move fast in the background."
     },
     "Geography": {
@@ -51,7 +51,7 @@
     "Cafeteria": {
       "east": "Maths",
       "north": "History",
-      "item": "Fire Extinguisher",
+      "item": "Red Bull",
       "desc": "Looks like there has been a food fight in the cafeteria.... You see something red on the ground"
     },
     "History": {
@@ -64,7 +64,7 @@
       "south": "Maths",
       "north": "Geography",
       "west": "History",
-      "item": "Redbull",
+      "item": "Red Bull",
       "desc": "Empty hallway with flicking lights... you saw someone move fast in the background."
     },
     "Geography": {
@@ -87,7 +87,7 @@
     "Hallway": {
       "east": "Gym",
       "south": "Cafeteria",
-      "item": "Redbull",
+      "item": "Red Bull",
       "desc": "Empty hallway with flicking lights... you saw someone move fast in the background. You may need to grab a weapon"
     },
     "Computers": {
