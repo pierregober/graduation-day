@@ -125,7 +125,7 @@ public class GameClient {
                 }
             } else {
 
-                System.out.println("\n\n            " + ConsoleColor.GREEN + filteredData + ConsoleColor.RESET);
+                System.out.println("\n\n            " + ConsoleColor.GREEN + filteredData.asText() + ConsoleColor.RESET);
             }
         } catch (IOException e) {
             System.out.println(e);
