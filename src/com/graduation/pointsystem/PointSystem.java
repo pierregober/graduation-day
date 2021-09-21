@@ -11,23 +11,18 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class PointSystem {
-    public static List<String> getNotSubject() {
-        return notSubject;
-    }
 
-    private static List<String> notSubject = new ArrayList<>(Arrays.asList("gym", "cafeteria", "hallway"));
+    private static final List<String> notSubject = new ArrayList<>(Arrays.asList("gym", "cafeteria", "hallway"));
     private static final int GRADE = 4;
     private static double player_total_grade = 0;
     private static final List<String> core = new ArrayList<>(
             Arrays.asList("maths", "computers", "geography", "history"));
     private static boolean isNewLevel = false;
     public static Player currentPlayer = null;
+
 
     private double getScore(int correct) {
         double current_class = 0;
@@ -40,6 +35,16 @@ public class PointSystem {
         return Double.parseDouble(new DecimalFormat("#.##").format(player_total_grade / (double) numberOfSubjects));
     }
 
+    public static String randomSubject() {
+        String[] arrElectives = {"art", "politics", "vehicles", "mythology"};
+        Random rand = new Random();
+        int randInt = rand.nextInt(4);
+        return arrElectives[randInt];
+    }
+
+    public static List<String> getNotSubject() {
+        return notSubject;
+    }
 
     public static void teacherQuestions(String subject, Grade level, Player player) throws Exception {
 
@@ -55,6 +60,7 @@ public class PointSystem {
             // initialize classroom score and class fail counter before starting question
             int score = 0;
             int classFailCount = 0;
+
             if (!notSubject.contains(subject.toLowerCase())) {
                 score = questions.generateQuestions(subject, level);
                 if (score == -1) {
@@ -70,7 +76,7 @@ public class PointSystem {
                             System.exit(0);
                         }
                         System.out.println(ConsoleColor.RED + "\n\n                                               "
-                                + "Your GPA of " + pointSystem.getScore(score) + " is less than 2.0, you need to take " + subject + " again."
+                                + "Your class GPA of " + pointSystem.getScore(score) + " is less than 2.0, you need to take " + subject + " again."
                                 + ConsoleColor.RESET);
                         System.out.println();
                         score = questions.generateQuestions(subject, level);
@@ -88,21 +94,47 @@ public class PointSystem {
                     // reset the taken subject list
                     changePlayerGrade(player);
                     System.out.println("Grade now: " + Player.getGrade());
-
                 }
             }
-
         } else {
             System.out.println("You have already passed " + subject);
-            // GameClient.continueJourney(isNewLevel);
         }
-
         GameClient.continueJourney(isNewLevel);
     }
 
-    public static void changePlayerGrade(Player player) {
-        // Step 1: Determine if we can go to the next grade level
+    public static void promptElectives() throws Exception {
+        boolean run = true;
+        while (run) {
+            System.out.println("please choose an elective from the following Mythology, Art, Vehicles, Politics");
+            String userChoice = GameClient.getPrompter().prompt(":> ").trim().toUpperCase();
+            Question questions = new Question();
+            if (userChoice.matches("ART")) {
+                questions.generateQuestions(userChoice, Grade.SOPHOMORE);
+                run = false;
+            }
+            if (userChoice.matches("MYTHOLOGY")) {
+                questions.generateQuestions(userChoice, Grade.SOPHOMORE);
+                run = false;
+            }
+            if (userChoice.matches("VEHICLES")) {
+                questions.generateQuestions(userChoice, Grade.SOPHOMORE);
+                run = false;
+            }
+            if (userChoice.matches("POLITICS")) {
+                questions.generateQuestions(userChoice, Grade.SOPHOMORE);
+                run = false;
+            }
+            System.out.println("wrong answer please type art, vehicles, politics, mythology");
+            Prompter.clearScreen();
+        }
+    }
+
+    public static void changePlayerGrade(Player player) throws Exception {
+        // Step 1: Determine if we can go to the next grade level and it asks the elective
+
         if (player.getSubjectTaken().containsAll(core) && player.getCredit() >= 2.0) {
+            Prompter.clearScreen();
+            promptElectives();
             Prompter.clearScreen();
             // display a congratulation message on moving to the next grade
             System.out.println(ConsoleColor.GREEN + "\n\n            CONGRATULATIONS!!!!, you've passed "
@@ -130,10 +162,11 @@ public class PointSystem {
             // Step 3: Get the first location of the next level
             player.setLocation(GameClient.getFirstLocation());
             // reset the GPA for the new level to zero
-            player_total_grade = 0;
+            player.setCredit(0.0);
             // Step 4: Toggle the bully
             Bully.setPresence(true);
             Bully.setHealth(100);
         }
+
     }
 }

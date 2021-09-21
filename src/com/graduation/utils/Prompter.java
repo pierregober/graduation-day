@@ -108,9 +108,7 @@ public class Prompter {
             } else if (response.matches("h")) {
                 System.out.println(
                         ConsoleColor.YELLOW_BOLD + "Use the following actions:\n" + ConsoleColor.RESET +
-                                "HACK (to bypass the class)\n" +
-                                "S (to view status)\n" +
-                                "Q (to quit the game)");
+                                readMap.importTXT("Banner/helper.txt"));
                 return response;
                 //quit the game by inputting Q/q
             } else if (response.matches("q")) {
@@ -151,13 +149,29 @@ public class Prompter {
                 }
             } else if (response.matches("volume mute")) {
                 Global.setMute(true);
+                TextToSpeech.isMuted = true;
                 System.out.println("Muted everything");
             } else if (response.matches("volume unmute")) {
                 Global.setMute(false);
+                TextToSpeech.isMuted = false;
                 System.out.println("Unmuted everything");
             } else if (response.matches("hack")) {
                 //get the current room
                 hackClass();
+                return "quit";
+            } else if (response.matches("give apple")) {
+                //
+                if (Player.getInventory().contains("Apple")) {
+
+                    hackClass();
+
+                    Player.getInventory().remove("Apple");  
+                    System.out.println(ConsoleColor.GREEN +"                                                  you gave teacher a apple she will let you pass with 2.4 \n                                                  Teacher: 'Awwe your so sweet you get to pass my class' " + ConsoleColor.RESET);
+                }
+                else{
+
+                    System.out.println("You do not have an apple to give to teacher.");
+                }
                 return "quit";
             } else if (response.matches("show items")) {
                 try {
@@ -184,7 +198,7 @@ public class Prompter {
         }
     }
 
-    private void hackClass() {
+    private void hackClass() throws Exception {
         String currentLocation = PointSystem.currentPlayer.getLocation().toLowerCase();
         //check if the current room is not a non-subject room
         if (!PointSystem.getNotSubject().contains(currentLocation)) {
@@ -194,11 +208,9 @@ public class Prompter {
             } else {
                 PointSystem.currentPlayer.getSubjectTaken().add(currentLocation);
                 //default 2.4 GPA if you hack
-                PointSystem.currentPlayer.setCredit(new PointSystem().getCumulativeScore(3, PointSystem.currentPlayer.getSubjectTaken().size()));
+                PointSystem.currentPlayer.setCredit(2.4);
                 PointSystem.changePlayerGrade(PointSystem.currentPlayer);
             }
-
-
         }
     }
 

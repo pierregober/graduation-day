@@ -22,12 +22,13 @@ import java.util.stream.Collectors;
 
 public class Question {
     public static final Map<String, Integer> categories = Map.of("maths", 19, "history", 23, "geography", 22, "sports",
-            21, "general knowledge", 9, "computers", 18);
+            21, "general knowledge", 9, "computers", 18, "mythology", 20, "art", 25, "politics",24,"vehicles", 28);
     private static final Map<Grade, String> difficulties = Map.of(Grade.FRESHMAN, "easy", Grade.SOPHOMORE, "easy",
             Grade.JUNIOR, "medium", Grade.SENIOR, "hard");
     public static int cheatCounter = 0;
     private static QuestionDetail currentQuestion = null;
     private static Map<Character, String> currentAnswer = null;
+    public static boolean isMuted = false;
 
     public static QuestionDetail getCurrentQuestion() {
         return currentQuestion;
@@ -89,6 +90,7 @@ public class Question {
             answers.add(sample.getCorrect_answer());
             for (Object incorrect : sample.getIncorrect_answers()) {
                 answers.add(incorrect.toString());
+
             }
             // randomize the possible answers
             Collections.shuffle(answers);
@@ -110,7 +112,7 @@ public class Question {
                 System.out.println(options.getKey() + ") " + options.getValue());
             }
 
-            // calling speech class to read question
+            // read questions from TSS
             TextToSpeech.speak(Jsoup.parse(sample.getQuestion()).text());
 
             // get user response
@@ -149,6 +151,5 @@ public class Question {
         Prompter.clearScreen();
         return counter;
     }
-
 
 }
