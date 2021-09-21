@@ -12,7 +12,7 @@
     "Cafeteria": {
       "west": "Maths",
       "east": "History",
-      "item": "Big Mac",
+      "item": "Red Bull",
       "desc": "Looks like there has been a food fight in the cafeteria.... You see something tasty on the ground"
     },
     "History": {
@@ -23,7 +23,7 @@
     "Hallway": {
       "south": "History",
       "north": "Geography",
-      "item": "Sharpened Pencil",
+      "item": "$100 bill",
       "desc": "Empty hallway with flicking lights... you saw someone move fast in the background."
     },
     "Geography": {
