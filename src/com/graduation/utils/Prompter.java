@@ -208,7 +208,7 @@ public class Prompter {
             } else {
                 PointSystem.currentPlayer.getSubjectTaken().add(currentLocation);
                 //default 2.4 GPA if you hack
-                PointSystem.currentPlayer.setCredit(2.4);
+                PointSystem.currentPlayer.setCredit(new PointSystem().getCumulativeScore(3, PointSystem.currentPlayer.getSubjectTaken().size()));
                 PointSystem.changePlayerGrade(PointSystem.currentPlayer);
             }
         }
