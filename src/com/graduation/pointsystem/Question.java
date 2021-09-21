@@ -28,6 +28,7 @@ public class Question {
     public static int cheatCounter = 0;
     private static QuestionDetail currentQuestion = null;
     private static Map<Character, String> currentAnswer = null;
+    public static boolean isMuted = false;
 
     public static QuestionDetail getCurrentQuestion() {
         return currentQuestion;
@@ -110,7 +111,7 @@ public class Question {
                 System.out.println(options.getKey() + ") " + options.getValue());
             }
 
-            // calling speech class to read question
+            // read questions from TSS
             TextToSpeech.speak(Jsoup.parse(sample.getQuestion()).text());
 
             // get user response
@@ -149,6 +150,5 @@ public class Question {
         Prompter.clearScreen();
         return counter;
     }
-
 
 }

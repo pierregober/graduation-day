@@ -150,9 +150,11 @@ public class Prompter {
                 }
             } else if (response.matches("volume mute")) {
                 Global.setMute(true);
+                TextToSpeech.isMuted = true;
                 System.out.println("Muted everything");
             } else if (response.matches("volume unmute")) {
                 Global.setMute(false);
+                TextToSpeech.isMuted = false;
                 System.out.println("Unmuted everything");
             } else if (response.matches("hack")) {
                 //get the current room
@@ -163,8 +165,8 @@ public class Prompter {
                     if (GameClient.items.size() == 0) {
 
                     }
-                }catch (NullPointerException ex) {
-                    System.out.println(ConsoleColor.RED +"You do not have items in your inventories" + ConsoleColor.RESET);
+                } catch (NullPointerException ex) {
+                    System.out.println(ConsoleColor.RED + "You do not have items in your inventories" + ConsoleColor.RESET);
                 }
                 try {
                     if (GameClient.items.size() >= 1) {
