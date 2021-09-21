@@ -21,11 +21,10 @@ import java.util.Scanner;
 
 public class GameCombat {
     private static Scanner action = new Scanner(System.in);
-    private static final ObjectMapper mapper = new ObjectMapper();
     private static int bullyHitPoints = (int) (Math.random() * 25);
     private static JsonNode data;
 
-    public GameCombat() {
+    private GameCombat() {
     }
 
     public static void initializeCombatScene() throws Exception {
@@ -165,6 +164,8 @@ public class GameCombat {
     }
 
     private static void getItemDesc(String item) {
+        ObjectMapper mapper = new ObjectMapper();
+
         try {
             data = mapper.readTree(Files.readAllBytes(Paths.get("Banner/items.json")));
             JsonNode filteredData = data.get(String.valueOf(item));
