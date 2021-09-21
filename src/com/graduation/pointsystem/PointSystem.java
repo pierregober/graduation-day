@@ -45,6 +45,7 @@ public class PointSystem {
         return arrElectives[randInt];
     }
 
+
     public static void teacherQuestions(String subject, Grade level, Player player) throws Exception {
 
         currentPlayer = player;
@@ -60,44 +61,13 @@ public class PointSystem {
             int score = 0;
 
             int score1 = 0;
-            boolean run = true;
+
 
             int classFailCount = 0;
 
             if (!notSubject.contains(subject.toLowerCase())) {
-                Thread.sleep(6000);
-                System.out.println(ConsoleColor.GREEN_BOLD +"              Well before you start your year must complete an elective Art, Politics, Vehicles, Mythology ");
-
-                while(run==true){
-                    String userChoice = GameClient.getPrompter().prompt(":> ").trim().toUpperCase();
-                    if(userChoice.matches("ART")){
-                        questions.generateQuestions(userChoice,level);
-                        run = false;
-                    }
-                    if(userChoice.matches("MYTHOLOGY")){
-                        questions.generateQuestions(userChoice,level);
-                        run = false;
-                    }
-                    if(userChoice.matches("VEHICLES")){
-                        questions.generateQuestions(userChoice,level);
-                        run = false;
-                    }
-                    if(userChoice.matches("POLITICS")){
-                        questions.generateQuestions(userChoice,level);
-                        run = false;
-                    }
-                    else{
-                        System.out.println("wrong answer please type art, vehicles, politics, mythology" );
-                    }
-
-
-                }
-
-
-//                questions.generateQuestions(randomSubject(),level);
-
-                System.out.println("Now that the elective is done its time for class to start " + ConsoleColor.RESET);
                 score = questions.generateQuestions(subject, level);
+//                GameClient.continueJourney(isNewLevel);
 
                 if (score == -1) {
 
@@ -142,41 +112,72 @@ public class PointSystem {
 
         GameClient.continueJourney(isNewLevel);
     }
-
-    public static void changePlayerGrade(Player player) {
-        // Step 1: Determine if we can go to the next grade level
-        if (player.getSubjectTaken().containsAll(core) && player.getCredit() >= 2.0) {
+    public static void promptElectives() throws Exception {
+        boolean run = true;
+        while (run == true) {
+            System.out.println("please choose an elective from the following Mythology, Art, Vehicles, Politics");
+            String userChoice = GameClient.getPrompter().prompt(":> ").trim().toUpperCase();
+            Question questions = new Question();
+            if (userChoice.matches("ART")) {
+                questions.generateQuestions(userChoice, Grade.SOPHOMORE);
+                run = false;
+            }
+            if (userChoice.matches("MYTHOLOGY")) {
+                questions.generateQuestions(userChoice, Grade.SOPHOMORE);
+                run = false;
+            }
+            if (userChoice.matches("VEHICLES")) {
+                questions.generateQuestions(userChoice, Grade.SOPHOMORE);
+                run = false;
+            }
+            if (userChoice.matches("POLITICS")) {
+                questions.generateQuestions(userChoice, Grade.SOPHOMORE);
+                run = false;
+            }
+            System.out.println("wrong answer please type art, vehicles, politics, mythology");
             Prompter.clearScreen();
-            // display a congratulation message on moving to the next grade
-            System.out.println(ConsoleColor.GREEN + "\n\n            CONGRATULATIONS!!!!, you've passed "
-                    + player.getGrade() + " level." + ConsoleColor.RESET);
-            isNewLevel = true;
-            switch (player.getGrade()) {
-                case FRESHMAN:
-                    player.setGrade(Grade.SOPHOMORE);
-                    break;
-                case SOPHOMORE:
-                    player.setGrade(Grade.JUNIOR);
-                    break;
-                case JUNIOR:
-                    player.setGrade(Grade.SENIOR);
-                    break;
-                case SENIOR:
-                    System.out.println(ConsoleColor.GREEN + "\n\n            You have successfully graduated. " +
-                            "\n            Your GRADUATION DAY IS FINALLY HERE. GOOD LUCK with your future endeavors."
-                            + ConsoleColor.RESET);
-                    System.exit(0);
+        }
+    }
+
+    public static void changePlayerGrade(Player player) throws Exception {
+        // Step 1: Determine if we can go to the next grade level and it asks the elective
+
+
+            if (player.getSubjectTaken().containsAll(core) && player.getCredit() >= 2.0) {
+                Prompter.clearScreen();
+                promptElectives();
+                Prompter.clearScreen();
+                // display a congratulation message on moving to the next grade
+                System.out.println(ConsoleColor.GREEN + "\n\n            CONGRATULATIONS!!!!, you've passed "
+                        + player.getGrade() + " level." + ConsoleColor.RESET);
+                isNewLevel = true;
+                switch (player.getGrade()) {
+                    case FRESHMAN:
+                        player.setGrade(Grade.SOPHOMORE);
+                        break;
+                    case SOPHOMORE:
+                        player.setGrade(Grade.JUNIOR);
+                        break;
+                    case JUNIOR:
+                        player.setGrade(Grade.SENIOR);
+                        break;
+                    case SENIOR:
+                        System.out.println(ConsoleColor.GREEN + "\n\n            You have successfully graduated. " +
+                                "\n            Your GRADUATION DAY IS FINALLY HERE. GOOD LUCK with your future endeavors."
+                                + ConsoleColor.RESET);
+                        System.exit(0);
+                }
+
+                // Step 2: Clear the subjects that we passed from the player
+                player.getSubjectTaken().clear();
+                // Step 3: Get the first location of the next level
+                player.setLocation(GameClient.getFirstLocation());
+                // reset the GPA for the new level to zero
+                player_total_grade = 0;
+                // Step 4: Toggle the bully
+                Bully.setPresence(true);
+                Bully.setHealth(100);
             }
 
-            // Step 2: Clear the subjects that we passed from the player
-            player.getSubjectTaken().clear();
-            // Step 3: Get the first location of the next level
-            player.setLocation(GameClient.getFirstLocation());
-            // reset the GPA for the new level to zero
-            player_total_grade = 0;
-            // Step 4: Toggle the bully
-            Bully.setPresence(true);
-            Bully.setHealth(100);
-        }
     }
 }

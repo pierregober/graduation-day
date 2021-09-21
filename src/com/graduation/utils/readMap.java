@@ -52,20 +52,20 @@ public class readMap {
         } else if (Player.getGrade() == Grade.SOPHOMORE) {
             map = importTXT("Banner/map-" + GameClient.getPlayer().getGrade().toString() + ".txt");
             mapCode.replace(GameClient.getPlayer().getLocation(), character_me);
-            newMap = String.format(map, mapCode.get("Gym"), mapCode.get("Geography"), mapCode.get("Player"),
-                    mapCode.get("History"), mapCode.get("Hallway"), mapCode.get("Credit"), mapCode.get("Cafeteria"),
+            newMap = String.format(map, mapCode.get("Gym"), mapCode.get("Geography"),
+                    mapCode.get("History"), mapCode.get("Hallway"), mapCode.get("Cafeteria"),
                     mapCode.get("Maths"), mapCode.get("Computers"));
         } else if (Player.getGrade() == Grade.JUNIOR) {
             map = importTXT("Banner/map-" + GameClient.getPlayer().getGrade().toString() + ".txt");
             mapCode.replace(GameClient.getPlayer().getLocation(), character_me);
-            newMap = String.format(map, mapCode.get("Computers"), mapCode.get("Player"), mapCode.get("Hallway"),
-                    mapCode.get("Gym"), mapCode.get("Credit"), mapCode.get("Cafeteria"), mapCode.get("Maths"),
+            newMap = String.format(map, mapCode.get("Computers"),  mapCode.get("Hallway"),
+                    mapCode.get("Gym"),  mapCode.get("Cafeteria"), mapCode.get("Maths"),
                     mapCode.get("Geography"), mapCode.get("History"));
         } else if (Player.getGrade() == Grade.SENIOR) {
             map = importTXT("Banner/map-" + GameClient.getPlayer().getGrade().toString() + ".txt");
             mapCode.replace(GameClient.getPlayer().getLocation(), character_me);
-            newMap = String.format(map, mapCode.get("Computers"), mapCode.get("Player"), mapCode.get("History"),
-                    mapCode.get("Gym"), mapCode.get("Credit"), mapCode.get("Hallway"), mapCode.get("Geography"),
+            newMap = String.format(map, mapCode.get("Computers"), mapCode.get("History"),
+                    mapCode.get("Gym"),  mapCode.get("Hallway"), mapCode.get("Geography"),
                     mapCode.get("Cafeteria"), mapCode.get("Maths"));
         }
         return newMap;
