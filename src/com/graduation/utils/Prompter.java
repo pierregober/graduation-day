@@ -165,7 +165,7 @@ public class Prompter {
                 if(Player.getInventory().contains("Apple")){
 
                     hackClass();
-                    System.out.println("you gave teacher a apple she will let you pass with 2.4 \n  Teacher: 'Awwe your so sweet you get to pass my class' ");
+                    System.out.println(ConsoleColor.GREEN +"                                                  you gave teacher a apple she will let you pass with 2.4 \n                                                  Teacher: 'Awwe your so sweet you get to pass my class' " + ConsoleColor.RESET);
                 }
                 else{
                     System.out.println("You do not have an apple to give to teacher.");
