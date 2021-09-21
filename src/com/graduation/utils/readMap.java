@@ -26,7 +26,8 @@ public class readMap {
         mapCode.put("Computers", "  ");
 
         // String character = "\u00A0 o \n<|>\n_^_";
-        String c = "\uD83D\uDE00";
+//        String c = "\uD83D\uDE00";
+        String c = "ME";
 
         String character_me = ConsoleColor.YELLOW_BOLD + c + ConsoleColor.RESET;
         TextFileReader tfr = new TextFileReader();

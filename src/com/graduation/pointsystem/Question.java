@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 
 public class Question {
     public static final Map<String, Integer> categories = Map.of("maths", 19, "history", 23, "geography", 22, "sports",
-            21, "general knowledge", 9, "computers", 18);
+            21, "general knowledge", 9, "computers", 18, "mythology", 20, "art", 25, "politics",24,"vehicles", 28);
     private static final Map<Grade, String> difficulties = Map.of(Grade.FRESHMAN, "easy", Grade.SOPHOMORE, "easy",
             Grade.JUNIOR, "medium", Grade.SENIOR, "hard");
     public static int cheatCounter = 0;
@@ -66,7 +66,7 @@ public class Question {
         if (type.isBlank()) {
             return -1;
         } else {
-//            Prompter.clearScreen();
+            Prompter.clearScreen();
 
             System.out.println(readMap.convertedMap());
             System.out.println(ConsoleColor.GREEN_BOLD
@@ -75,13 +75,15 @@ public class Question {
             System.out.println(
                     "                                   ******************************************************************************************* "
                             + ConsoleColor.RESET);
-
-            // Pause the execution for 3 sec
+//
+//             Pause the execution for 3 sec
             Thread.sleep(3000);
 
             List<QuestionDetail> samples = null;
+            List<QuestionDetail> samples1 = null;
             try {
                 samples = getQuestions(type, level);
+
             } catch (ExecutionException | JsonProcessingException | InterruptedException ex) {
                 ex.printStackTrace();
             }
