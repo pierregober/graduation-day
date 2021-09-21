@@ -2,6 +2,7 @@ package com.graduation.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.graduation.actions.GameCombat;
 import com.graduation.client.GameClient;
 import com.graduation.elements.Player;
 import com.graduation.pointsystem.PointSystem;
@@ -187,6 +188,7 @@ public class Prompter {
                 } catch (NullPointerException ex) {
                     ex.getMessage();
                 }
+
             } else if (response.matches("quit")) {
                 //get the current room
                 return "quit";
