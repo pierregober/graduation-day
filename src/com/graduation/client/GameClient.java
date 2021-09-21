@@ -204,10 +204,13 @@ public class GameClient {
 
     // Initialize the player as a FRESHMAN aka first level with user provided name input
     public Player setPlayer() throws Exception {
-        String userName = prompter.prompt("Please enter your name below: \n:> ");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(ConsoleColor.YELLOW + "Please enter your name below: " + ConsoleColor.RESET);
+        String userName = scanner.nextLine();
         // Validate user name is not blank or is not in the list of reserved command keywords
-        while (userName.isBlank() || prompter.getCommands().contains(userName)) {
-            userName = prompter.prompt("Please enter your name below: \n:> ");
+        while (userName.isBlank() || prompter.getCommands().contains(userName.toLowerCase())) {
+            System.out.println(ConsoleColor.YELLOW + "Please enter your name below: " + ConsoleColor.RESET);
+            userName = scanner.nextLine();
         }
         return new Player(userName, 0, 100, Grade.FRESHMAN, "Computers");
     }

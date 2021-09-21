@@ -59,6 +59,5 @@ public class GameAction {
             System.out.println("GET " + "item");
         }
         System.out.println("GO " + GameClient.getValidDirections());
-        System.out.println("H (for help)");
     }
 }
