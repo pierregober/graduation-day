@@ -34,7 +34,6 @@ public class PointSystem {
     }
 
     public double getCumulativeScore(int eachScore, int numberOfSubjects) {
-        // System.out.println("Counter = " + numberOfSubjects);
         player_total_grade += (getScore(eachScore));
         return Double.parseDouble(new DecimalFormat("#.##").format(player_total_grade / (double) numberOfSubjects));
     }
@@ -50,16 +49,20 @@ public class PointSystem {
 
         currentPlayer = player;
 
+        // check if a subject already passed and continue loading questions accordingly
         if (!player.getSubjectTaken().contains(subject)) {
             Question questions = new Question();
             if (player.getSubjectTaken().size() == 0) {
-                //TODO Validate if below should be set to true
                 isNewLevel = false;
             }
             PointSystem pointSystem = new PointSystem();
+            // initialize classroom score and class fail counter before starting question
             int score = 0;
+
             int score1 = 0;
             boolean run = true;
+
+            int classFailCount = 0;
 
             if (!notSubject.contains(subject.toLowerCase())) {
                 Thread.sleep(6000);
@@ -96,14 +99,22 @@ public class PointSystem {
                 System.out.println("Now that the elective is done its time for class to start " + ConsoleColor.RESET);
                 score = questions.generateQuestions(subject, level);
 
-                if (score == -1 ) {
-                    System.out.println(subject + " is a required field");
-                } else if (score == 0) {
+                if (score == -1) {
+
                     GameClient.continueJourney(isNewLevel);
                 } else {
                     while (pointSystem.getScore(score) < 2) {
-                        System.out.println(ConsoleColor.RED + "\n\n    Your score of " + pointSystem.getScore(score)
-                                + " is less than 2.0, you need to take " + subject + " again" + ConsoleColor.RESET);
+                        classFailCount++;
+                        if (classFailCount == 3) {
+                            System.out.println(ConsoleColor.RED_BOLD + "\n\n            You have failed this class 3 "
+                                    + "times and hence lost the game. You will need to re-apply for the school and "
+                                    + "re-start the game." + ConsoleColor.RESET);
+                            Thread.sleep(5000);
+                            System.exit(0);
+                        }
+                        System.out.println(ConsoleColor.RED + "\n\n                                               "
+                                + "Your GPA of " + pointSystem.getScore(score) + " is less than 2.0, you need to take " + subject + " again."
+                                + ConsoleColor.RESET);
                         System.out.println();
                         score = questions.generateQuestions(subject, level);
                     }
@@ -129,20 +140,16 @@ public class PointSystem {
             // GameClient.continueJourney(isNewLevel);
         }
 
-        //it will sleep for 3 sec
-        //Thread.sleep(3000);
-
         GameClient.continueJourney(isNewLevel);
-        // see the class list
-        // System.out.println(Arrays.toString(player.getSubjectTaken().toArray(new
-        // String[0])));
     }
 
     public static void changePlayerGrade(Player player) {
         // Step 1: Determine if we can go to the next grade level
         if (player.getSubjectTaken().containsAll(core) && player.getCredit() >= 2.0) {
+            Prompter.clearScreen();
             // display a congratulation message on moving to the next grade
-            System.out.println("congratulations, you've passed " + player.getGrade());
+            System.out.println(ConsoleColor.GREEN + "\n\n            CONGRATULATIONS!!!!, you've passed "
+                    + player.getGrade() + " level." + ConsoleColor.RESET);
             isNewLevel = true;
             switch (player.getGrade()) {
                 case FRESHMAN:
@@ -153,7 +160,14 @@ public class PointSystem {
                     break;
                 case JUNIOR:
                     player.setGrade(Grade.SENIOR);
+                    break;
+                case SENIOR:
+                    System.out.println(ConsoleColor.GREEN + "\n\n            You have successfully graduated. " +
+                            "\n            Your GRADUATION DAY IS FINALLY HERE. GOOD LUCK with your future endeavors."
+                            + ConsoleColor.RESET);
+                    System.exit(0);
             }
+
             // Step 2: Clear the subjects that we passed from the player
             player.getSubjectTaken().clear();
             // Step 3: Get the first location of the next level

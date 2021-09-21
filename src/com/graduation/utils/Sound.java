@@ -30,8 +30,7 @@ public class Sound {
         volumeControl(audioClip);
         muteControl(audioClip);
         audioClip.start();
-//        while (audioClip.getMicrosecondLength() != audioClip.getMicrosecondPosition()){
-//        }
+
         LineListener listener = new LineListener() {
             @Override
             public void update(LineEvent event) {

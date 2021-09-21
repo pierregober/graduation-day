@@ -9,12 +9,16 @@ import jdk.swing.interop.SwingInterOpUtils;
 import java.util.Scanner;
 
 public class GameAction {
-    private static Scanner action = new Scanner(System.in);
 
     public static void getAction() throws Exception {
         Prompter.clearScreen();
-        System.out.println(GameClient.getPlayer());
         System.out.println(readMap.convertedMap());
+        System.out.println(ConsoleColor.GREEN_BOLD
+                + "                                   *******************************************************************************************");
+        System.out.println("                                   " + GameClient.getPlayer());
+        System.out.println(
+                "                                   ******************************************************************************************* "
+                        + ConsoleColor.RESET);
         showValidCommands();
         String move = GameClient.getPrompter().prompt("Enter a move from above options: \n ");
         String[] moveArray = move.toLowerCase().split(" ");
@@ -51,10 +55,10 @@ public class GameAction {
     }
 
     private static void showValidCommands() {
-        System.out.println("GO " + GameClient.getValidDirections());
         if (GameClient.displayRoomInventory() != null) {
             System.out.println("GET " + "item");
         }
+        System.out.println("GO " + GameClient.getValidDirections());
         System.out.println("H (for help)");
     }
 }
