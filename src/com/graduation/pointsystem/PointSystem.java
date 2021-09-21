@@ -11,10 +11,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class PointSystem {
     public static List<String> getNotSubject() {
@@ -28,6 +25,7 @@ public class PointSystem {
             Arrays.asList("maths", "computers", "geography", "history"));
     private static boolean isNewLevel = false;
     public static Player currentPlayer = null;
+    private boolean validator = false;
 
     private double getScore(int correct) {
         double current_class = 0;
@@ -40,6 +38,12 @@ public class PointSystem {
         return Double.parseDouble(new DecimalFormat("#.##").format(player_total_grade / (double) numberOfSubjects));
     }
 
+    public static String randomSubject(){
+        String [] arrElectives = {"art","politics","vehicles","mythology"};
+        Random rand = new Random();
+        int randInt = rand.nextInt(4);
+        return arrElectives[randInt];
+    }
 
     public static void teacherQuestions(String subject, Grade level, Player player) throws Exception {
 
@@ -54,10 +58,49 @@ public class PointSystem {
             PointSystem pointSystem = new PointSystem();
             // initialize classroom score and class fail counter before starting question
             int score = 0;
+
+            int score1 = 0;
+            boolean run = true;
+
             int classFailCount = 0;
+
             if (!notSubject.contains(subject.toLowerCase())) {
+                Thread.sleep(6000);
+                System.out.println(ConsoleColor.GREEN_BOLD +"              Well before you start your year must complete an elective Art, Politics, Vehicles, Mythology ");
+
+                while(run==true){
+                    String userChoice = GameClient.getPrompter().prompt(":> ").trim().toUpperCase();
+                    if(userChoice.matches("ART")){
+                        questions.generateQuestions(userChoice,level);
+                        run = false;
+                    }
+                    if(userChoice.matches("MYTHOLOGY")){
+                        questions.generateQuestions(userChoice,level);
+                        run = false;
+                    }
+                    if(userChoice.matches("VEHICLES")){
+                        questions.generateQuestions(userChoice,level);
+                        run = false;
+                    }
+                    if(userChoice.matches("POLITICS")){
+                        questions.generateQuestions(userChoice,level);
+                        run = false;
+                    }
+                    else{
+                        System.out.println("wrong answer please type art, vehicles, politics, mythology" );
+                    }
+
+
+                }
+
+
+//                questions.generateQuestions(randomSubject(),level);
+
+                System.out.println("Now that the elective is done its time for class to start " + ConsoleColor.RESET);
                 score = questions.generateQuestions(subject, level);
+
                 if (score == -1) {
+
                     GameClient.continueJourney(isNewLevel);
                 } else {
                     while (pointSystem.getScore(score) < 2) {
