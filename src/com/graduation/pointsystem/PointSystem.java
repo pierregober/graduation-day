@@ -85,15 +85,13 @@ public class PointSystem {
                     player.getSubjectTaken().add(subject);
                     // set the player's GPA
                     player.setCredit(pointSystem.getCumulativeScore(score, player.getSubjectTaken().size()));
-
-                    System.out.println(player.getCredit());
+//
                     // determine if the player has meet the criteria to change its level
                     // from freshman->sophomore->junior->senior
                     // based on a gpa greater than or equal to 2.0 and having taken all the core
                     // subjects i.e. maths,computers,history and geography
                     // reset the taken subject list
                     changePlayerGrade(player);
-                    System.out.println("Grade now: " + Player.getGrade());
                 }
             }
         } else {
@@ -162,7 +160,10 @@ public class PointSystem {
             // Step 3: Get the first location of the next level
             player.setLocation(GameClient.getFirstLocation());
             // reset the GPA for the new level to zero
-            player.setCredit(0.0);
+
+            player.setCredit(0);
+            player_total_grade = 0;
+
             // Step 4: Toggle the bully
             Bully.setPresence(true);
             Bully.setHealth(100);
